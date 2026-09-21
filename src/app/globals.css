@@ -1,0 +1,497 @@
+@import "tailwindcss";
+
+/* Class-based dark mode, driven by next-themes (attribute="class"). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ────────────────────────────────────────────────────────────
+   DESIGN TOKENS
+   Both themes are designed on purpose — they are not inversions.
+   Light : crisp white, cool mist surfaces, navy ink, blue accent.
+   Dark  : deep navy, blue-tinted surfaces, hairline borders, soft glow.
+   Components consume tokens only, so any section can be re-themed
+   (see `.force-dark`) without touching component code.
+   ──────────────────────────────────────────────────────────── */
+:root {
+  color-scheme: light;
+
+  --background: #ffffff;
+  --surface: #f4f7fc;
+  --surface-strong: #e8eefa;
+  --card: #ffffff;
+
+  --foreground: #0b1b3a;
+  --muted: #4a5a78;
+  --subtle: #5d6c89;
+
+  --border: #dbe3f0;
+  --border-strong: #c2cee3;
+
+  --accent: #1d5cf0;
+  --accent-hover: #1749c4;
+  --accent-foreground: #ffffff;
+  --accent-text: #1a55e0;
+  --accent-soft: rgb(29 92 240 / 0.08);
+
+  --success: #0f7a4a;
+  --danger: #c22a2a;
+
+  --glow: rgb(29 92 240 / 0.16);
+  --grid-line: rgb(11 27 58 / 0.06);
+  --header-bg: rgb(255 255 255 / 0.82);
+  --panel-shadow:
+    0 1px 2px rgb(11 27 58 / 0.05), 0 18px 40px -18px rgb(29 92 240 / 0.28);
+
+  /* Hero "strata" illustration */
+  --layer-top: #f2f6ff;
+  --layer-side-l: #d5e2ff;
+  --layer-side-r: #bfd2fb;
+  --layer-stroke: rgb(29 92 240 / 0.38);
+  --layer-stroke-strong: rgb(29 92 240 / 0.7);
+  --layer-tile: #ffffff;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --background: #050b19;
+  --surface: #09132b;
+  --surface-strong: #0f1c3b;
+  --card: #0a1631;
+
+  --foreground: #f1f5ff;
+  --muted: #a3b2cf;
+  --subtle: #8192b3;
+
+  --border: #16264a;
+  --border-strong: #24396d;
+
+  --accent: #1d5cf0;
+  --accent-hover: #2f68f5;
+  --accent-foreground: #ffffff;
+  --accent-text: #78a8ff;
+  --accent-soft: rgb(90 150 255 / 0.12);
+
+  --success: #4ade9a;
+  --danger: #ff8a8a;
+
+  --glow: rgb(45 110 255 / 0.3);
+  --grid-line: rgb(120 160 255 / 0.07);
+  --header-bg: rgb(5 11 25 / 0.78);
+  --panel-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.04), 0 28px 60px -28px rgb(0 0 0 / 0.75);
+
+  --layer-top: #0b1737;
+  --layer-side-l: #0e2154;
+  --layer-side-r: #091a44;
+  --layer-stroke: rgb(110 162 255 / 0.4);
+  --layer-stroke-strong: rgb(130 175 255 / 0.75);
+  --layer-tile: #13285a;
+}
+
+/* An always-navy band that looks intentional in BOTH themes. */
+.force-dark {
+  color-scheme: dark;
+
+  --background: #081633;
+  --surface: #0d1e45;
+  --surface-strong: #132858;
+  --card: #0d1e45;
+
+  --foreground: #f1f5ff;
+  --muted: #aab9d7;
+  --subtle: #8a9dc4;
+
+  --border: #1c3163;
+  --border-strong: #2b4687;
+
+  --accent-text: #7fb0ff;
+  --accent-soft: rgb(90 150 255 / 0.14);
+
+  --glow: rgb(45 110 255 / 0.32);
+  --grid-line: rgb(120 160 255 / 0.08);
+  --panel-shadow: 0 30px 70px -30px rgb(0 0 0 / 0.6);
+
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+@theme inline {
+  --font-sans:
+    var(--font-body), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display:
+    var(--font-heading), var(--font-body), ui-sans-serif, system-ui,
+    sans-serif;
+
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-text: var(--accent-text);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+
+  --shadow-panel: var(--panel-shadow);
+}
+
+/* ────────────────────────────────────────────────────────────
+   BASE
+   ──────────────────────────────────────────────────────────── */
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--accent) 28%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent-text);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   UTILITIES / COMPONENT CLASSES
+   ──────────────────────────────────────────────────────────── */
+.bg-grid {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(
+    ellipse 75% 65% at 50% 35%,
+    #000 25%,
+    transparent 78%
+  );
+  mask-image: radial-gradient(
+    ellipse 75% 65% at 50% 35%,
+    #000 25%,
+    transparent 78%
+  );
+}
+
+.glow-blue {
+  background: radial-gradient(
+    closest-side,
+    var(--glow),
+    transparent 72%
+  );
+}
+
+/* Applied to <html> for ~350ms while the theme changes (see ThemeToggle). */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease,
+    fill 0.35s ease,
+    stroke 0.35s ease,
+    box-shadow 0.35s ease !important;
+}
+
+/* ── Hero "strata" illustration ─────────────────────────── */
+.hv-top {
+  fill: var(--layer-top);
+  stroke: var(--layer-stroke);
+  stroke-width: 1.25;
+  stroke-linejoin: round;
+}
+.hv-side-l {
+  fill: var(--layer-side-l);
+  stroke: var(--layer-stroke);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+.hv-side-r {
+  fill: var(--layer-side-r);
+  stroke: var(--layer-stroke);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+.hv-grid {
+  stroke: var(--layer-stroke);
+  stroke-width: 0.75;
+  opacity: 0.5;
+  fill: none;
+}
+.hv-tile {
+  fill: var(--layer-tile);
+  stroke: var(--layer-stroke-strong);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+.hv-tile-accent {
+  fill: var(--accent);
+  stroke: var(--accent-text);
+  stroke-width: 1;
+  stroke-linejoin: round;
+  opacity: 0.92;
+}
+.hv-link {
+  stroke: var(--accent-text);
+  stroke-width: 1.4;
+  fill: none;
+  opacity: 0.75;
+}
+.hv-node {
+  fill: var(--accent);
+  stroke: var(--background);
+  stroke-width: 2;
+}
+.hv-ring {
+  fill: none;
+  stroke: var(--layer-stroke-strong);
+  stroke-width: 1;
+}
+.hv-flow {
+  stroke: var(--accent-text);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 8;
+  stroke-linecap: round;
+  fill: none;
+  animation: hv-flow 2.2s linear infinite;
+}
+.hv-packet {
+  fill: var(--accent-text);
+  filter: drop-shadow(0 0 6px var(--accent-text));
+  animation: hv-travel 4.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  animation-delay: var(--d, 0s);
+}
+.hv-pulse {
+  fill: var(--accent-text);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hv-pulse 3.2s ease-out infinite;
+  animation-delay: var(--d, 0s);
+}
+.hv-float {
+  animation: hv-float 6s ease-in-out infinite;
+}
+
+.hv-layer-0 {
+  animation: hv-plate-0 5.5s ease-in-out infinite;
+}
+.hv-layer-1 {
+  animation: hv-plate-1 5.8s ease-in-out infinite 0.4s;
+}
+.hv-layer-2 {
+  animation: hv-plate-2 6.2s ease-in-out infinite 0.8s;
+}
+.hv-layer-3 {
+  animation: hv-plate-3 6.6s ease-in-out infinite 1.2s;
+}
+
+@keyframes hv-float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(0.5deg);
+  }
+}
+
+@keyframes hv-plate-0 {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes hv-plate-1 {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes hv-plate-2 {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes hv-plate-3 {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+@keyframes hv-flow {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+@keyframes hv-travel {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  8%,
+  92% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(var(--travel, 396px));
+    opacity: 0;
+  }
+}
+@keyframes hv-pulse {
+  0% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(3);
+  }
+}
+
+/* ── Flow diagrams (Agentic AI → Tools → Data …) ─────────── */
+.flow-line {
+  position: relative;
+  background-color: var(--border-strong);
+  height: 1px;
+  flex: 1 1 0%;
+  min-width: 0.5rem;
+}
+.flow-line::after {
+  content: "";
+  position: absolute;
+  top: -2.5px;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background-color: var(--accent-text);
+  box-shadow: 0 0 10px var(--accent-text);
+  opacity: 0;
+  animation: flow-x 2.8s linear infinite;
+  animation-delay: var(--flow-delay, 0s);
+}
+@keyframes flow-x {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  12%,
+  88% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 6px);
+    opacity: 0;
+  }
+}
+@keyframes flow-y {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  12%,
+  88% {
+    opacity: 1;
+  }
+  100% {
+    top: calc(100% - 6px);
+    opacity: 0;
+  }
+}
+/* "large" flow diagrams stack vertically on small screens */
+@media (max-width: 47.99rem) {
+  .flow-stack .flow-line {
+    width: 1px;
+    height: 2.25rem;
+    flex: none;
+    margin-left: 1.375rem;
+  }
+  .flow-stack .flow-line::after {
+    top: 0;
+    left: -2.5px;
+    animation-name: flow-y;
+  }
+}
+
+/* ── Reduced motion: keep layout, drop movement ──────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .hv-packet,
+  .hv-pulse,
+  .flow-line::after {
+    display: none;
+  }
+}

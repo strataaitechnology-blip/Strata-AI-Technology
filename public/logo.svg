@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 64" fill="none" role="img" aria-label="STRATA Technologies">
+  <path d="M28 6 52 18 28 30 4 18 28 6Z" fill="#1d5cf0"/>
+  <path d="M4 30 28 42 52 30" stroke="#1a55e0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+  <path d="M4 40 28 52 52 40" stroke="#1a55e0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity=".45"/>
+  <text x="66" y="40" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" letter-spacing="1.5" fill="#0b1b3a">STRATA</text>
+</svg>
