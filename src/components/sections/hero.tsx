@@ -11,7 +11,7 @@ export function Hero() {
         <div className="glow-blue absolute -right-[8%] -top-[12%] h-[44rem] w-[44rem] opacity-90" />
       </div>
 
-      <Container className="grid items-center gap-8 pb-10 pt-10 sm:pt-16 lg:grid-cols-[1.02fr_1fr] lg:gap-6 lg:pb-16 lg:pt-20">
+      <Container className="grid items-center gap-8 pb-6 pt-8 sm:pt-12 lg:grid-cols-[1.02fr_1fr] lg:gap-6 lg:pb-10 lg:pt-16">
         <div className="relative z-10">
           <Enter>
             <p className="inline-flex items-center gap-2.5 rounded-full border border-border-strong bg-background/70 px-3.5 py-1.5 text-xs font-semibold tracking-[0.16em] text-accent-text backdrop-blur">

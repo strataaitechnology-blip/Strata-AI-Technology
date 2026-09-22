@@ -34,14 +34,14 @@ export function Section({
         id={id}
         aria-labelledby={labelledBy}
         className={cn(
-          "relative py-14 sm:py-18 lg:py-22 transition-colors duration-300",
+          "relative py-8 sm:py-12 lg:py-14 transition-colors duration-300",
           tone === "muted" && "bg-surface border-y border-border/40",
           tone === "dark" && "force-dark bg-navy-900 border-y border-navy-800",
           className
         )}
       >
         {showDivider ? (
-          <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/35 to-transparent opacity-80" />
+          <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent opacity-80" />
         ) : null}
         {children}
       </section>
@@ -52,12 +52,12 @@ export function Section({
     <m.section
       id={id}
       aria-labelledby={labelledBy}
-      initial={{ opacity: 0, y: 36, scale: 0.985 }}
+      initial={{ opacity: 0, y: 32, scale: 0.99 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.65, ease: easeOutCubic }}
+      viewport={{ once: true, amount: 0.08 }}
+      transition={{ duration: 0.55, ease: easeOutCubic }}
       className={cn(
-        "relative py-14 sm:py-18 lg:py-22 transition-colors duration-300",
+        "relative py-8 sm:py-12 lg:py-14 transition-colors duration-300",
         tone === "muted" && "bg-surface border-y border-border/40",
         tone === "dark" && "force-dark bg-navy-900 border-y border-navy-800",
         className
