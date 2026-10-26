@@ -14,7 +14,7 @@ export function TechPill({ children, className }: TechPillProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center border border-accent/25 bg-accent-soft px-2.5 py-1 text-[0.72rem] font-medium text-accent-text",
+        "inline-flex items-center border border-accent/25 bg-accent-soft px-3 py-1.5 text-xs font-medium text-accent-text",
         className
       )}
     >

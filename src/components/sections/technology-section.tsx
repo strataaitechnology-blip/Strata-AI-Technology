@@ -25,19 +25,19 @@ export function TechnologySection() {
               return (
                 <div
                   key={group.id}
-                  className="grid gap-4 border-b border-border py-7 sm:grid-cols-[10rem_1fr] sm:gap-8"
+                  className="grid gap-4 border-b border-border py-8 sm:grid-cols-[12rem_1fr] sm:gap-8"
                 >
                   <dt>
-                    <span className="flex items-center gap-2.5 text-sm font-semibold text-primary">
+                    <span className="flex items-center gap-2.5 text-base font-semibold text-primary">
                       {/* Teal icon for category */}
                       <Icon
-                        className="h-4 w-4 text-accent"
+                        className="h-5 w-5 text-accent"
                         strokeWidth={1.75}
                         aria-hidden="true"
                       />
                       {group.title}
                     </span>
-                    <span className="mt-1 block text-xs text-muted">
+                    <span className="mt-1.5 block text-sm text-muted">
                       {group.description}
                     </span>
                   </dt>
