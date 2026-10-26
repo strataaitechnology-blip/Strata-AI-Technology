@@ -12,7 +12,8 @@ export function FaqSection({ showContactLink = true }: { showContactLink?: boole
         <Reveal className="lg:sticky lg:top-28 lg:self-start">
           <SectionHeader
             id="faq-heading"
-            title="Frequently asked questions."
+            eyebrow="FAQ"
+            title="Frequently Asked Questions."
             description="Straight answers about how we work. Can't find yours? Just ask."
           />
           {showContactLink ? (

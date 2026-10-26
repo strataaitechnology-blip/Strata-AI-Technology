@@ -11,6 +11,7 @@ export function SolutionsSection() {
         <Reveal>
           <SectionHeader
             id="solutions-heading"
+            eyebrow="Solutions"
             title="Technology Built Around Real Business Problems."
             description="Every solution follows the same path: start with the challenge, shape a strategy, choose the right technology, add intelligence where it helps, and measure the impact."
           />

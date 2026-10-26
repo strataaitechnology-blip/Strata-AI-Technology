@@ -13,14 +13,20 @@ interface LegalDocumentProps {
 export function LegalDocument({ sections }: LegalDocumentProps) {
   return (
     <section aria-label="Document" className="py-14 sm:py-20">
-      <Container className="grid gap-12 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-20">
+      <Container className="grid gap-12 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-20">
+        {/* Sticky table of contents — teal hover on links */}
         <nav aria-label="On this page" className="hidden lg:block">
           <div className="sticky top-28">
-            <p className="text-sm font-semibold text-foreground">On this page</p>
-            <ol className="mt-4 space-y-2.5 border-l border-border pl-4 text-sm">
+            <p className="text-xs font-semibold tracking-[0.1em] uppercase text-primary">
+              On this page
+            </p>
+            <ol className="mt-4 space-y-2.5 border-l-2 border-border pl-4 text-sm">
               {sections.map((section) => (
                 <li key={section.id}>
-                  <a href={`#${section.id}`} className="text-muted transition-colors hover:text-accent-text">
+                  <a
+                    href={`#${section.id}`}
+                    className="text-muted transition-colors hover:text-accent-text"
+                  >
                     {section.title}
                   </a>
                 </li>
@@ -30,30 +36,48 @@ export function LegalDocument({ sections }: LegalDocumentProps) {
         </nav>
 
         <div className="max-w-2xl">
-          <p className="text-sm text-subtle">Last updated: {formatDate(siteConfig.legal.lastUpdated)}</p>
+          <p className="text-xs text-muted">
+            Last updated: {formatDate(siteConfig.legal.lastUpdated)}
+          </p>
+
+          {/* Notice banner — uses accent-soft teal background */}
           <p
             role="note"
-            className="mt-5 flex items-start gap-3 rounded-xl border border-dashed border-border-strong bg-surface px-4 py-3.5 text-sm text-muted"
+            className="mt-5 flex items-start gap-3 border border-accent/25 bg-accent-soft px-4 py-3.5 text-sm text-foreground"
           >
-            <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0 text-accent-text" aria-hidden="true" />
+            <TriangleAlert
+              className="mt-0.5 h-4 w-4 shrink-0 text-accent-text"
+              aria-hidden="true"
+            />
             {LEGAL_REVIEW_NOTICE}
           </p>
 
-          <div className="mt-12 space-y-12">
+          <div className="mt-12 space-y-10">
             {sections.map((section) => (
-              <section key={section.id} id={section.id} aria-labelledby={`${section.id}-title`}>
-                <h2 id={`${section.id}-title`} className="text-2xl font-semibold text-foreground">
+              <section
+                key={section.id}
+                id={section.id}
+                aria-labelledby={`${section.id}-title`}
+              >
+                <h2
+                  id={`${section.id}-title`}
+                  className="text-lg font-semibold text-primary"
+                >
                   {section.title}
                 </h2>
-                <div className="mt-4 space-y-4 leading-relaxed text-muted">
+                <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted">
                   {section.paragraphs.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>
                   ))}
                   {section.list ? (
-                    <ul className="space-y-2.5">
+                    <ul className="space-y-2">
                       {section.list.map((item) => (
                         <li key={item} className="flex gap-3">
-                          <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                          {/* Teal bullet dot */}
+                          <span
+                            aria-hidden="true"
+                            className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent"
+                          />
                           {item}
                         </li>
                       ))}

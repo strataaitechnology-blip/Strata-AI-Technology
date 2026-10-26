@@ -1,18 +1,85 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" fill="none">
   <defs>
-    <linearGradient id="bg-workflow-agent" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#071330"/><stop offset="1" stop-color="#0e2660"/>
+    <linearGradient id="bg-wa" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1929"/><stop offset="1" stop-color="#142d4e"/>
     </linearGradient>
-    <radialGradient id="gl-workflow-agent" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#2f6bff" stop-opacity="0.45"/><stop offset="1" stop-color="#2f6bff" stop-opacity="0"/>
-    </radialGradient>
-    <pattern id="gr-workflow-agent" width="48" height="48" patternUnits="userSpaceOnUse">
-      <path d="M48 0H0V48" stroke="#78a8ff" stroke-opacity="0.08"/>
+    <pattern id="gr-wa" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" stroke="#2bae9a" stroke-opacity="0.05"/>
     </pattern>
   </defs>
-  <rect width="1200" height="800" fill="url(#bg-workflow-agent)"/>
-  <rect width="1200" height="800" fill="url(#gr-workflow-agent)"/>
-  <circle cx="820" cy="260" r="420" fill="url(#gl-workflow-agent)"/>
-<path d="M600 380L250 200" stroke="#78a8ff" stroke-opacity="0.55" stroke-width="2.5" stroke-dasharray="4 10" stroke-linecap="round"/><circle cx="425" cy="290" r="6" fill="#78a8ff"/><path d="M600 380L250 560" stroke="#78a8ff" stroke-opacity="0.55" stroke-width="2.5" stroke-dasharray="4 10" stroke-linecap="round"/><circle cx="425" cy="470" r="6" fill="#78a8ff"/><path d="M600 380L950 200" stroke="#78a8ff" stroke-opacity="0.55" stroke-width="2.5" stroke-dasharray="4 10" stroke-linecap="round"/><circle cx="775" cy="290" r="6" fill="#78a8ff"/><path d="M600 380L950 560" stroke="#78a8ff" stroke-opacity="0.55" stroke-width="2.5" stroke-dasharray="4 10" stroke-linecap="round"/><circle cx="775" cy="470" r="6" fill="#78a8ff"/><path d="M600 380L600 130" stroke="#78a8ff" stroke-opacity="0.55" stroke-width="2.5" stroke-dasharray="4 10" stroke-linecap="round"/><circle cx="600" cy="255" r="6" fill="#78a8ff"/><path d="M600 380L600 640" stroke="#78a8ff" stroke-opacity="0.55" stroke-width="2.5" stroke-dasharray="4 10" stroke-linecap="round"/><circle cx="600" cy="510" r="6" fill="#78a8ff"/><circle cx="600" cy="380" r="88" fill="#1d5cf0" fill-opacity="0.22"/><circle cx="600" cy="380" r="70" fill="#1d5cf0" stroke="#f1f5ff" stroke-width="3" stroke-opacity="0.9"/><path d="M576 388L600 360L624 388" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="250" cy="200" r="72" fill="#2f6bff" fill-opacity="0.1"/><circle cx="250" cy="200" r="54" fill="#0c1c45" stroke="#78a8ff" stroke-width="2" stroke-opacity="0.8"/><rect x="223" y="195" width="54" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.75"/><circle cx="250" cy="560" r="72" fill="#2f6bff" fill-opacity="0.1"/><circle cx="250" cy="560" r="54" fill="#0c1c45" stroke="#78a8ff" stroke-width="2" stroke-opacity="0.8"/><rect x="223" y="555" width="54" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.75"/><circle cx="950" cy="200" r="72" fill="#2f6bff" fill-opacity="0.1"/><circle cx="950" cy="200" r="54" fill="#0c1c45" stroke="#78a8ff" stroke-width="2" stroke-opacity="0.8"/><rect x="923" y="195" width="54" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.75"/><circle cx="950" cy="560" r="72" fill="#2f6bff" fill-opacity="0.1"/><circle cx="950" cy="560" r="54" fill="#0c1c45" stroke="#78a8ff" stroke-width="2" stroke-opacity="0.8"/><rect x="923" y="555" width="54" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.75"/><circle cx="600" cy="130" r="60" fill="#2f6bff" fill-opacity="0.1"/><circle cx="600" cy="130" r="42" fill="#0c1c45" stroke="#78a8ff" stroke-width="2" stroke-opacity="0.8"/><rect x="579" y="125" width="42" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.75"/><circle cx="600" cy="640" r="60" fill="#2f6bff" fill-opacity="0.1"/><circle cx="600" cy="640" r="42" fill="#0c1c45" stroke="#78a8ff" stroke-width="2" stroke-opacity="0.8"/><rect x="579" y="635" width="42" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.75"/><rect x="760" y="330" width="250" height="100" rx="14" fill="#0a1838" stroke="#4ade9a" stroke-width="1.5"/><circle cx="792" cy="380" r="14" fill="#4ade9a" fill-opacity="0.9"/><rect x="820" y="366" width="150" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.85"/><rect x="820" y="388" width="90" height="10" rx="5" fill="#a3b2cf" fill-opacity="0.45"/>
-  <text x="48" y="764" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#a3b2cf" fill-opacity="0.75">Placeholder preview</text>
+  <rect width="1200" height="800" fill="url(#bg-wa)"/>
+  <rect width="1200" height="800" fill="url(#gr-wa)"/>
+
+  <!-- Central AI Agent hub -->
+  <!-- Outer ring -->
+  <circle cx="600" cy="400" r="96" fill="#142d4e" fill-opacity="0.4" stroke="#2bae9a" stroke-width="1" stroke-opacity="0.3"/>
+  <!-- Inner hub -->
+  <circle cx="600" cy="400" r="72" fill="#142d4e" stroke="#2bae9a" stroke-width="2"/>
+  <!-- Hub label lines -->
+  <rect x="568" y="390" width="64" height="8" rx="4" fill="#e8f0f8" fill-opacity="0.9"/>
+  <rect x="576" y="406" width="48" height="6" rx="3" fill="#2bae9a" fill-opacity="0.7"/>
+  <!-- Hub icon: small circuit -->
+  <circle cx="600" cy="372" r="8" fill="#2bae9a" fill-opacity="0.85"/>
+  <path d="M592 372 H584 M608 372 H616" stroke="#2bae9a" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Connector lines — dashed teal -->
+  <path d="M528 372 L260 220" stroke="#2bae9a" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="5 10" stroke-linecap="round"/>
+  <path d="M528 428 L260 580" stroke="#2bae9a" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="5 10" stroke-linecap="round"/>
+  <path d="M672 372 L940 220" stroke="#2bae9a" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="5 10" stroke-linecap="round"/>
+  <path d="M672 428 L940 580" stroke="#2bae9a" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="5 10" stroke-linecap="round"/>
+  <path d="M600 328 L600 148" stroke="#2bae9a" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="5 10" stroke-linecap="round"/>
+  <path d="M600 472 L600 652" stroke="#2bae9a" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="5 10" stroke-linecap="round"/>
+
+  <!-- Moving dots on lines -->
+  <circle cx="394" cy="296" r="5" fill="#2bae9a" fill-opacity="0.8"/>
+  <circle cx="394" cy="504" r="5" fill="#2bae9a" fill-opacity="0.5"/>
+  <circle cx="806" cy="296" r="5" fill="#2bae9a" fill-opacity="0.6"/>
+  <circle cx="600" cy="238" r="5" fill="#2bae9a" fill-opacity="0.7"/>
+
+  <!-- Satellite nodes -->
+  <!-- Top-left: Tools -->
+  <rect x="192" y="170" width="136" height="100" rx="8" fill="#112540" stroke="#1e3a56" stroke-width="1.5"/>
+  <rect x="214" y="190" width="60" height="8" rx="4" fill="#94a3b8" fill-opacity="0.5"/>
+  <rect x="214" y="210" width="92" height="8" rx="4" fill="#e8f0f8" fill-opacity="0.8"/>
+  <rect x="214" y="228" width="70" height="6" rx="3" fill="#2bae9a" fill-opacity="0.5"/>
+  <rect x="214" y="244" width="92" height="8" rx="4" fill="#e8f0f8" fill-opacity="0.6"/>
+
+  <!-- Bottom-left: Data -->
+  <rect x="192" y="530" width="136" height="100" rx="8" fill="#112540" stroke="#1e3a56" stroke-width="1.5"/>
+  <rect x="214" y="548" width="60" height="8" rx="4" fill="#94a3b8" fill-opacity="0.5"/>
+  <rect x="214" y="566" width="92" height="8" rx="4" fill="#e8f0f8" fill-opacity="0.8"/>
+  <rect x="214" y="582" width="70" height="6" rx="3" fill="#94a3b8" fill-opacity="0.3"/>
+  <rect x="214" y="596" width="92" height="8" rx="4" fill="#e8f0f8" fill-opacity="0.6"/>
+
+  <!-- Top-right: APIs -->
+  <rect x="872" y="170" width="136" height="100" rx="8" fill="#112540" stroke="#1e3a56" stroke-width="1.5"/>
+  <rect x="894" y="190" width="60" height="8" rx="4" fill="#94a3b8" fill-opacity="0.5"/>
+  <rect x="894" y="210" width="92" height="8" rx="4" fill="#e8f0f8" fill-opacity="0.8"/>
+  <rect x="894" y="228" width="70" height="6" rx="3" fill="#2bae9a" fill-opacity="0.5"/>
+  <rect x="894" y="244" width="92" height="8" rx="4" fill="#e8f0f8" fill-opacity="0.6"/>
+
+  <!-- Bottom-right: Results -->
+  <rect x="872" y="530" width="136" height="100" rx="8" fill="#112540" stroke="#1e3a56" stroke-width="1.5"/>
+  <rect x="894" y="548" width="60" height="8" rx="4" fill="#94a3b8" fill-opacity="0.5"/>
+  <rect x="894" y="566" width="92" height="8" rx="4" fill="#e8f0f8" fill-opacity="0.8"/>
+  <rect x="894" y="582" width="70" height="6" rx="3" fill="#94a3b8" fill-opacity="0.3"/>
+  <rect x="894" y="596" width="92" height="8" rx="4" fill="#e8f0f8" fill-opacity="0.6"/>
+
+  <!-- Top: Goal input -->
+  <rect x="528" y="84" width="144" height="60" rx="8" fill="#112540" stroke="#2bae9a" stroke-width="1.5"/>
+  <rect x="548" y="103" width="104" height="8" rx="4" fill="#e8f0f8" fill-opacity="0.85"/>
+  <rect x="548" y="119" width="60" height="6" rx="3" fill="#2bae9a" fill-opacity="0.6"/>
+
+  <!-- Bottom: Approval panel — highlighted -->
+  <rect x="528" y="656" width="144" height="60" rx="8" fill="#0d2952" stroke="#2bae9a" stroke-width="2"/>
+  <rect x="548" y="675" width="104" height="8" rx="4" fill="#e8f0f8" fill-opacity="0.9"/>
+  <rect x="548" y="691" width="60" height="6" rx="3" fill="#2bae9a" fill-opacity="0.75"/>
+
+  <!-- Approval CTA inside panel -->
+  <rect x="548" y="661" width="52" height="22" rx="4" fill="#2bae9a"/>
+  <rect x="559" y="669" width="30" height="6" rx="3" fill="#fff" fill-opacity="0.9"/>
+  <rect x="612" y="661" width="52" height="22" rx="4" fill="#142d4e" stroke="#1e3a56" stroke-width="1"/>
+  <rect x="621" y="669" width="30" height="6" rx="3" fill="#94a3b8" fill-opacity="0.5"/>
+
+  <text x="48" y="764" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ecab8" fill-opacity="0.5">Placeholder preview</text>
 </svg>

@@ -7,35 +7,57 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { ServicesShowcase } from "@/components/sections/services-showcase";
 import { agenticFlow, aiSystemFlow, services } from "@/data/services";
 
-/** Spotlight on the two AI services, each shown as a live flow. */
+/**
+ * Agentic AI spotlight — Deep Navy dark panel, teal accent.
+ */
 function AiSpotlight() {
   return (
-    <div className="force-dark relative mt-20 overflow-hidden rounded-3xl border border-border p-6 shadow-panel sm:p-10 lg:p-14">
-      <div aria-hidden="true" className="bg-grid absolute inset-0 opacity-70" />
-      <div aria-hidden="true" className="glow-blue absolute -right-24 -top-32 h-[28rem] w-[28rem]" />
-
-      <div className="relative">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-2xl">
-            <h3 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">From answers to actions.</h3>
-            <p className="mt-4 text-muted sm:text-lg">
-              Agentic AI systems do more than respond. They reason about a goal, use your tools and data, take
-              action and report back — with people in control wherever it matters.
-            </p>
-          </div>
-          <ButtonLink href="/contact?service=agentic-ai" size="lg" className="shrink-0">
+    <div className="force-dark mt-20 border border-border">
+      <div className="grid gap-0 lg:grid-cols-[1fr_auto]">
+        <div className="p-8 sm:p-12 lg:p-14">
+          <p className="text-xs font-semibold tracking-[0.14em] uppercase text-accent">
+            Agentic AI
+          </p>
+          <h3 className="mt-3 text-2xl font-semibold leading-snug tracking-tight text-foreground sm:text-3xl">
+            From answers to actions.
+          </h3>
+          <p className="mt-4 max-w-xl text-muted">
+            Agentic AI systems do more than respond. They reason about a goal,
+            use your tools and data, take action and report back — with people
+            in control wherever it matters.
+          </p>
+        </div>
+        <div className="flex items-center border-t border-border p-8 lg:border-l lg:border-t-0 lg:p-12">
+          <ButtonLink
+            href="/contact?service=agentic-ai"
+            size="lg"
+            variant="accent"
+          >
             Discuss Agentic AI
           </ButtonLink>
         </div>
+      </div>
 
-        <div className="mt-12 space-y-12 lg:mt-14">
+      <div className="border-t border-border p-8 sm:p-12 lg:p-14">
+        <div className="space-y-10">
           <div>
-            <p className="mb-6 text-sm font-medium text-accent-text">Agentic AI</p>
-            <FlowDiagram steps={agenticFlow} emphasizeFirst label="Agentic AI flow: AI Agent, Tools, Data, Actions, Results" />
+            <p className="mb-5 text-xs font-semibold tracking-[0.14em] uppercase text-accent-text">
+              Agentic AI flow
+            </p>
+            <FlowDiagram
+              steps={agenticFlow}
+              emphasizeFirst
+              label="Agentic AI flow: AI Agent, Tools, Data, Actions, Results"
+            />
           </div>
           <div className="border-t border-border pt-10">
-            <p className="mb-6 text-sm font-medium text-accent-text">AI-Based Systems</p>
-            <FlowDiagram steps={aiSystemFlow} label="AI-based system flow: Data, Intelligence, Decision, Action" />
+            <p className="mb-5 text-xs font-semibold tracking-[0.14em] uppercase text-accent-text">
+              AI-Based Systems
+            </p>
+            <FlowDiagram
+              steps={aiSystemFlow}
+              label="AI-based system flow: Data, Intelligence, Decision, Action"
+            />
           </div>
         </div>
       </div>
@@ -45,11 +67,12 @@ function AiSpotlight() {
 
 export function ServicesSection() {
   return (
-    <Section id="services" labelledBy="services-heading">
+    <Section id="services" labelledBy="services-heading" tone="muted">
       <Container>
         <Reveal>
           <SectionHeader
             id="services-heading"
+            eyebrow="Services"
             title="Technology Solutions Designed Around Your Business."
             description="From the first line of code to intelligent automation, we cover the full range of modern software and AI work."
           />
@@ -65,10 +88,9 @@ export function ServicesSection() {
   );
 }
 
-/** Full capability table used on /services. Each row is a deep-link target. */
 export function ServiceCapabilities() {
   return (
-    <Section tone="muted" labelledBy="capabilities-heading">
+    <Section tone="default" labelledBy="capabilities-heading">
       <Container>
         <Reveal>
           <SectionHeader
@@ -81,20 +103,34 @@ export function ServiceCapabilities() {
           {services.map((service) => {
             const Icon = service.icon;
             return (
-              <li key={service.id} id={service.id} className="grid gap-6 border-b border-border-strong py-9 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
+              <li
+                key={service.id}
+                id={service.id}
+                className="grid gap-8 border-b border-border py-10 lg:grid-cols-[1fr_1.3fr] lg:gap-16"
+              >
                 <div className="flex gap-4">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border-strong bg-background text-accent-text">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-accent-soft text-accent-text">
                     <Icon className="h-5 w-5" strokeWidth={1.7} aria-hidden="true" />
                   </span>
                   <div>
-                    <h3 className="text-2xl font-semibold text-foreground">{service.title}</h3>
-                    <p className="mt-2 max-w-md text-muted">{service.summary}</p>
+                    <h3 className="text-xl font-semibold text-primary">
+                      {service.title}
+                    </h3>
+                    <p className="mt-2 max-w-md text-sm leading-relaxed text-muted">
+                      {service.summary}
+                    </p>
                   </div>
                 </div>
-                <ul className="grid content-start gap-x-8 gap-y-3 sm:grid-cols-2">
+                <ul className="grid content-start gap-x-8 gap-y-2.5 sm:grid-cols-2">
                   {service.capabilities.map((capability) => (
-                    <li key={capability} className="flex items-start gap-3 text-foreground/90">
-                      <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                    <li
+                      key={capability}
+                      className="flex items-start gap-3 text-sm text-muted"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent"
+                      />
                       {capability}
                     </li>
                   ))}

@@ -1,18 +1,107 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" fill="none">
   <defs>
-    <linearGradient id="bg-learning-portal" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#071330"/><stop offset="1" stop-color="#0e2660"/>
+    <linearGradient id="bg-lp" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1929"/><stop offset="1" stop-color="#142d4e"/>
     </linearGradient>
-    <radialGradient id="gl-learning-portal" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#2f6bff" stop-opacity="0.45"/><stop offset="1" stop-color="#2f6bff" stop-opacity="0"/>
-    </radialGradient>
-    <pattern id="gr-learning-portal" width="48" height="48" patternUnits="userSpaceOnUse">
-      <path d="M48 0H0V48" stroke="#78a8ff" stroke-opacity="0.08"/>
+    <pattern id="gr-lp" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" stroke="#2bae9a" stroke-opacity="0.055"/>
     </pattern>
   </defs>
-  <rect width="1200" height="800" fill="url(#bg-learning-portal)"/>
-  <rect width="1200" height="800" fill="url(#gr-learning-portal)"/>
-  <circle cx="820" cy="260" r="420" fill="url(#gl-learning-portal)"/>
-<rect x="110" y="110" width="980" height="580" rx="18" fill="#0c1c45" stroke="#2b4687" stroke-width="1.5"/><rect x="140" y="140" width="610" height="350" rx="14" fill="#0d2358" stroke="#2b4687" stroke-width="1.5"/><circle cx="445" cy="315" r="56" fill="#1d5cf0"/><path d="M430 288L430 342L476 315Z" fill="#fff"/><rect x="140" y="520" width="420" height="14" rx="7" fill="#f1f5ff" fill-opacity="0.9"/><rect x="140" y="552" width="300" height="10" rx="5" fill="#a3b2cf" fill-opacity="0.45"/><rect x="140" y="596" width="610" height="12" rx="6" fill="#0a1838" stroke="#2b4687" stroke-width="1.5"/><rect x="140" y="596" width="360" height="12" rx="6" fill="#78a8ff"/><rect x="140" y="636" width="90" height="10" rx="5" fill="#a3b2cf" fill-opacity="0.5"/><rect x="780" y="140" width="280" height="70" rx="12" fill="#0c1c45" stroke="#2b4687" stroke-width="1.5"/><circle cx="812" cy="175" r="14" fill="#4ade9a"/><rect x="840" y="164" width="150" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.8"/><rect x="840" y="184" width="90" height="10" rx="5" fill="#a3b2cf" fill-opacity="0.35"/><rect x="780" y="226" width="280" height="70" rx="12" fill="#12307a" stroke="#78a8ff" stroke-width="1.5"/><circle cx="812" cy="261" r="14" fill="#1d5cf0"/><rect x="840" y="250" width="150" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.8"/><rect x="840" y="270" width="90" height="10" rx="5" fill="#a3b2cf" fill-opacity="0.35"/><rect x="780" y="312" width="280" height="70" rx="12" fill="#0c1c45" stroke="#2b4687" stroke-width="1.5"/><circle cx="812" cy="347" r="14" fill="#2b4687"/><rect x="840" y="336" width="150" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.8"/><rect x="840" y="356" width="90" height="10" rx="5" fill="#a3b2cf" fill-opacity="0.35"/><rect x="780" y="398" width="280" height="70" rx="12" fill="#0c1c45" stroke="#2b4687" stroke-width="1.5"/><circle cx="812" cy="433" r="14" fill="#2b4687"/><rect x="840" y="422" width="150" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.8"/><rect x="840" y="442" width="90" height="10" rx="5" fill="#a3b2cf" fill-opacity="0.35"/><rect x="780" y="484" width="280" height="70" rx="12" fill="#0c1c45" stroke="#2b4687" stroke-width="1.5"/><circle cx="812" cy="519" r="14" fill="#2b4687"/><rect x="840" y="508" width="150" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.8"/><rect x="840" y="528" width="90" height="10" rx="5" fill="#a3b2cf" fill-opacity="0.35"/><rect x="780" y="570" width="280" height="70" rx="12" fill="#0c1c45" stroke="#2b4687" stroke-width="1.5"/><circle cx="812" cy="605" r="14" fill="#2b4687"/><rect x="840" y="594" width="150" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.8"/><rect x="840" y="614" width="90" height="10" rx="5" fill="#a3b2cf" fill-opacity="0.35"/>
-  <text x="48" y="764" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#a3b2cf" fill-opacity="0.75">Placeholder preview</text>
+  <rect width="1200" height="800" fill="url(#bg-lp)"/>
+  <rect width="1200" height="800" fill="url(#gr-lp)"/>
+
+  <!-- Top nav bar -->
+  <rect x="110" y="80" width="980" height="52" rx="8" fill="#0d1e32" stroke="#1e3a56" stroke-width="1.5"/>
+  <rect x="132" y="96" width="100" height="20" rx="4" fill="#142d4e" stroke="#2bae9a" stroke-width="1.5"/>
+  <rect x="140" y="104" width="80" height="6" rx="3" fill="#e8f0f8" fill-opacity="0.85"/>
+  <rect x="248" y="96" width="80" height="20" rx="4" fill="transparent"/>
+  <rect x="256" y="104" width="60" height="6" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+  <rect x="344" y="96" width="80" height="20" rx="4" fill="transparent"/>
+  <rect x="352" y="104" width="60" height="6" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+  <!-- Avatar -->
+  <circle cx="1058" cy="106" r="18" fill="#142d4e" stroke="#2bae9a" stroke-width="1.5"/>
+  <rect x="1050" y="103" width="16" height="6" rx="3" fill="#e8f0f8" fill-opacity="0.6"/>
+
+  <!-- Hero / video player: main course content -->
+  <rect x="110" y="148" width="640" height="370" rx="8" fill="#0d1e32" stroke="#1e3a56" stroke-width="1.5"/>
+  <!-- Thumbnail area -->
+  <rect x="110" y="148" width="640" height="290" rx="8" fill="#0d2952"/>
+  <!-- Play button — navy circle with teal icon -->
+  <circle cx="430" cy="293" r="44" fill="#142d4e" stroke="#2bae9a" stroke-width="2"/>
+  <path d="M418 276 L418 310 L452 293 Z" fill="#2bae9a"/>
+  <!-- Video progress bar -->
+  <rect x="130" y="422" width="600" height="8" rx="4" fill="#1e3a56"/>
+  <rect x="130" y="422" width="380" height="8" rx="4" fill="#2bae9a"/>
+  <!-- Scrubber dot -->
+  <circle cx="510" cy="426" r="8" fill="#2bae9a" stroke="#e8f0f8" stroke-width="2"/>
+  <!-- Time labels -->
+  <rect x="130" y="446" width="50" height="6" rx="3" fill="#94a3b8" fill-opacity="0.5"/>
+  <rect x="670" y="446" width="50" height="6" rx="3" fill="#94a3b8" fill-opacity="0.4"/>
+  <!-- Title below player -->
+  <rect x="130" y="468" width="360" height="12" rx="4" fill="#e8f0f8" fill-opacity="0.9"/>
+  <rect x="130" y="490" width="240" height="8" rx="4" fill="#94a3b8" fill-opacity="0.4"/>
+
+  <!-- Right sidebar: course modules list -->
+  <rect x="766" y="148" width="324" height="536" rx="8" fill="#0d1e32" stroke="#1e3a56" stroke-width="1.5"/>
+  <rect x="790" y="170" width="140" height="8" rx="4" fill="#e8f0f8" fill-opacity="0.85"/>
+  <rect x="790" y="185" width="80" height="6" rx="3" fill="#2bae9a" fill-opacity="0.6"/>
+
+  <!-- Module rows -->
+  <!-- Module 1: complete -->
+  <rect x="786" y="210" width="284" height="56" rx="6" fill="#112540" stroke="#2bae9a" stroke-width="1.5"/>
+  <rect x="804" y="228" width="14" height="14" rx="7" fill="#2bae9a"/>
+  <rect x="828" y="228" width="180" height="7" rx="3" fill="#e8f0f8" fill-opacity="0.85"/>
+  <rect x="828" y="244" width="100" height="5" rx="2" fill="#94a3b8" fill-opacity="0.4"/>
+
+  <!-- Module 2: active -->
+  <rect x="786" y="278" width="284" height="56" rx="6" fill="#142d4e" stroke="#2bae9a" stroke-width="2"/>
+  <rect x="804" y="296" width="14" height="14" rx="7" fill="#2bae9a" fill-opacity="0.4" stroke="#2bae9a" stroke-width="1.5"/>
+  <rect x="828" y="296" width="180" height="7" rx="3" fill="#e8f0f8" fill-opacity="0.9"/>
+  <rect x="828" y="312" width="100" height="5" rx="2" fill="#2bae9a" fill-opacity="0.5"/>
+
+  <!-- Module 3: locked -->
+  <rect x="786" y="346" width="284" height="56" rx="6" fill="#0d1e32" stroke="#1e3a56" stroke-width="1"/>
+  <rect x="804" y="364" width="14" height="14" rx="7" fill="#1e3a56"/>
+  <rect x="828" y="364" width="180" height="7" rx="3" fill="#e8f0f8" fill-opacity="0.6"/>
+  <rect x="828" y="380" width="100" height="5" rx="2" fill="#94a3b8" fill-opacity="0.3"/>
+
+  <!-- Module 4 -->
+  <rect x="786" y="414" width="284" height="56" rx="6" fill="#0d1e32" stroke="#1e3a56" stroke-width="1"/>
+  <rect x="804" y="432" width="14" height="14" rx="7" fill="#1e3a56"/>
+  <rect x="828" y="432" width="180" height="7" rx="3" fill="#e8f0f8" fill-opacity="0.55"/>
+  <rect x="828" y="448" width="100" height="5" rx="2" fill="#94a3b8" fill-opacity="0.25"/>
+
+  <!-- Module 5 -->
+  <rect x="786" y="482" width="284" height="56" rx="6" fill="#0d1e32" stroke="#1e3a56" stroke-width="1"/>
+  <rect x="804" y="500" width="14" height="14" rx="7" fill="#1e3a56"/>
+  <rect x="828" y="500" width="180" height="7" rx="3" fill="#e8f0f8" fill-opacity="0.5"/>
+  <rect x="828" y="516" width="100" height="5" rx="2" fill="#94a3b8" fill-opacity="0.2"/>
+
+  <!-- Module 6 -->
+  <rect x="786" y="550" width="284" height="56" rx="6" fill="#0d1e32" stroke="#1e3a56" stroke-width="1"/>
+  <rect x="804" y="568" width="14" height="14" rx="7" fill="#1e3a56"/>
+  <rect x="828" y="568" width="180" height="7" rx="3" fill="#e8f0f8" fill-opacity="0.45"/>
+  <rect x="828" y="584" width="100" height="5" rx="2" fill="#94a3b8" fill-opacity="0.2"/>
+
+  <!-- Overall progress bar in sidebar -->
+  <rect x="790" y="634" width="280" height="6" rx="3" fill="#1e3a56"/>
+  <rect x="790" y="634" width="175" height="6" rx="3" fill="#2bae9a"/>
+  <rect x="790" y="648" width="60" height="6" rx="3" fill="#94a3b8" fill-opacity="0.4"/>
+  <rect x="1020" y="646" width="40" height="6" rx="3" fill="#2bae9a" fill-opacity="0.6"/>
+
+  <!-- Bottom learner stats -->
+  <rect x="110" y="534" width="300" height="90" rx="8" fill="#0d2952" stroke="#1e3a56" stroke-width="1.5"/>
+  <rect x="132" y="554" width="80" height="7" rx="4" fill="#94a3b8" fill-opacity="0.5"/>
+  <rect x="132" y="572" width="140" height="14" rx="4" fill="#e8f0f8" fill-opacity="0.9"/>
+  <!-- Teal mini progress -->
+  <rect x="132" y="598" width="250" height="8" rx="4" fill="#1e3a56"/>
+  <rect x="132" y="598" width="180" height="8" rx="4" fill="#2bae9a" fill-opacity="0.7"/>
+
+  <rect x="426" y="534" width="324" height="90" rx="8" fill="#0d2952" stroke="#1e3a56" stroke-width="1.5"/>
+  <rect x="448" y="554" width="80" height="7" rx="4" fill="#94a3b8" fill-opacity="0.5"/>
+  <rect x="448" y="572" width="140" height="14" rx="4" fill="#e8f0f8" fill-opacity="0.9"/>
+  <rect x="448" y="598" width="280" height="8" rx="4" fill="#1e3a56"/>
+  <rect x="448" y="598" width="80" height="8" rx="4" fill="#2bae9a" fill-opacity="0.5"/>
+
+  <text x="48" y="764" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ecab8" fill-opacity="0.5">Placeholder preview</text>
 </svg>

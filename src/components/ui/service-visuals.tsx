@@ -14,16 +14,15 @@ function Frame({ children, className }: { children: ReactNode; className?: strin
   return (
     <div
       aria-hidden="true"
-      className={cn("relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-border bg-surface", className)}
+      className={cn("relative aspect-[4/3] w-full overflow-hidden border border-border bg-surface", className)}
     >
-      <div className="bg-grid absolute inset-0 opacity-80" />
       <div className="relative flex h-full w-full items-center justify-center p-4 sm:p-6">{children}</div>
     </div>
   );
 }
 
-const bar = "h-1.5 rounded-full bg-border-strong";
-const dot = "h-2 w-2 rounded-full bg-border-strong";
+const bar = "h-1.5 bg-border-strong";
+const dot = "h-2 w-2 bg-border-strong";
 
 function SoftwareVisual() {
   return (
@@ -220,7 +219,7 @@ function AiSystemsVisual() {
 function CloudVisual() {
   return (
     <div className="flex w-full max-w-[24rem] flex-col items-center">
-      <span className="flex h-12 w-12 items-center justify-center rounded-full border border-accent-text/40 bg-accent-soft text-accent-text">
+      <span className="flex h-12 w-12 items-center justify-center border border-accent/40 bg-accent-soft text-accent-text">
         <Cloud className="h-6 w-6" strokeWidth={1.6} />
       </span>
       <span className="h-6 w-px bg-border-strong" />
@@ -242,9 +241,9 @@ function CloudVisual() {
       </div>
       <div className="mt-4 flex flex-wrap justify-center gap-2 text-[10px] font-medium text-muted">
         {["CI/CD", "Auto-scaling", "Monitoring"].map((tag) => (
-          <span key={tag} className="rounded-full border border-border-strong bg-card px-2.5 py-0.5">
-            {tag}
-          </span>
+          <span key={tag} className="border border-accent/25 bg-accent-soft px-2 py-0.5 text-[10px] text-accent-text">
+              {tag}
+            </span>
         ))}
       </div>
     </div>

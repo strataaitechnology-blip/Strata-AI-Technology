@@ -12,28 +12,40 @@ export function TechnologySection() {
         <Reveal className="lg:sticky lg:top-28 lg:self-start">
           <SectionHeader
             id="technology-heading"
+            eyebrow="Tech Stack"
             title="Modern technology, chosen with care."
             description="We pick tools for the problem in front of us — proven where reliability matters, current where it creates an advantage."
           />
         </Reveal>
 
         <Reveal delay={0.08}>
-          <dl className="border-t border-border-strong">
+          <dl className="border-t border-border">
             {technologyGroups.map((group) => {
               const Icon = group.icon;
               return (
-                <div key={group.id} className="grid gap-4 border-b border-border-strong py-7 sm:grid-cols-[11rem_1fr] sm:gap-8">
+                <div
+                  key={group.id}
+                  className="grid gap-4 border-b border-border py-7 sm:grid-cols-[10rem_1fr] sm:gap-8"
+                >
                   <dt>
-                    <span className="flex items-center gap-2.5 font-display text-lg font-semibold text-foreground">
-                      <Icon className="h-[1.1rem] w-[1.1rem] text-accent-text" strokeWidth={1.75} aria-hidden="true" />
+                    <span className="flex items-center gap-2.5 text-sm font-semibold text-primary">
+                      {/* Teal icon for category */}
+                      <Icon
+                        className="h-4 w-4 text-accent"
+                        strokeWidth={1.75}
+                        aria-hidden="true"
+                      />
                       {group.title}
                     </span>
-                    <span className="mt-1 block text-sm text-subtle">{group.description}</span>
+                    <span className="mt-1 block text-xs text-muted">
+                      {group.description}
+                    </span>
                   </dt>
                   <dd>
-                    <ul className="flex flex-wrap gap-2.5">
+                    <ul className="flex flex-wrap gap-2">
                       {group.items.map((item) => (
                         <li key={item}>
+                          {/* TechPill now uses teal accent-soft */}
                           <TechPill>{item}</TechPill>
                         </li>
                       ))}

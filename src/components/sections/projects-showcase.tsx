@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, m } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { projectCategories, projects } from "@/data/projects";
 import type { Project, ProjectCategory } from "@/types";
@@ -14,7 +15,7 @@ function ProjectItem({ project, featured }: { project: Project; featured: boolea
     <article className={cn("group relative", featured && "md:col-span-2")}>
       <div
         className={cn(
-          "relative overflow-hidden rounded-2xl border border-border-strong bg-surface shadow-panel",
+          "relative overflow-hidden border border-border",
           featured ? "aspect-[16/9]" : "aspect-[3/2]"
         )}
       >
@@ -23,25 +24,38 @@ function ProjectItem({ project, featured }: { project: Project; featured: boolea
           alt={project.image.alt}
           width={project.image.width}
           height={project.image.height}
-          sizes={featured ? "(min-width: 1280px) 1152px, 100vw" : "(min-width: 1280px) 560px, (min-width: 768px) 50vw, 100vw"}
-          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.035]"
+          sizes={
+            featured
+              ? "(min-width: 1280px) 1152px, 100vw"
+              : "(min-width: 1280px) 560px, (min-width: 768px) 50vw, 100vw"
+          }
+          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
         />
-        <div className="absolute left-4 top-4 flex gap-2">
-          <Badge tone="accent" className="bg-background/85 backdrop-blur">
-            {project.category}
-          </Badge>
+        <div className="absolute left-3 top-3 flex gap-2">
+          <Badge tone="neutral">{project.category}</Badge>
           {project.isPlaceholder ? <Badge tone="warning">Placeholder</Badge> : null}
         </div>
       </div>
 
       <div className={cn("mt-5 grid gap-x-10 gap-y-3", featured && "md:grid-cols-[1.1fr_1fr]")}>
         <div>
-          <p className="text-sm text-subtle">{project.industry}</p>
-          <h3 className={cn("mt-1 font-semibold text-foreground", featured ? "text-3xl" : "text-2xl")}>{project.name}</h3>
-          <p className="mt-3 max-w-xl text-muted">{project.description}</p>
+          <p className="text-xs font-semibold tracking-[0.1em] uppercase text-subtle">
+            {project.industry}
+          </p>
+          <h3
+            className={cn(
+              "mt-2 font-semibold leading-tight tracking-tight text-foreground",
+              featured ? "text-2xl" : "text-xl"
+            )}
+          >
+            {project.name}
+          </h3>
+          <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted">
+            {project.description}
+          </p>
         </div>
-        <div className="flex flex-col justify-between gap-5">
-          <dl className="space-y-2 text-sm">
+        <div className="flex flex-col justify-between gap-4">
+          <dl className="space-y-1.5 text-xs">
             <div className="flex gap-3">
               <dt className="w-24 shrink-0 text-subtle">Service</dt>
               <dd className="text-foreground">{project.service}</dd>
@@ -53,9 +67,11 @@ function ProjectItem({ project, featured }: { project: Project; featured: boolea
           </dl>
           <Link
             href={`/projects/${project.slug}`}
-            className="w-fit text-sm font-medium text-accent-text underline decoration-accent-text/30 underline-offset-4 transition-colors after:absolute after:inset-0 after:content-[''] hover:decoration-accent-text"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-accent-text transition-colors hover:text-primary after:absolute after:inset-0 after:content-['']"
           >
-            View Case Study<span className="sr-only">: {project.name}</span>
+            View Case Study
+            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+            <span className="sr-only">: {project.name}</span>
           </Link>
         </div>
       </div>
@@ -73,13 +89,19 @@ interface ProjectsShowcaseProps {
 export function ProjectsShowcase({ limit, showFilters = false }: ProjectsShowcaseProps) {
   const [category, setCategory] = useState<"All" | ProjectCategory>("All");
 
-  const filtered = projects.filter((project) => category === "All" || project.category === category);
+  const filtered = projects.filter(
+    (project) => category === "All" || project.category === category
+  );
   const visible = limit ? filtered.slice(0, limit) : filtered;
 
   return (
     <div>
       {showFilters ? (
-        <div role="group" aria-label="Filter projects by category" className="-mx-5 mb-10 flex gap-2 overflow-x-auto px-5 pb-1 sm:mx-0 sm:flex-wrap sm:px-0">
+        <div
+          role="group"
+          aria-label="Filter projects by category"
+          className="-mx-5 mb-10 flex gap-2 overflow-x-auto px-5 pb-1 sm:mx-0 sm:flex-wrap sm:px-0"
+        >
           {projectCategories.map((item) => {
             const selected = item === category;
             return (
@@ -89,10 +111,10 @@ export function ProjectsShowcase({ limit, showFilters = false }: ProjectsShowcas
                 aria-pressed={selected}
                 onClick={() => setCategory(item)}
                 className={cn(
-                  "shrink-0 rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-200",
+                  "shrink-0 border px-4 py-1.5 text-xs font-semibold tracking-wide transition-colors duration-200",
                   selected
-                    ? "border-accent bg-accent text-accent-foreground"
-                    : "border-border-strong text-muted hover:border-accent-text hover:text-accent-text"
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border-strong text-muted hover:border-primary hover:text-primary"
                 )}
               >
                 {item}
@@ -110,15 +132,19 @@ export function ProjectsShowcase({ limit, showFilters = false }: ProjectsShowcas
       <AnimatePresence mode="wait" initial={false}>
         <m.div
           key={category}
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.25, ease: "easeOut" }}
+          transition={{ duration: 0.22, ease: "easeOut" }}
           className="grid gap-x-8 gap-y-14 md:grid-cols-2"
         >
           {visible.length > 0 ? (
             visible.map((project, index) => (
-              <ProjectItem key={project.slug} project={project} featured={category === "All" && index === 0} />
+              <ProjectItem
+                key={project.slug}
+                project={project}
+                featured={category === "All" && index === 0}
+              />
             ))
           ) : (
             <p className="text-muted md:col-span-2">No projects in this category yet.</p>

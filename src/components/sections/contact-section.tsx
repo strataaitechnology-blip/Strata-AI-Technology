@@ -1,69 +1,83 @@
-import { Suspense } from "react";
-import { Mail, MapPin, Phone } from "lucide-react";
 import { Reveal } from "@/components/animations/reveal";
-import { TiltCard } from "@/components/animations/tilt-card";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { ContactForm } from "@/components/sections/contact-form";
 import { siteConfig } from "@/config/site";
+import { Mail, MapPin, Phone } from "lucide-react";
 
-function ContactDetail({ icon: Icon, label, value, href }: { icon: typeof Mail; label: string; value: string | null; href?: string }) {
-  return (
-    <li className="flex items-start gap-4">
-      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border-strong text-accent-text">
-        <Icon className="h-[1.1rem] w-[1.1rem]" strokeWidth={1.75} aria-hidden="true" />
-      </span>
-      <div>
-        <p className="text-sm text-subtle">{label}</p>
-        {value ? (
-          href ? (
-            <a href={href} className="font-medium text-foreground underline decoration-border-strong underline-offset-4 transition-colors hover:text-accent-text hover:decoration-accent-text">
-              {value}
-            </a>
-          ) : (
-            <p className="font-medium text-foreground">{value}</p>
-          )
-        ) : (
-          <p className="text-muted" data-placeholder="contact-detail">
-            To be added
-          </p>
-        )}
-      </div>
-    </li>
-  );
-}
+const contactDetails = [
+  {
+    icon: Mail,
+    label: "Email",
+    value: siteConfig.contact.email,
+    href: siteConfig.contact.email
+      ? `mailto:${siteConfig.contact.email}`
+      : undefined,
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    value: siteConfig.contact.phone,
+    href: siteConfig.contact.phone
+      ? `tel:${siteConfig.contact.phone.replace(/\s/g, "")}`
+      : undefined,
+  },
+  {
+    icon: MapPin,
+    label: "Location",
+    value: siteConfig.contact.address,
+    href: undefined,
+  },
+];
 
-function FormFallback() {
-  return <div aria-hidden="true" className="min-h-[30rem] animate-pulse rounded-xl bg-surface" />;
-}
-
-export function ContactSection({ headingLevel = "h2" }: { headingLevel?: "h1" | "h2" }) {
-  const { email, phone, address } = siteConfig.contact;
-
+export function ContactSection() {
   return (
     <Section id="contact" labelledBy="contact-heading">
-      <Container className="grid gap-14 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-20">
+      <Container className="grid gap-16 lg:grid-cols-[1fr_1.35fr] lg:gap-20">
         <Reveal>
           <SectionHeader
             id="contact-heading"
-            as={headingLevel}
-            title="Let's Talk Technology."
-            description="Tell us what you are building or trying to solve. We will get back to you to talk through goals, scope and the next sensible step."
+            eyebrow="Get In Touch"
+            title="Let's Build Something Together."
+            description="Tell us about your project and we will be in touch within one business day."
           />
-          <ul className="mt-10 space-y-6">
-            <ContactDetail icon={Mail} label="Email" value={email} href={email ? `mailto:${email}` : undefined} />
-            <ContactDetail icon={Phone} label="Phone" value={phone} href={phone ? `tel:${phone.replace(/[^+\d]/g, "")}` : undefined} />
-            <ContactDetail icon={MapPin} label="Location" value={address} />
-          </ul>
+
+          <dl className="mt-10 space-y-5">
+            {contactDetails
+              .filter((detail) => detail.value)
+              .map(({ icon: Icon, label, value, href }) => (
+                <div key={label} className="flex items-center gap-4">
+                  {/* Teal icon container */}
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-accent-soft text-accent-text">
+                    <Icon className="h-4.5 w-4.5" strokeWidth={1.7} aria-hidden="true" />
+                  </span>
+                  <div>
+                    <dt className="text-[0.7rem] font-semibold tracking-[0.1em] uppercase text-subtle">
+                      {label}
+                    </dt>
+                    {href ? (
+                      <dd>
+                        <a
+                          href={href}
+                          className="text-sm text-foreground underline-offset-4 hover:text-accent-text hover:underline"
+                        >
+                          {value}
+                        </a>
+                      </dd>
+                    ) : (
+                      <dd className="text-sm text-foreground">{value}</dd>
+                    )}
+                  </div>
+                </div>
+              ))}
+          </dl>
         </Reveal>
 
         <Reveal delay={0.08}>
-          <TiltCard className="p-6 sm:p-10 shadow-panel" maxDegree={7}>
-            <Suspense fallback={<FormFallback />}>
-              <ContactForm />
-            </Suspense>
-          </TiltCard>
+          <div className="border border-border bg-surface p-6 sm:p-8">
+            <ContactForm />
+          </div>
         </Reveal>
       </Container>
     </Section>

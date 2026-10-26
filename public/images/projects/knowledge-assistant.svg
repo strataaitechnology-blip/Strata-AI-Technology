@@ -1,18 +1,85 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" fill="none">
   <defs>
-    <linearGradient id="bg-knowledge-assistant" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#071330"/><stop offset="1" stop-color="#0e2660"/>
+    <linearGradient id="bg-ka" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1929"/><stop offset="1" stop-color="#142d4e"/>
     </linearGradient>
-    <radialGradient id="gl-knowledge-assistant" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#2f6bff" stop-opacity="0.45"/><stop offset="1" stop-color="#2f6bff" stop-opacity="0"/>
-    </radialGradient>
-    <pattern id="gr-knowledge-assistant" width="48" height="48" patternUnits="userSpaceOnUse">
-      <path d="M48 0H0V48" stroke="#78a8ff" stroke-opacity="0.08"/>
+    <pattern id="gr-ka" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" stroke="#2bae9a" stroke-opacity="0.055"/>
     </pattern>
   </defs>
-  <rect width="1200" height="800" fill="url(#bg-knowledge-assistant)"/>
-  <rect width="1200" height="800" fill="url(#gr-knowledge-assistant)"/>
-  <circle cx="820" cy="260" r="420" fill="url(#gl-knowledge-assistant)"/>
-<rect x="180" y="100" width="840" height="600" rx="20" fill="#0c1c45" stroke="#2b4687" stroke-width="1.5"/><path d="M180 168H1020" stroke="#2b4687"/><circle cx="222" cy="134" r="16" fill="#1d5cf0"/><rect x="252" y="128" width="140" height="12" rx="6" fill="#f1f5ff" fill-opacity="0.85"/><rect x="600" y="200" width="380" height="70" rx="16" fill="#1d5cf0" stroke="#1d5cf0" stroke-width="1.5"/><rect x="632" y="228" width="300" height="10" rx="5" fill="#ffffff" fill-opacity="0.95"/><rect x="632" y="246" width="180" height="8" rx="4" fill="#ffffff" fill-opacity="0.7"/><rect x="220" y="300" width="560" height="220" rx="16" fill="#102a66" stroke="#2b4687" stroke-width="1.5"/><rect x="252" y="334" width="490" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.9"/><rect x="252" y="368" width="430" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.55"/><rect x="252" y="402" width="490" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.55"/><rect x="252" y="436" width="430" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.55"/><rect x="252" y="470" width="200" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.55"/><rect x="220" y="546" width="162" height="46" rx="23" fill="#0a1838" stroke="#78a8ff" stroke-width="1.5"/><circle cx="246" cy="569" r="7" fill="#78a8ff"/><rect x="264" y="564" width="84" height="10" rx="5" fill="#a3b2cf" fill-opacity="0.6"/><rect x="398" y="546" width="162" height="46" rx="23" fill="#0a1838" stroke="#78a8ff" stroke-width="1.5"/><circle cx="424" cy="569" r="7" fill="#78a8ff"/><rect x="442" y="564" width="84" height="10" rx="5" fill="#a3b2cf" fill-opacity="0.6"/><rect x="576" y="546" width="162" height="46" rx="23" fill="#0a1838" stroke="#78a8ff" stroke-width="1.5"/><circle cx="602" cy="569" r="7" fill="#78a8ff"/><rect x="620" y="564" width="84" height="10" rx="5" fill="#a3b2cf" fill-opacity="0.6"/><rect x="220" y="622" width="740" height="52" rx="26" fill="#081633" stroke="#2b4687" stroke-width="1.5"/><rect x="252" y="644" width="220" height="10" rx="5" fill="#a3b2cf" fill-opacity="0.35"/><circle cx="926" cy="648" r="18" fill="#1d5cf0"/>
-  <text x="48" y="764" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#a3b2cf" fill-opacity="0.75">Placeholder preview</text>
+  <rect width="1200" height="800" fill="url(#bg-ka)"/>
+  <rect width="1200" height="800" fill="url(#gr-ka)"/>
+
+  <!-- Main app window -->
+  <rect x="180" y="80" width="840" height="640" rx="10" fill="#112540" stroke="#1e3a56" stroke-width="1.5"/>
+  <!-- Top bar -->
+  <rect x="180" y="80" width="840" height="52" rx="10" fill="#0d1e32" stroke="#1e3a56" stroke-width="1.5"/>
+  <rect x="180" y="112" width="840" height="20" fill="#0d1e32"/>
+  <!-- Logo / avatar -->
+  <rect x="212" y="96" width="28" height="28" rx="4" fill="#2bae9a" fill-opacity="0.85"/>
+  <rect x="218" y="108" width="16" height="4" rx="2" fill="#fff" fill-opacity="0.9"/>
+  <!-- Nav pills -->
+  <rect x="256" y="100" width="100" height="20" rx="4" fill="#142d4e" stroke="#1e3a56" stroke-width="1"/>
+  <rect x="372" y="100" width="100" height="20" rx="4" fill="#1e3a56" stroke="#2bae9a" stroke-width="1"/>
+  <rect x="490" y="100" width="100" height="20" rx="4" fill="#142d4e" stroke="#1e3a56" stroke-width="1"/>
+
+  <!-- Left source panel -->
+  <rect x="200" y="150" width="200" height="540" rx="6" fill="#0d2952" stroke="#1e3a56" stroke-width="1"/>
+  <rect x="220" y="170" width="100" height="8" rx="4" fill="#94a3b8" fill-opacity="0.5"/>
+  <!-- Source rows -->
+  <rect x="220" y="194" width="160" height="50" rx="6" fill="#112540" stroke="#2bae9a" stroke-width="1.5"/>
+  <rect x="236" y="208" width="90" height="7" rx="3" fill="#e8f0f8" fill-opacity="0.85"/>
+  <rect x="236" y="224" width="60" height="5" rx="2" fill="#94a3b8" fill-opacity="0.4"/>
+
+  <rect x="220" y="256" width="160" height="50" rx="6" fill="#0d1e32" stroke="#1e3a56" stroke-width="1"/>
+  <rect x="236" y="270" width="90" height="7" rx="3" fill="#e8f0f8" fill-opacity="0.7"/>
+  <rect x="236" y="286" width="60" height="5" rx="2" fill="#94a3b8" fill-opacity="0.35"/>
+
+  <rect x="220" y="318" width="160" height="50" rx="6" fill="#0d1e32" stroke="#1e3a56" stroke-width="1"/>
+  <rect x="236" y="332" width="90" height="7" rx="3" fill="#e8f0f8" fill-opacity="0.7"/>
+  <rect x="236" y="348" width="60" height="5" rx="2" fill="#94a3b8" fill-opacity="0.35"/>
+
+  <rect x="220" y="380" width="160" height="50" rx="6" fill="#0d1e32" stroke="#1e3a56" stroke-width="1"/>
+  <rect x="236" y="394" width="90" height="7" rx="3" fill="#e8f0f8" fill-opacity="0.7"/>
+  <rect x="236" y="410" width="60" height="5" rx="2" fill="#94a3b8" fill-opacity="0.35"/>
+
+  <!-- Main chat area -->
+  <rect x="416" y="150" width="584" height="540" rx="0" fill="#0d1e32"/>
+
+  <!-- User message bubble -->
+  <rect x="600" y="174" width="380" height="64" rx="8" fill="#142d4e" stroke="#1e3a56" stroke-width="1"/>
+  <rect x="620" y="192" width="320" height="8" rx="4" fill="#e8f0f8" fill-opacity="0.9"/>
+  <rect x="620" y="210" width="200" height="6" rx="3" fill="#e8f0f8" fill-opacity="0.6"/>
+
+  <!-- AI answer block -->
+  <rect x="436" y="258" width="540" height="200" rx="8" fill="#112540" stroke="#1e3a56" stroke-width="1.5"/>
+  <!-- Teal AI marker -->
+  <rect x="436" y="258" width="4" height="200" rx="2" fill="#2bae9a"/>
+  <rect x="456" y="280" width="460" height="8" rx="4" fill="#e8f0f8" fill-opacity="0.9"/>
+  <rect x="456" y="300" width="420" height="6" rx="3" fill="#e8f0f8" fill-opacity="0.55"/>
+  <rect x="456" y="318" width="460" height="6" rx="3" fill="#e8f0f8" fill-opacity="0.55"/>
+  <rect x="456" y="336" width="380" height="6" rx="3" fill="#e8f0f8" fill-opacity="0.55"/>
+  <rect x="456" y="354" width="420" height="6" rx="3" fill="#e8f0f8" fill-opacity="0.55"/>
+  <rect x="456" y="372" width="200" height="6" rx="3" fill="#e8f0f8" fill-opacity="0.55"/>
+  <!-- Sources cited -->
+  <rect x="436" y="472" width="155" height="36" rx="18" fill="#0a1929" stroke="#2bae9a" stroke-width="1.5"/>
+  <circle cx="460" cy="490" r="7" fill="#2bae9a" fill-opacity="0.8"/>
+  <rect x="476" y="486" width="80" height="7" rx="3" fill="#94a3b8" fill-opacity="0.6"/>
+
+  <rect x="604" y="472" width="155" height="36" rx="18" fill="#0a1929" stroke="#1e3a56" stroke-width="1.5"/>
+  <circle cx="628" cy="490" r="7" fill="#1e3a56"/>
+  <rect x="644" y="486" width="80" height="7" rx="3" fill="#94a3b8" fill-opacity="0.4"/>
+
+  <rect x="772" y="472" width="155" height="36" rx="18" fill="#0a1929" stroke="#1e3a56" stroke-width="1.5"/>
+  <circle cx="796" cy="490" r="7" fill="#1e3a56"/>
+  <rect x="812" y="486" width="80" height="7" rx="3" fill="#94a3b8" fill-opacity="0.4"/>
+
+  <!-- Input bar -->
+  <rect x="436" y="640" width="544" height="42" rx="6" fill="#0a1929" stroke="#1e3a56" stroke-width="1.5"/>
+  <rect x="456" y="657" width="180" height="7" rx="3" fill="#94a3b8" fill-opacity="0.3"/>
+  <!-- Send button — teal -->
+  <rect x="940" y="644" width="36" height="34" rx="5" fill="#2bae9a"/>
+  <path d="M950 661 L968 661 M961 654 L968 661 L961 668" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="48" y="764" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ecab8" fill-opacity="0.5">Placeholder preview</text>
 </svg>

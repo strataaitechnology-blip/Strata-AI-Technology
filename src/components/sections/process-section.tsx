@@ -11,6 +11,7 @@ export function ProcessSection() {
         <Reveal>
           <SectionHeader
             id="process-heading"
+            eyebrow="Our Process"
             title="From Idea to Intelligent Product."
             description="A clear path from the first conversation to a solution running in production."
           />

@@ -1,18 +1,76 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" fill="none">
   <defs>
-    <linearGradient id="bg-field-service-app" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#071330"/><stop offset="1" stop-color="#0e2660"/>
+    <linearGradient id="bg-fsa" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1929"/><stop offset="1" stop-color="#142d4e"/>
     </linearGradient>
-    <radialGradient id="gl-field-service-app" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#2f6bff" stop-opacity="0.45"/><stop offset="1" stop-color="#2f6bff" stop-opacity="0"/>
-    </radialGradient>
-    <pattern id="gr-field-service-app" width="48" height="48" patternUnits="userSpaceOnUse">
-      <path d="M48 0H0V48" stroke="#78a8ff" stroke-opacity="0.08"/>
+    <pattern id="gr-fsa" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" stroke="#2bae9a" stroke-opacity="0.055"/>
     </pattern>
   </defs>
-  <rect width="1200" height="800" fill="url(#bg-field-service-app)"/>
-  <rect width="1200" height="800" fill="url(#gr-field-service-app)"/>
-  <circle cx="820" cy="260" r="420" fill="url(#gl-field-service-app)"/>
-<g transform="rotate(-6 350 400)"><rect x="200" y="100" width="300" height="600" rx="40" fill="#0a1838" stroke="#3a5bb0" stroke-width="1.5"/><rect x="310" y="116" width="80" height="8" rx="4" fill="#2b4687"/><rect x="226" y="60" width="0" height="0"/><rect x="226" y="130" width="248" height="74" rx="12" fill="#102a66" stroke="#2b4687" stroke-width="1.5"/><circle cx="256" cy="167" r="14" fill="#4ade9a" fill-opacity="0.85"/><rect x="284" y="154" width="130" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.8"/><rect x="284" y="174" width="80" height="10" rx="5" fill="#a3b2cf" fill-opacity="0.4"/><rect x="226" y="222" width="248" height="74" rx="12" fill="#102a66" stroke="#2b4687" stroke-width="1.5"/><circle cx="256" cy="259" r="14" fill="#4ade9a" fill-opacity="0.85"/><rect x="284" y="246" width="130" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.8"/><rect x="284" y="266" width="80" height="10" rx="5" fill="#a3b2cf" fill-opacity="0.4"/><rect x="226" y="314" width="248" height="74" rx="12" fill="#102a66" stroke="#2b4687" stroke-width="1.5"/><circle cx="256" cy="351" r="14" fill="#1d5cf0" fill-opacity="0.9"/><rect x="284" y="338" width="130" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.8"/><rect x="284" y="358" width="80" height="10" rx="5" fill="#a3b2cf" fill-opacity="0.4"/><rect x="226" y="406" width="248" height="74" rx="12" fill="#102a66" stroke="#2b4687" stroke-width="1.5"/><circle cx="256" cy="443" r="14" fill="#1d5cf0" fill-opacity="0.9"/><rect x="284" y="430" width="130" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.8"/><rect x="284" y="450" width="80" height="10" rx="5" fill="#a3b2cf" fill-opacity="0.4"/><rect x="226" y="498" width="248" height="74" rx="12" fill="#102a66" stroke="#2b4687" stroke-width="1.5"/><circle cx="256" cy="535" r="14" fill="#1d5cf0" fill-opacity="0.9"/><rect x="284" y="522" width="130" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.8"/><rect x="284" y="542" width="80" height="10" rx="5" fill="#a3b2cf" fill-opacity="0.4"/></g><g transform="rotate(5 840 400)"><rect x="690" y="100" width="300" height="600" rx="40" fill="#0a1838" stroke="#3a5bb0" stroke-width="1.5"/><rect x="800" y="116" width="80" height="8" rx="4" fill="#2b4687"/><rect x="716" y="130" width="248" height="250" rx="14" fill="#0d2358" stroke="#2b4687" stroke-width="1.5"/><path d="M740 350 L800 290 L850 320 L900 220 L940 170" stroke="#78a8ff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="940" cy="170" r="12" fill="#1d5cf0" stroke="#f1f5ff" stroke-width="3"/><circle cx="740" cy="350" r="8" fill="#4ade9a"/><rect x="716" y="404" width="248" height="66" rx="12" fill="#102a66" stroke="#2b4687" stroke-width="1.5"/><rect x="740" y="424" width="120" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.8"/><rect x="740" y="444" width="70" height="10" rx="5" fill="#a3b2cf" fill-opacity="0.4"/><rect x="716" y="486" width="248" height="66" rx="12" fill="#102a66" stroke="#2b4687" stroke-width="1.5"/><rect x="740" y="506" width="120" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.8"/><rect x="740" y="526" width="70" height="10" rx="5" fill="#a3b2cf" fill-opacity="0.4"/><rect x="716" y="568" width="248" height="66" rx="12" fill="#102a66" stroke="#2b4687" stroke-width="1.5"/><rect x="740" y="588" width="120" height="10" rx="5" fill="#f1f5ff" fill-opacity="0.8"/><rect x="740" y="608" width="70" height="10" rx="5" fill="#a3b2cf" fill-opacity="0.4"/></g>
-  <text x="48" y="764" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#a3b2cf" fill-opacity="0.75">Placeholder preview</text>
+  <rect width="1200" height="800" fill="url(#bg-fsa)"/>
+  <rect width="1200" height="800" fill="url(#gr-fsa)"/>
+
+  <!-- Left phone (task list) — slightly rotated -->
+  <g transform="rotate(-5 350 400)">
+    <rect x="200" y="80" width="300" height="620" rx="32" fill="#0d1e32" stroke="#2bae9a" stroke-width="1.5" stroke-opacity="0.6"/>
+    <!-- Notch bar -->
+    <rect x="310" y="96" width="80" height="8" rx="4" fill="#1e3a56"/>
+
+    <!-- Task rows -->
+    <rect x="226" y="120" width="248" height="72" rx="8" fill="#112540" stroke="#1e3a56" stroke-width="1.5"/>
+    <circle cx="254" cy="156" r="13" fill="#2bae9a" fill-opacity="0.85"/>
+    <rect x="280" y="144" width="140" height="8" rx="4" fill="#e8f0f8" fill-opacity="0.85"/>
+    <rect x="280" y="162" width="90" height="6" rx="3" fill="#94a3b8" fill-opacity="0.4"/>
+
+    <rect x="226" y="206" width="248" height="72" rx="8" fill="#112540" stroke="#1e3a56" stroke-width="1.5"/>
+    <circle cx="254" cy="242" r="13" fill="#2bae9a" fill-opacity="0.85"/>
+    <rect x="280" y="230" width="140" height="8" rx="4" fill="#e8f0f8" fill-opacity="0.85"/>
+    <rect x="280" y="248" width="90" height="6" rx="3" fill="#94a3b8" fill-opacity="0.4"/>
+
+    <rect x="226" y="292" width="248" height="72" rx="8" fill="#112540" stroke="#1e3a56" stroke-width="1.5"/>
+    <circle cx="254" cy="328" r="13" fill="#142d4e" stroke="#1e3a56" stroke-width="1.5"/>
+    <rect x="280" y="316" width="140" height="8" rx="4" fill="#e8f0f8" fill-opacity="0.7"/>
+    <rect x="280" y="334" width="90" height="6" rx="3" fill="#94a3b8" fill-opacity="0.35"/>
+
+    <rect x="226" y="378" width="248" height="72" rx="8" fill="#112540" stroke="#1e3a56" stroke-width="1.5"/>
+    <circle cx="254" cy="414" r="13" fill="#142d4e" stroke="#1e3a56" stroke-width="1.5"/>
+    <rect x="280" y="402" width="140" height="8" rx="4" fill="#e8f0f8" fill-opacity="0.7"/>
+    <rect x="280" y="420" width="90" height="6" rx="3" fill="#94a3b8" fill-opacity="0.35"/>
+
+    <rect x="226" y="464" width="248" height="72" rx="8" fill="#112540" stroke="#1e3a56" stroke-width="1.5"/>
+    <circle cx="254" cy="500" r="13" fill="#142d4e" stroke="#1e3a56" stroke-width="1.5"/>
+    <rect x="280" y="488" width="140" height="8" rx="4" fill="#e8f0f8" fill-opacity="0.7"/>
+    <rect x="280" y="506" width="90" height="6" rx="3" fill="#94a3b8" fill-opacity="0.35"/>
+  </g>
+
+  <!-- Right phone (chart / stats) -->
+  <g transform="rotate(4 840 400)">
+    <rect x="690" y="80" width="300" height="620" rx="32" fill="#0d1e32" stroke="#2bae9a" stroke-width="1.5" stroke-opacity="0.6"/>
+    <rect x="800" y="96" width="80" height="8" rx="4" fill="#1e3a56"/>
+
+    <!-- Chart area -->
+    <rect x="716" y="120" width="248" height="240" rx="8" fill="#112540" stroke="#1e3a56" stroke-width="1.5"/>
+    <!-- Teal line chart -->
+    <path d="M740 330 L790 290 L840 310 L890 245 L940 195" stroke="#2bae9a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <!-- Fill under chart -->
+    <path d="M740 330 L790 290 L840 310 L890 245 L940 195 L940 350 L740 350Z" fill="#2bae9a" fill-opacity="0.08"/>
+    <!-- Data point -->
+    <circle cx="940" cy="195" r="8" fill="#2bae9a" stroke="#e8f0f8" stroke-width="2.5"/>
+    <circle cx="740" cy="330" r="6" fill="#2bae9a" fill-opacity="0.7"/>
+
+    <!-- Stats cards -->
+    <rect x="716" y="378" width="248" height="64" rx="8" fill="#112540" stroke="#1e3a56" stroke-width="1.5"/>
+    <rect x="738" y="397" width="120" height="8" rx="4" fill="#e8f0f8" fill-opacity="0.8"/>
+    <rect x="738" y="415" width="70" height="6" rx="3" fill="#94a3b8" fill-opacity="0.4"/>
+
+    <rect x="716" y="456" width="248" height="64" rx="8" fill="#112540" stroke="#2bae9a" stroke-width="1.5" stroke-opacity="0.5"/>
+    <rect x="738" y="475" width="120" height="8" rx="4" fill="#e8f0f8" fill-opacity="0.8"/>
+    <rect x="738" y="493" width="70" height="6" rx="3" fill="#2bae9a" fill-opacity="0.5"/>
+
+    <rect x="716" y="534" width="248" height="64" rx="8" fill="#112540" stroke="#1e3a56" stroke-width="1.5"/>
+    <rect x="738" y="553" width="120" height="8" rx="4" fill="#e8f0f8" fill-opacity="0.8"/>
+    <rect x="738" y="571" width="70" height="6" rx="3" fill="#94a3b8" fill-opacity="0.4"/>
+  </g>
+
+  <text x="48" y="764" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ecab8" fill-opacity="0.5">Placeholder preview</text>
 </svg>

@@ -6,15 +6,16 @@ import { cn } from "@/lib/utils";
 
 interface SectionProps {
   children: ReactNode;
-  /** Anchor id, e.g. "services" (enables /#services deep links). */
   id?: string;
-  /** id of the section's heading, for aria-labelledby. */
   labelledBy?: string;
-  /** "muted" = cool mist surface, "dark" = always-navy band in both themes. */
+  /**
+   * "default"  = white (#FFFFFF)
+   * "muted"    = alt surface (#F5F7FA)
+   * "dark"     = always-navy band (force-dark class)
+   */
   tone?: "default" | "muted" | "dark";
   className?: string;
   disableAnimation?: boolean;
-  showDivider?: boolean;
 }
 
 const easeOutCubic = [0.22, 1, 0.36, 1] as const;
@@ -26,23 +27,17 @@ export function Section({
   tone = "default",
   className,
   disableAnimation = false,
-  showDivider = true,
 }: SectionProps) {
+  const base = cn(
+    "relative py-16 sm:py-20 lg:py-24 transition-colors duration-300",
+    tone === "muted" && "bg-surface",
+    tone === "dark" && "force-dark",
+    className
+  );
+
   if (disableAnimation) {
     return (
-      <section
-        id={id}
-        aria-labelledby={labelledBy}
-        className={cn(
-          "relative py-8 sm:py-12 lg:py-14 transition-colors duration-300",
-          tone === "muted" && "bg-surface border-y border-border/40",
-          tone === "dark" && "force-dark bg-navy-900 border-y border-navy-800",
-          className
-        )}
-      >
-        {showDivider ? (
-          <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent opacity-80" />
-        ) : null}
+      <section id={id} aria-labelledby={labelledBy} className={base}>
         {children}
       </section>
     );
@@ -52,20 +47,12 @@ export function Section({
     <m.section
       id={id}
       aria-labelledby={labelledBy}
-      initial={{ opacity: 0, y: 32, scale: 0.99 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.08 }}
-      transition={{ duration: 0.55, ease: easeOutCubic }}
-      className={cn(
-        "relative py-8 sm:py-12 lg:py-14 transition-colors duration-300",
-        tone === "muted" && "bg-surface border-y border-border/40",
-        tone === "dark" && "force-dark bg-navy-900 border-y border-navy-800",
-        className
-      )}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.07 }}
+      transition={{ duration: 0.5, ease: easeOutCubic }}
+      className={base}
     >
-      {showDivider ? (
-        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent opacity-80" />
-      ) : null}
       {children}
     </m.section>
   );

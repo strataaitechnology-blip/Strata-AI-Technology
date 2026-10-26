@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 type Status = "idle" | "submitting" | "success" | "error";
 
 const inputBase =
-  "w-full rounded-lg border bg-background px-4 text-[0.95rem] text-foreground transition-colors placeholder:text-subtle hover:border-accent-text/60 focus-visible:border-accent-text focus-visible:outline-2 focus-visible:outline-offset-0";
+  "w-full border bg-background px-4 text-[0.95rem] text-foreground transition-colors placeholder:text-subtle hover:border-primary focus-visible:border-accent focus-visible:outline-none";
 
 interface FieldProps {
   id: string;

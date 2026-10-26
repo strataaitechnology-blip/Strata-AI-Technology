@@ -20,6 +20,7 @@ export function ProjectsSection({ preview = false }: ProjectsSectionProps) {
         <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeader
             id="projects-heading"
+            eyebrow="Selected Work"
             title="Ideas We've Turned Into Technology."
             description={
               hasPlaceholders

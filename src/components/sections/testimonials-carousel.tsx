@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, m } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
-import { TiltCard } from "@/components/animations/tilt-card";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { testimonials } from "@/data/testimonials";
 import { cn } from "@/lib/utils";
@@ -14,33 +13,48 @@ export function TestimonialsCarousel() {
   const current = testimonials[index];
 
   const go = (next: number) => setIndex((next + total) % total);
-  const controlClass =
-    "flex h-11 w-11 items-center justify-center rounded-full border border-border-strong text-foreground transition-colors hover:border-accent-text hover:text-accent-text cursor-pointer";
 
   return (
-    <TiltCard className="p-8 sm:p-12 lg:p-16 shadow-panel" maxDegree={7}>
-      <Quote className="absolute right-8 top-8 h-16 w-16 text-accent-text/10 sm:h-24 sm:w-24 pointer-events-none" strokeWidth={1.25} aria-hidden="true" />
+    /* Teal left-border accent on the pull-quote block */
+    <div className="relative border-l-2 border-accent pl-8 sm:pl-12">
+      {/* Opening quote mark in teal */}
+      <p
+        aria-hidden="true"
+        className="mb-6 font-display text-5xl font-semibold leading-none text-accent/40 select-none"
+      >
+        &ldquo;
+      </p>
 
-      <div aria-live="polite" className="relative min-h-[15rem]">
+      <div aria-live="polite" className="relative min-h-[14rem]">
         <AnimatePresence mode="wait" initial={false}>
           <m.figure
             key={current.id}
-            initial={{ opacity: 0, x: 16 }}
+            initial={{ opacity: 0, x: 12 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -16 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+            exit={{ opacity: 0, x: -12 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
           >
-            {current.isPlaceholder ? <Badge tone="warning">Placeholder testimonial</Badge> : null}
-            <blockquote className="mt-5 max-w-3xl font-display text-2xl font-medium leading-snug tracking-tight text-foreground sm:text-3xl">
+            {current.isPlaceholder ? (
+              <Badge tone="warning" interactive={false} className="mb-4">
+                Placeholder testimonial
+              </Badge>
+            ) : null}
+            <blockquote className="max-w-3xl font-display text-xl font-medium leading-snug tracking-tight text-primary sm:text-2xl">
               {current.quote}
             </blockquote>
             <figcaption className="mt-8 flex items-center gap-4">
-              <span aria-hidden="true" className="flex h-12 w-12 items-center justify-center rounded-full border border-dashed border-border-strong bg-surface text-sm font-semibold text-subtle">
+              {/* Navy initial avatar */}
+              <span
+                aria-hidden="true"
+                className="flex h-10 w-10 shrink-0 items-center justify-center bg-primary text-sm font-semibold text-primary-foreground"
+              >
                 {current.author.charAt(0)}
               </span>
               <span>
-                <span className="block font-medium text-foreground">{current.author}</span>
-                <span className="block text-sm text-muted">
+                <span className="block text-sm font-medium text-primary">
+                  {current.author}
+                </span>
+                <span className="block text-xs text-muted">
                   {current.role}, {current.company}
                 </span>
               </span>
@@ -49,8 +63,13 @@ export function TestimonialsCarousel() {
         </AnimatePresence>
       </div>
 
-      <div className="mt-10 flex items-center justify-between gap-4">
-        <div className="flex items-center gap-2" role="group" aria-label="Choose testimonial">
+      <div className="mt-10 flex items-center gap-4">
+        {/* Teal active indicator, grey for inactive */}
+        <div
+          className="flex items-center gap-2"
+          role="group"
+          aria-label="Choose testimonial"
+        >
           {testimonials.map((item, i) => (
             <button
               key={item.id}
@@ -58,21 +77,40 @@ export function TestimonialsCarousel() {
               aria-label={`Show testimonial ${i + 1} of ${total}`}
               aria-current={i === index ? "true" : undefined}
               onClick={() => setIndex(i)}
-              className="flex h-6 items-center justify-center px-1 cursor-pointer"
+              className="flex h-5 items-center justify-center px-0.5 cursor-pointer"
             >
-              <span className={cn("block h-1.5 rounded-full transition-all duration-300", i === index ? "w-8 bg-accent" : "w-3 bg-border-strong hover:bg-accent-text")} />
+              <span
+                className={cn(
+                  "block h-px transition-all duration-300",
+                  i === index
+                    ? "w-8 bg-accent"
+                    : "w-4 bg-border-strong hover:bg-accent-text"
+                )}
+              />
             </button>
           ))}
         </div>
-        <div className="flex items-center gap-2">
-          <button type="button" aria-label="Previous testimonial" onClick={() => go(index - 1)} className={controlClass}>
-            <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+
+        {/* Navigation arrows — navy hover */}
+        <div className="flex items-center gap-1">
+          <button
+            type="button"
+            aria-label="Previous testimonial"
+            onClick={() => go(index - 1)}
+            className="flex h-9 w-9 items-center justify-center border border-border-strong text-foreground transition-colors hover:border-primary hover:text-primary"
+          >
+            <ChevronLeft className="h-4 w-4" aria-hidden="true" />
           </button>
-          <button type="button" aria-label="Next testimonial" onClick={() => go(index + 1)} className={controlClass}>
-            <ChevronRight className="h-5 w-5" aria-hidden="true" />
+          <button
+            type="button"
+            aria-label="Next testimonial"
+            onClick={() => go(index + 1)}
+            className="flex h-9 w-9 items-center justify-center border border-border-strong text-foreground transition-colors hover:border-primary hover:text-primary"
+          >
+            <ChevronRight className="h-4 w-4" aria-hidden="true" />
           </button>
         </div>
       </div>
-    </TiltCard>
+    </div>
   );
 }

@@ -4,112 +4,145 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ────────────────────────────────────────────────────────────
-   DESIGN TOKENS
-   Both themes are designed on purpose — they are not inversions.
-   Light : crisp white, cool mist surfaces, navy ink, blue accent.
-   Dark  : deep navy, blue-tinted surfaces, hairline borders, soft glow.
-   Components consume tokens only, so any section can be re-themed
-   (see `.force-dark`) without touching component code.
+   DESIGN TOKENS — Deep Navy + Teal
+   Brand:   Deep Navy #142D4E  ·  Teal #2BAE9A
+   Light:   White/F5F7FA backgrounds, slate body text, navy headings
+   Dark:    Navy-900 backgrounds, steel-blue surfaces, off-white text
+   Force-dark (footer): Deepest navy #0A1929
    ──────────────────────────────────────────────────────────── */
 :root {
   color-scheme: light;
 
+  /* ── Backgrounds ─────────────────────────────────────────── */
   --background: #ffffff;
-  --surface: #f4f7fc;
-  --surface-strong: #e8eefa;
+  --surface: #f5f7fa;
+  --surface-strong: #e8edf5;
   --card: #ffffff;
 
-  --foreground: #0b1b3a;
-  --muted: #4a5a78;
-  --subtle: #5d6c89;
+  /* ── Typography ──────────────────────────────────────────── */
+  --foreground: #1e293b;       /* Slate-800: readable, not harsh black */
+  --muted: #64748b;            /* Slate-500: secondary text */
+  --subtle: #94a3b8;           /* Slate-400: placeholders, hints */
 
-  --border: #dbe3f0;
-  --border-strong: #c2cee3;
+  /* ── Borders ─────────────────────────────────────────────── */
+  --border: #e2e8f0;           /* Slate-200 */
+  --border-strong: #cbd5e1;    /* Slate-300 */
 
-  --accent: #1d5cf0;
-  --accent-hover: #1749c4;
+  /* ── Brand: Primary (Deep Navy) ──────────────────────────── */
+  --primary: #142d4e;
+  --primary-hover: #1a3a65;
+  --primary-foreground: #ffffff;
+
+  /* ── Brand: Accent (Teal) ────────────────────────────────── */
+  --accent: #2bae9a;
+  --accent-hover: #239e8b;
   --accent-foreground: #ffffff;
-  --accent-text: #1a55e0;
-  --accent-soft: rgb(29 92 240 / 0.08);
+  /* Darker teal for text on white — passes WCAG AA at 4.6:1 */
+  --accent-text: #176b5e;
+  --accent-soft: #e9f4f1;      /* Subtle teal tint for backgrounds */
 
-  --success: #0f7a4a;
-  --danger: #c22a2a;
+  /* ── Semantic states ─────────────────────────────────────── */
+  --success: #166534;
+  --danger: #b91c1c;
+  --warning: #b45309;
 
-  --glow: rgb(29 92 240 / 0.16);
-  --grid-line: rgb(11 27 58 / 0.06);
-  --header-bg: rgb(255 255 255 / 0.82);
+  /* ── Effects ─────────────────────────────────────────────── */
+  --glow: rgb(43 174 154 / 0.1);
+  --grid-line: rgb(20 45 78 / 0.055);
+  --header-bg: rgb(255 255 255 / 0.92);
   --panel-shadow:
-    0 1px 2px rgb(11 27 58 / 0.05), 0 18px 40px -18px rgb(29 92 240 / 0.28);
+    0 1px 3px rgb(20 45 78 / 0.06),
+    0 16px 40px -16px rgb(20 45 78 / 0.1);
 
-  /* Hero "strata" illustration */
-  --layer-top: #f2f6ff;
-  --layer-side-l: #d5e2ff;
-  --layer-side-r: #bfd2fb;
-  --layer-stroke: rgb(29 92 240 / 0.38);
-  --layer-stroke-strong: rgb(29 92 240 / 0.7);
+  /* ── Hero "strata" illustration ──────────────────────────── */
+  --layer-top: #deeaf8;
+  --layer-side-l: #b8d0ed;
+  --layer-side-r: #9bbde3;
+  --layer-stroke: rgb(43 174 154 / 0.4);
+  --layer-stroke-strong: rgb(43 174 154 / 0.7);
   --layer-tile: #ffffff;
 }
 
 .dark {
   color-scheme: dark;
 
-  --background: #050b19;
-  --surface: #09132b;
-  --surface-strong: #0f1c3b;
-  --card: #0a1631;
+  /* ── Backgrounds ─────────────────────────────────────────── */
+  --background: #0d1e32;       /* Deep navy base */
+  --surface: #142d4e;          /* Primary navy as surface */
+  --surface-strong: #1a3a5c;   /* Slightly lighter navy */
+  --card: #112540;             /* Card panel */
 
-  --foreground: #f1f5ff;
-  --muted: #a3b2cf;
-  --subtle: #8192b3;
+  /* ── Typography ──────────────────────────────────────────── */
+  --foreground: #e8f0f8;       /* Cool off-white */
+  --muted: #94a3b8;            /* Slate-400 */
+  --subtle: #64748b;           /* Slate-500 */
 
-  --border: #16264a;
-  --border-strong: #24396d;
+  /* ── Borders ─────────────────────────────────────────────── */
+  --border: #1e3a56;           /* Subtle navy border */
+  --border-strong: #2a4f72;    /* Stronger navy border */
 
-  --accent: #1d5cf0;
-  --accent-hover: #2f68f5;
-  --accent-foreground: #ffffff;
-  --accent-text: #78a8ff;
-  --accent-soft: rgb(90 150 255 / 0.12);
+  /* ── Brand: Primary (Deep Navy → Teal in dark) ───────────── */
+  --primary: #2bae9a;          /* In dark mode, primary CTA = teal (more visible) */
+  --primary-hover: #33c4af;
+  --primary-foreground: #0d1e32;
 
-  --success: #4ade9a;
-  --danger: #ff8a8a;
+  /* ── Brand: Accent (Teal) ────────────────────────────────── */
+  --accent: #2bae9a;
+  --accent-hover: #33c4af;
+  --accent-foreground: #0d1e32;
+  /* Teal on dark navy: passes AA at 5.8:1 */
+  --accent-text: #4ecab8;
+  --accent-soft: rgb(43 174 154 / 0.12);
 
-  --glow: rgb(45 110 255 / 0.3);
-  --grid-line: rgb(120 160 255 / 0.07);
-  --header-bg: rgb(5 11 25 / 0.78);
+  /* ── Semantic states ─────────────────────────────────────── */
+  --success: #4ade80;
+  --danger: #f87171;
+  --warning: #fbbf24;
+
+  /* ── Effects ─────────────────────────────────────────────── */
+  --glow: rgb(43 174 154 / 0.15);
+  --grid-line: rgb(232 240 248 / 0.04);
+  --header-bg: rgb(13 30 50 / 0.88);
   --panel-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.04), 0 28px 60px -28px rgb(0 0 0 / 0.75);
+    inset 0 1px 0 rgb(255 255 255 / 0.05),
+    0 24px 56px -24px rgb(0 0 0 / 0.5);
 
-  --layer-top: #0b1737;
-  --layer-side-l: #0e2154;
-  --layer-side-r: #091a44;
-  --layer-stroke: rgb(110 162 255 / 0.4);
-  --layer-stroke-strong: rgb(130 175 255 / 0.75);
-  --layer-tile: #13285a;
+  /* ── Hero illustration ───────────────────────────────────── */
+  --layer-top: #1a3a5c;
+  --layer-side-l: #142d4e;
+  --layer-side-r: #0f2238;
+  --layer-stroke: rgb(43 174 154 / 0.4);
+  --layer-stroke-strong: rgb(78 202 184 / 0.65);
+  --layer-tile: #1e3a5c;
 }
 
-/* An always-navy band that looks intentional in BOTH themes. */
+/* ── Always-dark band — footer only ─────────────────────────── */
 .force-dark {
   color-scheme: dark;
 
-  --background: #081633;
-  --surface: #0d1e45;
-  --surface-strong: #132858;
-  --card: #0d1e45;
+  --background: #0a1929;       /* Deepest navy */
+  --surface: #0d1e32;
+  --surface-strong: #142d4e;
+  --card: #0d1e32;
 
-  --foreground: #f1f5ff;
-  --muted: #aab9d7;
-  --subtle: #8a9dc4;
+  --foreground: #e8f0f8;
+  --muted: #94a3b8;
+  --subtle: #64748b;
 
-  --border: #1c3163;
-  --border-strong: #2b4687;
+  --border: #162840;
+  --border-strong: #1e3a56;
 
-  --accent-text: #7fb0ff;
-  --accent-soft: rgb(90 150 255 / 0.14);
+  --primary: #2bae9a;
+  --primary-hover: #33c4af;
+  --primary-foreground: #0a1929;
 
-  --glow: rgb(45 110 255 / 0.32);
-  --grid-line: rgb(120 160 255 / 0.08);
-  --panel-shadow: 0 30px 70px -30px rgb(0 0 0 / 0.6);
+  --accent: #2bae9a;
+  --accent-text: #4ecab8;
+  --accent-soft: rgb(43 174 154 / 0.1);
+
+  --glow: rgb(43 174 154 / 0.12);
+  --grid-line: rgb(232 240 248 / 0.03);
+  --panel-shadow: 0 24px 60px -24px rgb(0 0 0 / 0.6);
 
   background-color: var(--background);
   color: var(--foreground);
@@ -123,6 +156,7 @@
     var(--font-heading), var(--font-body), ui-sans-serif, system-ui,
     sans-serif;
 
+  /* ── Expose all tokens as Tailwind color utilities ─────────── */
   --color-background: var(--background);
   --color-surface: var(--surface);
   --color-surface-strong: var(--surface-strong);
@@ -132,13 +166,20 @@
   --color-subtle: var(--subtle);
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);
+
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent-text: var(--accent-text);
   --color-accent-soft: var(--accent-soft);
+
   --color-success: var(--success);
   --color-danger: var(--danger);
+  --color-warning: var(--warning);
 
   --shadow-panel: var(--panel-shadow);
 }
@@ -175,8 +216,10 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.025em;
+    letter-spacing: -0.022em;
     text-wrap: balance;
+    /* Headings use the Deep Navy primary color */
+    color: var(--primary);
   }
 
   p {
@@ -184,13 +227,13 @@
   }
 
   ::selection {
-    background-color: color-mix(in oklab, var(--accent) 28%, transparent);
+    background-color: color-mix(in oklab, var(--accent) 25%, transparent);
   }
 
   :focus-visible {
-    outline: 2px solid var(--accent-text);
+    outline: 2px solid var(--accent);
     outline-offset: 3px;
-    border-radius: 4px;
+    border-radius: 3px;
   }
 
   button {
@@ -201,6 +244,14 @@
 /* ────────────────────────────────────────────────────────────
    UTILITIES / COMPONENT CLASSES
    ──────────────────────────────────────────────────────────── */
+
+/* Subtle dot grid — only hero & 404 */
+.bg-dot-grid {
+  background-image: radial-gradient(var(--grid-line) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Legacy grid — kept for backward compat */
 .bg-grid {
   background-image:
     linear-gradient(var(--grid-line) 1px, transparent 1px),
@@ -218,15 +269,7 @@
   );
 }
 
-.glow-blue {
-  background: radial-gradient(
-    closest-side,
-    var(--glow),
-    transparent 72%
-  );
-}
-
-/* Applied to <html> for ~350ms while the theme changes (see ThemeToggle). */
+/* Applied to <html> for ~350ms while the theme changes. */
 .theme-transition,
 .theme-transition *,
 .theme-transition *::before,
@@ -241,6 +284,8 @@
 }
 
 /* ── Hero "strata" illustration ─────────────────────────── */
+/* These classes use the layer-* and accent tokens so they
+   automatically adapt to light / dark — do not hardcode colors. */
 .hv-top {
   fill: var(--layer-top);
   stroke: var(--layer-stroke);
@@ -303,13 +348,13 @@
   animation: hv-flow 2.2s linear infinite;
 }
 .hv-packet {
-  fill: var(--accent-text);
-  filter: drop-shadow(0 0 6px var(--accent-text));
+  fill: var(--accent);
+  filter: drop-shadow(0 0 4px var(--accent));
   animation: hv-travel 4.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
   animation-delay: var(--d, 0s);
 }
 .hv-pulse {
-  fill: var(--accent-text);
+  fill: var(--accent);
   transform-box: fill-box;
   transform-origin: center;
   animation: hv-pulse 3.2s ease-out infinite;
@@ -319,97 +364,42 @@
   animation: hv-float 6s ease-in-out infinite;
 }
 
-.hv-layer-0 {
-  animation: hv-plate-0 5.5s ease-in-out infinite;
-}
-.hv-layer-1 {
-  animation: hv-plate-1 5.8s ease-in-out infinite 0.4s;
-}
-.hv-layer-2 {
-  animation: hv-plate-2 6.2s ease-in-out infinite 0.8s;
-}
-.hv-layer-3 {
-  animation: hv-plate-3 6.6s ease-in-out infinite 1.2s;
-}
+.hv-layer-0 { animation: hv-plate-0 5.5s ease-in-out infinite; }
+.hv-layer-1 { animation: hv-plate-1 5.8s ease-in-out infinite 0.4s; }
+.hv-layer-2 { animation: hv-plate-2 6.2s ease-in-out infinite 0.8s; }
+.hv-layer-3 { animation: hv-plate-3 6.6s ease-in-out infinite 1.2s; }
 
 @keyframes hv-float {
-  0%,
-  100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-16px) rotate(0.5deg);
-  }
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-16px) rotate(0.5deg); }
 }
-
 @keyframes hv-plate-0 {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
 }
-
 @keyframes hv-plate-1 {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
 }
-
 @keyframes hv-plate-2 {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-5px); }
 }
-
 @keyframes hv-plate-3 {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-3px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-3px); }
 }
 @keyframes hv-flow {
-  to {
-    stroke-dashoffset: -22;
-  }
+  to { stroke-dashoffset: -22; }
 }
 @keyframes hv-travel {
-  0% {
-    transform: translateY(0);
-    opacity: 0;
-  }
-  8%,
-  92% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(var(--travel, 396px));
-    opacity: 0;
-  }
+  0%          { transform: translateY(0); opacity: 0; }
+  8%, 92%     { opacity: 1; }
+  100%        { transform: translateY(var(--travel, 396px)); opacity: 0; }
 }
 @keyframes hv-pulse {
-  0% {
-    opacity: 0.45;
-    transform: scale(1);
-  }
-  70%,
-  100% {
-    opacity: 0;
-    transform: scale(3);
-  }
+  0%          { opacity: 0.45; transform: scale(1); }
+  70%, 100%   { opacity: 0; transform: scale(3); }
 }
 
 /* ── Flow diagrams (Agentic AI → Tools → Data …) ─────────── */
@@ -428,41 +418,22 @@
   width: 6px;
   height: 6px;
   border-radius: 9999px;
-  background-color: var(--accent-text);
-  box-shadow: 0 0 10px var(--accent-text);
+  background-color: var(--accent);
   opacity: 0;
   animation: flow-x 2.8s linear infinite;
   animation-delay: var(--flow-delay, 0s);
 }
 @keyframes flow-x {
-  0% {
-    left: 0;
-    opacity: 0;
-  }
-  12%,
-  88% {
-    opacity: 1;
-  }
-  100% {
-    left: calc(100% - 6px);
-    opacity: 0;
-  }
+  0%          { left: 0; opacity: 0; }
+  12%, 88%    { opacity: 1; }
+  100%        { left: calc(100% - 6px); opacity: 0; }
 }
 @keyframes flow-y {
-  0% {
-    top: 0;
-    opacity: 0;
-  }
-  12%,
-  88% {
-    opacity: 1;
-  }
-  100% {
-    top: calc(100% - 6px);
-    opacity: 0;
-  }
+  0%          { top: 0; opacity: 0; }
+  12%, 88%    { opacity: 1; }
+  100%        { top: calc(100% - 6px); opacity: 0; }
 }
-/* "large" flow diagrams stack vertically on small screens */
+/* Large flow diagrams: vertical on mobile */
 @media (max-width: 47.99rem) {
   .flow-stack .flow-line {
     width: 1px;
@@ -477,14 +448,10 @@
   }
 }
 
-/* ── Reduced motion: keep layout, drop movement ──────────── */
+/* ── Reduced motion ──────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  ::before,
-  ::after {
+  html { scroll-behavior: auto; }
+  *, ::before, ::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
