@@ -19,13 +19,6 @@ export function Hero() {
 
       <Container className="grid items-center gap-10 pb-10 pt-12 sm:pt-16 lg:grid-cols-[1.05fr_1fr] lg:gap-8 lg:pb-14 lg:pt-20">
         <div className="relative z-10">
-          <Enter>
-            {/* Teal eyebrow — deliberate accent use */}
-            <p className="mb-6 text-xs font-semibold tracking-[0.14em] uppercase text-accent-text">
-              Software · AI · Innovation
-            </p>
-          </Enter>
-
           <Enter delay={0.07}>
             <h1
               id="hero-heading"
