@@ -1,24 +1,21 @@
 import {
   Bot,
   Braces,
-  Cloud,
   Cpu,
   Database,
   CircleCheck,
   Globe,
   Network,
   PenTool,
-  ShieldCheck,
   Smartphone,
   GitBranch,
-  Workflow,
   Wrench,
   Zap,
 } from "lucide-react";
 import type { FlowStep, Service } from "@/types";
 
 /**
- * The nine STRATA services. Titles and summaries are the approved copy;
+ * STRATA services. Titles and summaries are the approved copy;
  * `capabilities` describe the kind of work involved (no client claims).
  */
 export const services: Service[] = [
@@ -143,48 +140,6 @@ export const services: Service[] = [
       { name: "Data Analytics", description: "Extract meaningful insights from data to support informed decision-making." },
       { name: "Machine Learning", description: "Create predictive models that learn from data and identify valuable patterns." },
       { name: "Deep Learning", description: "Build neural network solutions for complex data analysis, recognition, and prediction tasks." },
-    ],
-  },
-  {
-    id: "cloud-infrastructure",
-    title: "Cloud & Infrastructure",
-    summary:
-      "Secure, scalable infrastructure built to support modern digital applications.",
-    icon: Cloud,
-    visual: "cloud",
-    capabilities: [
-      "Cloud architecture and migration",
-      "CI/CD and automated deployment",
-      "Monitoring and observability",
-      "Security-minded, cost-aware setups",
-    ],
-  },
-  {
-    id: "digital-transformation",
-    title: "Digital Transformation",
-    summary:
-      "Modernizing businesses through technology, automation, and intelligent digital solutions.",
-    icon: Workflow,
-    visual: "transformation",
-    capabilities: [
-      "Process discovery and automation",
-      "Roadmaps for phased modernization",
-      "System integration and data unification",
-      "Change-friendly rollout planning",
-    ],
-  },
-  {
-    id: "quality-assurance-testing",
-    title: "Quality Assurance & Testing",
-    summary:
-      "Rigorous testing that delivers reliable, secure, and production-ready software.",
-    icon: ShieldCheck,
-    visual: "quality",
-    capabilities: [
-      "Test strategy and automation",
-      "Functional, regression and performance testing",
-      "Security-focused review",
-      "Release readiness checks",
     ],
   },
 ];

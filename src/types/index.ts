@@ -13,10 +13,7 @@ export type ServiceVisualId =
   | "mobile"
   | "design"
   | "agentic"
-  | "ai-systems"
-  | "cloud"
-  | "transformation"
-  | "quality";
+  | "ai-systems";
 
 export interface Service {
   /** URL-safe id, also used as the anchor on /services (e.g. #agentic-ai). */
