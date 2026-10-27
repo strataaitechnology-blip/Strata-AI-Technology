@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Check, Cloud, MousePointer2 } from "lucide-react";
+import { Check, MousePointer2 } from "lucide-react";
 import { FlowDiagram } from "@/components/ui/flow-diagram";
 import { aiSystemFlow, agenticFlow } from "@/data/services";
 import type { ServiceVisualId } from "@/types";
@@ -216,84 +216,6 @@ function AiSystemsVisual() {
   );
 }
 
-function CloudVisual() {
-  return (
-    <div className="flex w-full max-w-[24rem] flex-col items-center">
-      <span className="flex h-12 w-12 items-center justify-center border border-accent/40 bg-accent-soft text-accent-text">
-        <Cloud className="h-6 w-6" strokeWidth={1.6} />
-      </span>
-      <span className="h-6 w-px bg-border-strong" />
-      <span className="h-px w-3/4 bg-border-strong" />
-      <div className="grid w-full grid-cols-3 gap-3">
-        {[0, 1, 2].map((rack) => (
-          <div key={rack} className="flex flex-col items-center">
-            <span className="h-4 w-px bg-border-strong" />
-            <div className="w-full space-y-1.5 rounded-md border border-border-strong bg-card p-2 shadow-panel">
-              {[0, 1, 2].map((row) => (
-                <span key={row} className="flex items-center justify-between rounded bg-surface px-1.5 py-1">
-                  <span className={cn(bar, "w-6")} />
-                  <span className={cn("h-1.5 w-1.5 rounded-full", row === 1 && rack === 2 ? "bg-accent-text" : "bg-success")} />
-                </span>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="mt-4 flex flex-wrap justify-center gap-2 text-[10px] font-medium text-muted">
-        {["CI/CD", "Auto-scaling", "Monitoring"].map((tag) => (
-          <span key={tag} className="border border-accent/25 bg-accent-soft px-2 py-0.5 text-[10px] text-accent-text">
-              {tag}
-            </span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function TransformationVisual() {
-  const stages = [
-    { label: "Manual", height: "34%" },
-    { label: "Automated", height: "62%" },
-    { label: "Intelligent", height: "92%" },
-  ];
-  return (
-    <div className="flex h-full w-full max-w-[24rem] items-end gap-3 pb-1">
-      {stages.map((stage, index) => (
-        <div key={stage.label} className="flex h-full flex-1 flex-col justify-end gap-2">
-          <span
-            className="block w-full rounded-t-lg border border-accent-text/30"
-            style={{
-              height: stage.height,
-              background: `color-mix(in oklab, var(--accent) ${20 + index * 32}%, var(--card))`,
-            }}
-          />
-          <span className="text-center text-[11px] font-medium text-muted">{stage.label}</span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function QualityVisual() {
-  const checks = ["Unit tests", "Integration tests", "Security review", "Performance"];
-  return (
-    <div className="w-full max-w-[24rem] space-y-2 rounded-lg border border-border-strong bg-card p-4 shadow-panel">
-      <p className="mb-3 text-[11px] font-medium text-foreground">Release readiness</p>
-      {checks.map((check) => (
-        <div key={check} className="flex items-center gap-2.5">
-          <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-success/15 text-success">
-            <Check className="h-2.5 w-2.5" strokeWidth={3} />
-          </span>
-          <span className="w-28 shrink-0 text-[11px] text-muted">{check}</span>
-          <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-surface-strong">
-            <span className="block h-full w-full rounded-full bg-success/70" />
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 const visuals: Record<ServiceVisualId, () => ReactNode> = {
   software: SoftwareVisual,
   web: WebVisual,
@@ -301,9 +223,6 @@ const visuals: Record<ServiceVisualId, () => ReactNode> = {
   design: DesignVisual,
   agentic: AgenticVisual,
   "ai-systems": AiSystemsVisual,
-  cloud: CloudVisual,
-  transformation: TransformationVisual,
-  quality: QualityVisual,
 };
 
 export function ServiceVisual({ id }: { id: ServiceVisualId }) {
