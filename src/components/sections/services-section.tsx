@@ -16,15 +16,16 @@ function AiSpotlight() {
       <div className="grid gap-0 lg:grid-cols-[1fr_auto]">
         <div className="p-8 sm:p-12 lg:p-14">
           <p className="text-xs font-semibold tracking-[0.14em] uppercase text-accent">
-            Agentic AI
+            Agentic AI & Automation
           </p>
           <h3 className="mt-3 text-2xl font-semibold leading-snug tracking-tight text-foreground sm:text-3xl">
             From answers to actions.
           </h3>
           <p className="mt-4 max-w-xl text-muted">
-            Agentic AI systems do more than respond. They reason about a goal,
-            use your tools and data, take action and report back — with people
-            in control wherever it matters.
+            We develop intelligent AI agents and automated workflows that
+            streamline business operations, reduce manual effort, and improve
+            productivity through smart decision-making and seamless system
+            integration.
           </p>
         </div>
         <div className="flex items-center border-t border-border p-8 lg:border-l lg:border-t-0 lg:p-12">
@@ -33,7 +34,7 @@ function AiSpotlight() {
             size="lg"
             variant="accent"
           >
-            Discuss Agentic AI
+            Discuss Agentic AI & Automation
           </ButtonLink>
         </div>
       </div>
@@ -121,20 +122,42 @@ export function ServiceCapabilities() {
                     </p>
                   </div>
                 </div>
-                <ul className="grid content-start gap-x-8 gap-y-2.5 sm:grid-cols-2">
-                  {service.capabilities.map((capability) => (
-                    <li
-                      key={capability}
-                      className="flex items-start gap-3 text-sm text-muted"
-                    >
-                      <span
-                        aria-hidden="true"
-                        className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent"
-                      />
-                      {capability}
-                    </li>
-                  ))}
-                </ul>
+
+                <div>
+                  {service.tools && service.tools.length > 0 ? (
+                    <ul className="grid content-start gap-x-6 gap-y-4 sm:grid-cols-2">
+                      {service.tools.map((tool) => (
+                        <li key={tool.name} className="flex flex-col gap-0.5">
+                          <span className="flex items-center gap-2 text-sm font-semibold text-primary">
+                            <span
+                              aria-hidden="true"
+                              className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                            />
+                            {tool.name}
+                          </span>
+                          <p className="pl-3.5 text-xs leading-relaxed text-muted">
+                            {tool.description}
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <ul className="grid content-start gap-x-8 gap-y-2.5 sm:grid-cols-2">
+                      {service.capabilities.map((capability) => (
+                        <li
+                          key={capability}
+                          className="flex items-start gap-3 text-sm text-muted"
+                        >
+                          <span
+                            aria-hidden="true"
+                            className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent"
+                          />
+                          {capability}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
               </li>
             );
           })}
@@ -143,3 +166,4 @@ export function ServiceCapabilities() {
     </Section>
   );
 }
+

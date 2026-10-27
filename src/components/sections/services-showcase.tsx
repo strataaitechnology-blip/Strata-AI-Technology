@@ -16,18 +16,38 @@ function ServiceDetail({ service }: { service: Service }) {
       <ServiceVisual id={service.visual} />
       <h3 className="mt-6 text-lg font-semibold text-primary">{service.title}</h3>
       <p className="mt-2 text-sm leading-relaxed text-muted">{service.summary}</p>
-      <ul className="mt-5 grid gap-x-6 gap-y-2 sm:grid-cols-2">
-        {service.capabilities.map((capability) => (
-          <li key={capability} className="flex items-start gap-2.5 text-xs text-muted">
-            <Check
-              className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent"
-              strokeWidth={2.5}
-              aria-hidden="true"
-            />
-            {capability}
-          </li>
-        ))}
-      </ul>
+      {service.tools && service.tools.length > 0 ? (
+        <ul className="mt-5 grid gap-x-4 gap-y-3 sm:grid-cols-2">
+          {service.tools.map((tool) => (
+            <li key={tool.name} className="flex flex-col gap-0.5">
+              <span className="flex items-center gap-2 text-xs font-semibold text-primary">
+                <Check
+                  className="h-3 w-3 shrink-0 text-accent"
+                  strokeWidth={2.5}
+                  aria-hidden="true"
+                />
+                {tool.name}
+              </span>
+              <p className="pl-5 text-[0.7rem] leading-relaxed text-muted">
+                {tool.description}
+              </p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <ul className="mt-5 grid gap-x-6 gap-y-2 sm:grid-cols-2">
+          {service.capabilities.map((capability) => (
+            <li key={capability} className="flex items-start gap-2.5 text-xs text-muted">
+              <Check
+                className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent"
+                strokeWidth={2.5}
+                aria-hidden="true"
+              />
+              {capability}
+            </li>
+          ))}
+        </ul>
+      )}
       <Link
         href={`/contact?service=${service.id}`}
         className="mt-6 inline-block text-xs font-semibold text-accent-text underline-offset-4 transition-colors hover:text-primary hover:underline"

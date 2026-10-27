@@ -7,14 +7,14 @@ export const technologyGroups: TechnologyGroup[] = [
     title: "Frontend",
     description: "Fast, accessible interfaces.",
     icon: Monitor,
-    items: ["React", "Next.js"],
+    items: ["React.js", "Next.js"],
   },
   {
     id: "backend",
     title: "Backend",
     description: "Dependable services and integrations.",
     icon: Server,
-    items: ["Node.js", "APIs"],
+    items: ["Node.js", "Express.js", "Firebase", "Socket.IO", "APIs"],
   },
   {
     id: "mobile",
@@ -32,10 +32,10 @@ export const technologyGroups: TechnologyGroup[] = [
   },
   {
     id: "ai",
-    title: "AI",
+    title: "AI & Agentic",
     description: "Intelligence applied where it matters.",
     icon: Sparkles,
-    items: ["Generative AI", "Agentic AI", "Machine Learning", "Natural Language Processing"],
+    items: ["LangGraph", "LangChain", "OpenAI SDK", "Google ADK", "n8n", "Generative AI", "Machine Learning", "NLP", "Computer Vision", "Deep Learning"],
   },
   {
     id: "infrastructure",
@@ -45,3 +45,4 @@ export const technologyGroups: TechnologyGroup[] = [
     items: ["Cloud Platforms", "Deployment", "Scalable Systems"],
   },
 ];
+

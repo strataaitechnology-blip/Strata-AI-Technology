@@ -1,7 +1,7 @@
 export const about = {
   heading: "Engineering Ideas Into Impact.",
   intro:
-    "STRATA Technologies combines modern software engineering with artificial intelligence to create practical, scalable, and intelligent digital solutions.",
+    "We are a research and development-driven technology company focused on building innovative, intelligent, and scalable digital solutions. By combining scientific research, modern software engineering, and emerging technologies, we transform ideas into practical solutions that solve real-world challenges. Our expertise spans Artificial Intelligence, web and mobile development, intelligent automation, and custom software solutions, enabling us to deliver technology that drives innovation and creates lasting value.",
   mission: {
     title: "Mission",
     text: "To build reliable and intelligent technology that solves real-world problems and creates meaningful value for businesses.",

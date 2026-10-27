@@ -26,6 +26,8 @@ export interface Service {
   icon: LucideIcon;
   visual: ServiceVisualId;
   capabilities: string[];
+  /** Optional named tools or sub-services with a short description. */
+  tools?: { name: string; description: string }[];
   featured?: boolean;
 }
 
