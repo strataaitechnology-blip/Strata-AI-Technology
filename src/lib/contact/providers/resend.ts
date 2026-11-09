@@ -96,11 +96,35 @@ function buildText(payload: ContactPayload): string {
   ].join("\n");
 }
 
+import fs from "fs";
+import path from "path";
+
+function readEnvVar(key: string, env: NodeJS.ProcessEnv): string | undefined {
+  if (env[key]?.trim()) return env[key]?.trim();
+  try {
+    const envPath = path.resolve(process.cwd(), ".env.local");
+    if (fs.existsSync(envPath)) {
+      const content = fs.readFileSync(envPath, "utf8");
+      const match = content.match(new RegExp(`^${key}\\s*=\\s*(.*)$`, "m"));
+      if (match && match[1]?.trim()) {
+        const val = match[1].trim();
+        // Also populate process.env for subsequent calls
+        env[key] = val;
+        return val;
+      }
+    }
+  } catch {}
+  return undefined;
+}
+
 export function createResendProvider(env: NodeJS.ProcessEnv = process.env): ContactProvider | null {
-  const apiKey = env.RESEND_API_KEY?.trim();
-  const toRaw = env.CONTACT_TO_EMAIL?.split(",").map((address) => address.trim()).filter(Boolean);
-  const to = toRaw && toRaw.length > 0 ? toRaw : ["strataaitechnology@gmail.com"];
-  const from = env.CONTACT_FROM_EMAIL?.trim() || "STRATA Technologies <onboarding@resend.dev>";
+  const apiKey = readEnvVar("RESEND_API_KEY", env);
+  const toRaw = (readEnvVar("CONTACT_TO_EMAIL", env) || "strataaitechnology@gmail.com")
+    .split(",")
+    .map((address) => address.trim())
+    .filter(Boolean);
+  const to = toRaw.length > 0 ? toRaw : ["strataaitechnology@gmail.com"];
+  const from = readEnvVar("CONTACT_FROM_EMAIL", env) || "STRATA Technologies <onboarding@resend.dev>";
 
   if (!apiKey) return null;
 

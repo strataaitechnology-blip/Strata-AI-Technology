@@ -14,8 +14,28 @@ import type { ContactProvider } from "./types";
  *   console                 → dev only: logs inquiry to server console
  *   none                    → reports delivery is not configured
  */
+import fs from "fs";
+import path from "path";
+
+function readEnvVar(key: string): string | undefined {
+  if (process.env[key]?.trim()) return process.env[key]?.trim();
+  try {
+    const envPath = path.resolve(process.cwd(), ".env.local");
+    if (fs.existsSync(envPath)) {
+      const content = fs.readFileSync(envPath, "utf8");
+      const match = content.match(new RegExp(`^${key}\\s*=\\s*(.*)$`, "m"));
+      if (match && match[1]?.trim()) {
+        const val = match[1].trim();
+        process.env[key] = val;
+        return val;
+      }
+    }
+  } catch {}
+  return undefined;
+}
+
 export function getContactProvider(): ContactProvider {
-  const choice = (process.env.CONTACT_PROVIDER ?? "").trim().toLowerCase();
+  const choice = (readEnvVar("CONTACT_PROVIDER") ?? "resend").trim().toLowerCase();
 
   if (choice === "resend") {
     return createResendProvider() ?? (process.env.NODE_ENV === "development" ? consoleProvider : noneProvider);
