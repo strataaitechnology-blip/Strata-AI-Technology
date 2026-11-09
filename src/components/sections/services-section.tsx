@@ -20,8 +20,9 @@ function AiSpotlight() {
             <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
             AI &amp; Business Automation
           </div>
-          <h3 className="mt-4 text-2xl font-bold leading-snug tracking-tight text-primary sm:text-3xl">
-            Less repetitive work. More time for your business.
+          <h3 className="mt-4 text-2xl font-bold leading-snug tracking-tight text-white sm:text-3xl">
+            Less repetitive work.{" "}
+            <span className="highlight-accent text-white">More time for your business.</span>
           </h3>
           <p className="mt-4 max-w-2xl text-muted leading-relaxed">
             We build smart tools and automated workflows that handle routine tasks,

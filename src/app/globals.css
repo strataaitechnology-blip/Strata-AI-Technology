@@ -126,15 +126,15 @@
   --surface-strong: #0d1a30;
   --card: #08101e;
 
-  --foreground: #f8fafc;
+  --foreground: #ffffff;
   --muted: #94a3b8;
   --subtle: #64748b;
 
   --border: #132238;
   --border-strong: #1c3150;
 
-  --primary: #3b82f6;
-  --primary-hover: #60a5fa;
+  --primary: #ffffff;          /* White font for headings in dark sections */
+  --primary-hover: #e2e8f0;
   --primary-foreground: #050912;
 
   --accent: #2563eb;
@@ -150,6 +150,13 @@
 
   background-color: var(--background);
   color: var(--foreground);
+}
+
+.force-dark h1,
+.force-dark h2,
+.force-dark h3,
+.force-dark h4 {
+  color: #ffffff !important;
 }
 
 @theme inline {
@@ -274,11 +281,11 @@
   content: "";
   position: absolute;
   left: 0;
-  bottom: 0.1em;
+  bottom: 0.05em;
   width: 100%;
   height: 0.28em;
   background-color: var(--accent-soft);
-  border-bottom: 2px solid var(--accent);
+  border-bottom: 3px solid #2563eb;
   z-index: -1;
   border-radius: 2px;
   opacity: 0.95;
@@ -286,7 +293,7 @@
 .dark .highlight-accent::after,
 .force-dark .highlight-accent::after {
   background-color: rgb(37 99 235 / 0.25);
-  border-bottom: 2px solid var(--accent);
+  border-bottom: 3px solid #3b82f6;
 }
 
 /* Enterprise hardware card styling */

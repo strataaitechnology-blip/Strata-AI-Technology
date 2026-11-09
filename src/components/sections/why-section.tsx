@@ -17,9 +17,9 @@ export function WhySection() {
             id="why-heading"
             eyebrow="Why Choose STRATA"
             title={
-              <span>
+              <span className="text-white">
                 Built for Quality,{" "}
-                <span className="highlight-accent">Reliability &amp; Growth</span>
+                <span className="highlight-accent text-white">Reliability &amp; Growth</span>
               </span>
             }
             description="We build software and websites designed to deliver real business value, protect your information, and help your company grow with confidence."
