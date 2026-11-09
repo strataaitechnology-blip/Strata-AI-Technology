@@ -63,7 +63,15 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang={siteConfig.language} suppressHydrationWarning className={`${heading.variable} ${body.variable}`}>
-      <body className="min-h-dvh antialiased" suppressHydrationWarning>
+      <head>
+        <script
+          id="force-light-mode"
+          dangerouslySetInnerHTML={{
+            __html: `try{document.documentElement.classList.remove('dark');localStorage.removeItem('strata-theme');localStorage.setItem('strata-theme','light');}catch(e){}`,
+          }}
+        />
+      </head>
+      <body className="min-h-dvh antialiased bg-background text-foreground" suppressHydrationWarning>
         <ThemeProvider>
           <MotionProvider>
             <BackgroundStickers />
