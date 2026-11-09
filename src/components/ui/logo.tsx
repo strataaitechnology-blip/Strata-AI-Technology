@@ -55,13 +55,13 @@ export function Logo({ className, compact = true, onClick }: LogoProps) {
     <Link
       href="/"
       onClick={handleClick}
-      aria-label="STRATA Technologies — home"
+      aria-label="STRATA AI Technologies — home"
       className={cn("group inline-flex items-center gap-2.5 rounded-md", className)}
     >
       <LogoMark className="transition-transform duration-300 group-hover:-translate-y-0.5" />
       <span className="font-display text-[1.05rem] leading-none tracking-tight text-foreground">
         <span className="font-semibold tracking-[0.04em]">STRATA</span>
-        <span className={cn("ml-1.5 font-normal text-muted", compact && "hidden sm:inline")}>Technologies</span>
+        <span className={cn("ml-1.5 font-normal text-muted", compact && "hidden sm:inline")}>AI Technologies</span>
       </span>
     </Link>
   );

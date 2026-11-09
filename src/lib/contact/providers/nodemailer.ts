@@ -33,7 +33,7 @@ function buildHtml(payload: ContactPayload): string {
           <!-- Header -->
           <tr>
             <td style="background:linear-gradient(135deg,#0f766e 0%,#0ea5e9 100%);padding:32px 40px;border-radius:12px 12px 0 0;">
-              <p style="margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);">STRATA Technologies</p>
+              <p style="margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);">STRATA AI Technologies</p>
               <h1 style="margin:0;font-size:24px;font-weight:700;color:#ffffff;line-height:1.3;">New Website Inquiry</h1>
               <p style="margin:8px 0 0;font-size:14px;color:rgba(255,255,255,0.8);">
                 Service: <strong>${singleLine(payload.service)}</strong>
@@ -79,7 +79,7 @@ function buildHtml(payload: ContactPayload): string {
           <tr>
             <td style="padding:24px 0 0;text-align:center;">
               <p style="margin:0;font-size:12px;color:#475569;">
-                This email was sent by the STRATA Technologies website contact form.
+                This email was sent by the STRATA AI Technologies website contact form.
               </p>
             </td>
           </tr>
@@ -95,7 +95,7 @@ function buildHtml(payload: ContactPayload): string {
 function buildText(payload: ContactPayload): string {
   const submittedAt = new Date().toUTCString();
   return [
-    "New Website Inquiry — STRATA Technologies",
+    "New Website Inquiry — STRATA AI Technologies",
     "=".repeat(46),
     "",
     `Name:     ${singleLine(payload.fullName)}`,
@@ -158,7 +158,7 @@ export function createNodemailerProvider(
     async send(payload: ContactPayload) {
       try {
         await transporter.sendMail({
-          from: `"STRATA Technologies Website" <${user}>`,
+          from: `"STRATA AI Technologies Website" <${user}>`,
           to,
           replyTo: `"${singleLine(payload.fullName)}" <${singleLine(payload.email)}>`,
           subject: `New Website Inquiry — ${singleLine(payload.service)}`,
@@ -179,3 +179,4 @@ export function createNodemailerProvider(
     },
   };
 }
+

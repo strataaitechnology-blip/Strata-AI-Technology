@@ -24,7 +24,7 @@ export function HeroVisual({ className }: { className?: string }) {
 
   return (
     <div
-      aria-label="STRATA Technologies Interactive Platform Showcase"
+      aria-label="STRATA AI Technologies Interactive Platform Showcase"
       className={cn("relative mx-auto w-full max-w-[42rem] select-none", className)}
     >
       {/* Soft ambient background glow */}
@@ -279,3 +279,4 @@ export function HeroVisual({ className }: { className?: string }) {
     </div>
   );
 }
+

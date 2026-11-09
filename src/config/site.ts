@@ -36,12 +36,12 @@ function resolveSiteUrl(): string {
 export const siteUrl = resolveSiteUrl();
 
 export const siteConfig = {
-  name: "STRATA Technologies",
+  name: "STRATA AI Technologies",
   shortName: "STRATA",
   url: siteUrl,
   locale: "en_US",
   language: "en",
-  title: "STRATA Technologies | Software, Websites & Business Automation",
+  title: "STRATA AI Technologies | Software, Websites & Business Automation",
   tagline: "Smart Software & Websites Built for Growing Businesses.",
   description:
     "STRATA Technologies builds custom software, websites, mobile apps, and automated tools that help businesses save time, work better, and reach more customers.",

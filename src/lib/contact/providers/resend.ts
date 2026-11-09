@@ -39,7 +39,7 @@ function buildHtml(payload: ContactPayload): string {
         <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
           <tr>
             <td style="background:linear-gradient(135deg,#0a192f 0%,#2563eb 100%);padding:32px 40px;border-radius:12px 12px 0 0;">
-              <p style="margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);">STRATA Technologies</p>
+              <p style="margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);">STRATA AI Technologies</p>
               <h1 style="margin:0;font-size:24px;font-weight:700;color:#ffffff;line-height:1.3;">New Website Inquiry</h1>
               <p style="margin:8px 0 0;font-size:14px;color:rgba(255,255,255,0.85);">
                 Service: <strong>${singleLine(payload.service)}</strong>
@@ -124,7 +124,7 @@ export function createResendProvider(env: NodeJS.ProcessEnv = process.env): Cont
     .map((address) => address.trim())
     .filter(Boolean);
   const to = toRaw.length > 0 ? toRaw : ["strataaitechnology@gmail.com"];
-  const from = readEnvVar("CONTACT_FROM_EMAIL", env) || "STRATA Technologies <onboarding@resend.dev>";
+  const from = readEnvVar("CONTACT_FROM_EMAIL", env) || "STRATA AI Technologies <onboarding@resend.dev>";
 
   if (!apiKey) return null;
 
@@ -184,3 +184,4 @@ export function createResendProvider(env: NodeJS.ProcessEnv = process.env): Cont
     },
   };
 }
+

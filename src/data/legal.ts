@@ -15,7 +15,7 @@ export const privacySections: LegalSection[] = [
     id: "introduction",
     title: "Introduction",
     paragraphs: [
-      "This Privacy Policy explains how [Legal entity name] (\"STRATA Technologies\", \"we\", \"us\") collects, uses and protects personal information when you visit this website or contact us through it.",
+      "This Privacy Policy explains how [Legal entity name] (\"STRATA AI Technologies\", \"we\", \"us\") collects, uses and protects personal information when you visit this website or contact us through it.",
     ],
   },
   {
@@ -171,3 +171,4 @@ export const termsSections: LegalSection[] = [
     paragraphs: ["Questions about these terms can be sent to [Contact email]."],
   },
 ];
+

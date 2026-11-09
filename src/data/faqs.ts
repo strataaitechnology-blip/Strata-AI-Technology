@@ -3,7 +3,7 @@ import type { Faq } from "@/types";
 export const faqs: Faq[] = [
   {
     id: "services",
-    question: "What can STRATA Technologies build for my business?",
+    question: "What can STRATA AI Technologies build for my business?",
     answer:
       "We create professional websites, mobile apps, custom business software, and automated tools that handle routine daily tasks. You can hire us for a single project (like a new website or mobile app) or to design and build a complete system from scratch.",
   },
@@ -50,3 +50,4 @@ export const faqs: Faq[] = [
       "It depends on the size of the project. A straightforward website or workflow automation can take just a few weeks, while a larger custom software system takes longer. Before we begin, we provide a clear project schedule with agreed milestones so you always know what to expect.",
   },
 ];
+

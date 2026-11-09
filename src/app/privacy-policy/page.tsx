@@ -6,7 +6,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Privacy Policy",
-  description: "How STRATA Technologies collects, uses and protects personal information.",
+  description: "How STRATA AI Technologies collects, uses and protects personal information.",
   path: "/privacy-policy",
 });
 
@@ -22,3 +22,4 @@ export default function PrivacyPolicyPage() {
     </>
   );
 }
+

@@ -6,7 +6,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Terms & Conditions",
-  description: "The terms that apply when you use the STRATA Technologies website.",
+  description: "The terms that apply when you use the STRATA AI Technologies website.",
   path: "/terms-and-conditions",
 });
 
@@ -22,3 +22,4 @@ export default function TermsPage() {
     </>
   );
 }
+

@@ -143,7 +143,7 @@ export function Footer() {
         {/* Bottom bar — teal accent on copyright link */}
         <div className="mt-14 flex flex-col gap-2 border-t border-border pt-6 text-xs text-subtle sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} STRATA Technologies. All rights
+            © {new Date().getFullYear()} STRATA AI Technologies. All rights
             reserved.
           </p>
           <p>
@@ -158,3 +158,4 @@ export function Footer() {
     </footer>
   );
 }
+

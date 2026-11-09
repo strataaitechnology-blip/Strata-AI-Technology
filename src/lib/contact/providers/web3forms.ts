@@ -25,7 +25,7 @@ export function createWeb3FormsProvider(
           body: JSON.stringify({
             access_key: accessKey,
             subject: `New Website Inquiry — ${singleLine(payload.service || "General Inquiry")}`,
-            from_name: "STRATA Technologies Website",
+            from_name: "STRATA AI Technologies Website",
             name: singleLine(payload.fullName),
             email: singleLine(payload.email),
             phone: payload.phone ? singleLine(payload.phone) : undefined,
@@ -63,4 +63,5 @@ export function createWeb3FormsProvider(
     },
   };
 }
+
 
