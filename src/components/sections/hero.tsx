@@ -18,8 +18,8 @@ export function Hero() {
               id="hero-heading"
               className="text-[clamp(2.15rem,3.8vw,3.5rem)] font-extrabold leading-[1.14] tracking-[-0.03em] text-primary"
             >
-              Software, Websites &amp; Apps Built to{" "}
-              <span className="highlight-accent text-primary">Grow Your Business</span>
+              You Imagine It,{" "}
+              <span className="highlight-accent text-primary">We Build It</span>
             </h1>
           </Enter>
 
