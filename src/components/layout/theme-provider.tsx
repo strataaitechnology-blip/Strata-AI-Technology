@@ -7,11 +7,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   return (
     <NextThemesProvider
       attribute="class"
-      defaultTheme="system"
-      enableSystem
-      storageKey="strata-theme"
-      disableTransitionOnChange={false}
-      scriptProps={{ id: "next-themes-script" }}
+      defaultTheme="light"
+      forcedTheme="light"
+      enableSystem={false}
+      disableTransitionOnChange
     >
       {children}
     </NextThemesProvider>
