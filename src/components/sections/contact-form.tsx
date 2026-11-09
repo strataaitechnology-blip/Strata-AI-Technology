@@ -4,12 +4,24 @@ import { useEffect, useRef, useState } from "react";
 import type { ChangeEvent, FocusEvent, FormEvent, KeyboardEvent, ReactNode } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Check, ChevronDown, CircleAlert, CircleCheck, LoaderCircle } from "lucide-react";
+import { Check, ChevronDown, CircleAlert, CircleCheck, LoaderCircle, Paperclip, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { serviceOptionFromId, serviceOptions } from "@/data/contact";
 import { emptyContactValues, hasErrors, validateContact } from "@/lib/contact/validation";
 import type { ContactApiResponse, ContactFieldErrors, ContactFormValues } from "@/types";
 import { cn } from "@/lib/utils";
+
+/* ── File attachment constants ──────────────────────────────── */
+const MAX_FILE_BYTES = 10 * 1024 * 1024; // 10 MB
+const ALLOWED_EXTENSIONS = ["pdf", "doc", "docx", "xls", "xlsx", "txt"];
+const ALLOWED_EXTENSIONS_LABEL = "PDF, DOC, DOCX, XLS, XLSX, TXT";
+const ACCEPT_ATTR = ".pdf,.doc,.docx,.xls,.xlsx,.txt";
+
+function formatBytes(bytes: number): string {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -262,6 +274,42 @@ export function ContactForm() {
   const [feedback, setFeedback] = useState("");
   const [delivered, setDelivered] = useState(false);
 
+  /* ── Attachment state ─────────────────────────────────────── */
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [attachedFile, setAttachedFile] = useState<File | null>(null);
+  const [fileError, setFileError] = useState<string>("");
+
+  function handleFileChange(e: ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0] ?? null;
+    setFileError("");
+    if (!file) {
+      setAttachedFile(null);
+      return;
+    }
+    // Validate extension
+    const ext = file.name.split(".").pop()?.toLowerCase() ?? "";
+    if (!ALLOWED_EXTENSIONS.includes(ext)) {
+      setFileError(`Unsupported file type ".${ext}". Please attach a ${ALLOWED_EXTENSIONS_LABEL} file.`);
+      e.target.value = "";
+      setAttachedFile(null);
+      return;
+    }
+    // Validate size
+    if (file.size > MAX_FILE_BYTES) {
+      setFileError(`File is too large (${formatBytes(file.size)}). Maximum allowed size is 10 MB.`);
+      e.target.value = "";
+      setAttachedFile(null);
+      return;
+    }
+    setAttachedFile(file);
+  }
+
+  function removeAttachment() {
+    setAttachedFile(null);
+    setFileError("");
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  }
+
   function onChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     const { name, value } = event.target;
     const next = { ...values, [name]: value } as ContactFormValues;
@@ -310,10 +358,22 @@ export function ContactForm() {
 
     try {
       const honeypot = (form.elements.namedItem("website") as HTMLInputElement | null)?.value ?? "";
+
+      // Build FormData so we can include the optional file attachment
+      const fd = new FormData();
+      fd.append("fullName", trimmed.fullName);
+      fd.append("email", trimmed.email);
+      fd.append("phone", trimmed.phone);
+      fd.append("company", trimmed.company);
+      fd.append("service", trimmed.service);
+      fd.append("message", trimmed.message);
+      fd.append("website", honeypot);
+      if (attachedFile) fd.append("attachment", attachedFile, attachedFile.name);
+
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...trimmed, website: honeypot }),
+        // No Content-Type header — browser sets it with the correct boundary
+        body: fd,
       });
       const data = (await response.json().catch(() => null)) as ContactApiResponse | null;
 
@@ -339,6 +399,9 @@ export function ContactForm() {
     setSubmitted(false);
     setStatus("idle");
     setFeedback("");
+    setAttachedFile(null);
+    setFileError("");
+    if (fileInputRef.current) fileInputRef.current.value = "";
   }
 
   if (status === "success") {
@@ -409,6 +472,74 @@ export function ContactForm() {
       <Field id="contact-message" label="How Can We Help?" error={errors.message} className="sm:col-span-2">
         <textarea rows={6} required aria-required="true" placeholder="Tell us about your project, what you want to achieve, or any questions you have." {...fieldProps("message")} className={cn(fieldProps("message").className, "resize-y py-3 leading-relaxed")} />
       </Field>
+
+      {/* ── File Attachment ──────────────────────────────────── */}
+      <div className="sm:col-span-2">
+        {/* Hidden native file input */}
+        <input
+          ref={fileInputRef}
+          id="contact-attachment"
+          type="file"
+          accept={ACCEPT_ATTR}
+          className="sr-only"
+          aria-label="Attach a document (optional)"
+          onChange={handleFileChange}
+          disabled={status === "submitting"}
+        />
+
+        <div className="flex items-start justify-between gap-2">
+          <span className="text-sm font-medium text-foreground">
+            Attach Document
+          </span>
+          <span className="text-xs font-normal text-subtle">Optional</span>
+        </div>
+
+        {/* Attach button — shown when no file selected */}
+        {!attachedFile && (
+          <button
+            type="button"
+            onClick={() => fileInputRef.current?.click()}
+            disabled={status === "submitting"}
+            className={cn(
+              "mt-2 flex w-full cursor-pointer items-center gap-2.5 rounded-xl border border-dashed border-border-strong bg-background px-4 py-3 text-sm text-muted transition-all duration-200",
+              "hover:border-accent/50 hover:bg-accent/5 hover:text-accent-text",
+              "disabled:cursor-not-allowed disabled:opacity-60"
+            )}
+          >
+            <Paperclip className="h-4 w-4 shrink-0" aria-hidden="true" />
+            <span>Click to attach a file</span>
+            <span className="ml-auto text-xs text-subtle">{ALLOWED_EXTENSIONS_LABEL} · Max 10 MB</span>
+          </button>
+        )}
+
+        {/* Selected file pill — shown once a file is chosen */}
+        {attachedFile && (
+          <div className="mt-2 flex items-center gap-3 rounded-xl border border-accent/30 bg-accent/5 px-4 py-3">
+            <Paperclip className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-sm font-medium text-foreground">{attachedFile.name}</p>
+              <p className="text-xs text-subtle">{formatBytes(attachedFile.size)}</p>
+            </div>
+            <button
+              type="button"
+              onClick={removeAttachment}
+              disabled={status === "submitting"}
+              aria-label="Remove attachment"
+              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-subtle transition-colors hover:bg-danger/10 hover:text-danger disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              <X className="h-4 w-4" aria-hidden="true" />
+            </button>
+          </div>
+        )}
+
+        {/* File validation error */}
+        {fileError && (
+          <p className="mt-2 flex items-start gap-1.5 text-sm text-danger">
+            <CircleAlert className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+            {fileError}
+          </p>
+        )}
+      </div>
 
       {/* Honeypot: hidden from people, tempting to bots. */}
       <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">

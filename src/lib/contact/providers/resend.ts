@@ -132,21 +132,35 @@ export function createResendProvider(env: NodeJS.ProcessEnv = process.env): Cont
     name: "resend",
     async send(payload) {
       try {
+        // Build the request body — include attachment when present
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const emailBody: Record<string, any> = {
+          from,
+          to,
+          reply_to: payload.email,
+          subject: `New Website Inquiry — ${singleLine(payload.service)} (${singleLine(payload.fullName)})`,
+          text: buildText(payload),
+          html: buildHtml(payload),
+        };
+
+        if (payload.attachment) {
+          emailBody.attachments = [
+            {
+              filename: payload.attachment.filename,
+              // Resend expects base64-encoded content
+              content: payload.attachment.content.toString("base64"),
+            },
+          ];
+        }
+
         const response = await fetch(RESEND_ENDPOINT, {
           method: "POST",
           headers: {
             Authorization: `Bearer ${apiKey}`,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            from,
-            to,
-            reply_to: payload.email,
-            subject: `New Website Inquiry — ${singleLine(payload.service)} (${singleLine(payload.fullName)})`,
-            text: buildText(payload),
-            html: buildHtml(payload),
-          }),
-          signal: AbortSignal.timeout(10_000),
+          body: JSON.stringify(emailBody),
+          signal: AbortSignal.timeout(15_000),
         });
 
         if (!response.ok) {

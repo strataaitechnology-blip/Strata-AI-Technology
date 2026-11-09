@@ -1,6 +1,18 @@
 import type { ContactFormValues } from "@/types";
 
-export type ContactPayload = ContactFormValues;
+export interface ContactAttachment {
+  /** Original filename as provided by the browser. */
+  filename: string;
+  /** Raw binary content of the uploaded file. */
+  content: Buffer;
+  /** MIME type inferred from the upload. */
+  contentType: string;
+}
+
+export type ContactPayload = ContactFormValues & {
+  /** Optional file attached by the visitor. Present only when the user chose a file. */
+  attachment?: ContactAttachment;
+};
 
 export type ContactSendResult =
   | { ok: true; delivered: boolean }
