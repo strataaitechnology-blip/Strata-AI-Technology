@@ -65,7 +65,7 @@ export interface TechnologyGroup {
 }
 
 /* ── Projects ───────────────────────────────────────────── */
-export type ProjectCategory = "Web" | "Mobile" | "AI" | "Agentic AI" | "Software";
+export type ProjectCategory = "Web" | "Mobile" | "AI" | "Automation" | "Software";
 
 export interface ImageAsset {
   src: string;
@@ -88,6 +88,8 @@ export interface Project {
   featured?: boolean;
   /** Set to false once this entry describes a real, approved project. */
   isPlaceholder: boolean;
+  /** Optional link to live project, demo, or case study (can be added later). */
+  projectUrl?: string;
 }
 
 /* ── Team / testimonials / FAQ ──────────────────────────── */

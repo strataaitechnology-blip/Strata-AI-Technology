@@ -6,16 +6,24 @@ import { Plus } from "lucide-react";
 import { faqs } from "@/data/faqs";
 import { cn } from "@/lib/utils";
 
-/** Accessible accordion: real buttons, aria-expanded, aria-controls, regions. */
+/** Accessible accordion with modern rounded cards and animated toggle */
 export function FaqAccordion() {
   const [openId, setOpenId] = useState<string | null>(faqs[0].id);
 
   return (
-    <ul className="border-t border-border">
+    <ul className="space-y-3.5">
       {faqs.map((faq) => {
         const open = faq.id === openId;
         return (
-          <li key={faq.id} className="border-b border-border">
+          <li
+            key={faq.id}
+            className={cn(
+              "rounded-2xl border transition-all duration-200",
+              open
+                ? "border-accent/40 bg-card shadow-sm ring-1 ring-accent/20"
+                : "border-border bg-card/60 hover:border-accent/30 hover:bg-card"
+            )}
+          >
             <h3 className="m-0">
               <button
                 type="button"
@@ -23,28 +31,28 @@ export function FaqAccordion() {
                 aria-expanded={open}
                 aria-controls={`faq-panel-${faq.id}`}
                 onClick={() => setOpenId(open ? null : faq.id)}
-                className="group flex w-full items-center justify-between gap-6 py-5 text-left"
+                className="group flex w-full items-center justify-between gap-6 p-5 sm:p-6 text-left cursor-pointer"
                 suppressHydrationWarning
               >
                 <span
                   className={cn(
-                    "font-display text-base font-medium leading-snug tracking-tight transition-colors sm:text-lg",
-                    open ? "text-primary" : "text-foreground group-hover:text-primary"
+                    "text-base font-bold leading-snug tracking-tight transition-colors sm:text-lg",
+                    open ? "text-primary font-bold" : "text-foreground group-hover:text-primary"
                   )}
                 >
                   {faq.question}
                 </span>
-                {/* Plus icon: teal when open, navy outline on hover */}
+                {/* Circular toggle with rotate animation */}
                 <span
                   aria-hidden="true"
                   className={cn(
-                    "flex h-7 w-7 shrink-0 items-center justify-center border transition-all duration-200",
+                    "flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-200",
                     open
-                      ? "rotate-45 border-accent bg-accent text-white"
-                      : "border-border-strong text-muted group-hover:border-primary group-hover:text-primary"
+                      ? "rotate-45 bg-accent text-white shadow-sm ring-4 ring-accent/20"
+                      : "bg-surface text-muted group-hover:text-accent group-hover:bg-accent-soft"
                   )}
                 >
-                  <Plus className="h-3.5 w-3.5" strokeWidth={2} />
+                  <Plus className="h-4 w-4" strokeWidth={2.2} />
                 </span>
               </button>
             </h3>
@@ -60,9 +68,11 @@ export function FaqAccordion() {
                   transition={{ duration: 0.25, ease: "easeOut" }}
                   className="overflow-hidden"
                 >
-                  <p className="max-w-2xl pb-6 pr-10 text-sm leading-relaxed text-muted">
-                    {faq.answer}
-                  </p>
+                  <div className="border-t border-border/70 px-5 pb-6 pt-4 sm:px-6">
+                    <p className="max-w-2xl text-sm leading-relaxed text-muted">
+                      {faq.answer}
+                    </p>
+                  </div>
                 </m.div>
               ) : null}
             </AnimatePresence>

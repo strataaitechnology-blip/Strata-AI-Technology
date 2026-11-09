@@ -4,6 +4,7 @@ import { MotionProvider } from "@/components/animations/motion-provider";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { ThemeProvider } from "@/components/layout/theme-provider";
+import { BackgroundStickers } from "@/components/ui/background-stickers";
 import { siteConfig } from "@/config/site";
 import { organizationJsonLd, serializeJsonLd, websiteJsonLd } from "@/lib/structured-data";
 import "./globals.css";
@@ -68,6 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-dvh antialiased" suppressHydrationWarning>
         <ThemeProvider>
           <MotionProvider>
+            <BackgroundStickers />
             <a
               href="#main-content"
               className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-accent-foreground shadow-lg transition-transform focus:translate-y-0"

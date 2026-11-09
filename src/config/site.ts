@@ -41,24 +41,23 @@ export const siteConfig = {
   url: siteUrl,
   locale: "en_US",
   language: "en",
-  title: "STRATA Technologies | Software, AI & Digital Solutions",
-  tagline: "Technology That Builds What's Next.",
+  title: "STRATA Technologies | Software, Websites & Business Automation",
+  tagline: "Smart Software & Websites Built for Growing Businesses.",
   description:
-    "STRATA Technologies builds modern software, web and mobile applications, Agentic AI solutions, and intelligent AI-based systems for modern businesses.",
+    "STRATA Technologies builds custom software, websites, mobile apps, and automated tools that help businesses save time, work better, and reach more customers.",
   footerDescription:
-    "Building modern software and intelligent AI solutions for the next generation of businesses.",
+    "We build custom software, websites, mobile apps, and smart business tools that help companies work faster and grow.",
   ogImageAlt:
-    "STRATA Technologies — Technology That Builds What's Next. Software, AI and digital solutions.",
+    "STRATA Technologies — Smart software, websites, and automation for growing businesses.",
   keywords: [
     "software development company",
     "web development",
     "mobile app development",
+    "business automation",
+    "custom software",
+    "AI solutions",
+    "cloud hosting",
     "UI/UX design",
-    "Agentic AI",
-    "AI-based systems",
-    "cloud and infrastructure",
-    "digital transformation",
-    "quality assurance and testing",
   ],
 
   /**
@@ -66,7 +65,7 @@ export const siteConfig = {
    * details exist. `null` renders a visible placeholder in the UI.
    */
   contact: {
-    email: readEnv(process.env.NEXT_PUBLIC_CONTACT_EMAIL),
+    email: readEnv(process.env.NEXT_PUBLIC_CONTACT_EMAIL) ?? "strataaitechnology@gmail.com",
     phone: readEnv(process.env.NEXT_PUBLIC_CONTACT_PHONE),
     address: readEnv(process.env.NEXT_PUBLIC_CONTACT_ADDRESS),
   },

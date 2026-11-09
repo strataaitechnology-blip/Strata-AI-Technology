@@ -8,7 +8,6 @@ import { Menu, X } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Logo } from "@/components/ui/logo";
-import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { mainNav, primaryCta } from "@/data/navigation";
 import { cn } from "@/lib/utils";
 
@@ -19,11 +18,16 @@ function subscribeToScroll(callback: () => void) {
 const getScrolled = () => window.scrollY > 12;
 const getServerScrolled = () => false;
 
-function isActive(pathname: string, href: string) {
-  return href === "/"
-    ? pathname === "/"
-    : pathname === href || pathname.startsWith(`${href}/`);
-}
+const sectionIds = [
+  "hero",
+  "about",
+  "services",
+  "solutions",
+  "portfolio",
+  "team",
+  "faq",
+  "contact",
+];
 
 export function Navbar() {
   const pathname = usePathname();
@@ -36,7 +40,49 @@ export function Navbar() {
   const [openPath, setOpenPath] = useState<string | null>(null);
   const open = openPath === pathname;
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const [activeSection, setActiveSection] = useState<string>("hero");
 
+  // Track active section via IntersectionObserver when on the homepage
+  useEffect(() => {
+    if (pathname !== "/") return;
+
+    const handleScroll = () => {
+      // If at the very top, hero is active
+      if (window.scrollY < 120) {
+        setActiveSection("hero");
+        return;
+      }
+
+      // If scrolled to bottom, contact is active
+      if (
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 100
+      ) {
+        setActiveSection("contact");
+        return;
+      }
+
+      const scrollPosition = window.scrollY + 160;
+
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const id = sectionIds[i];
+        const element = document.getElementById(id);
+        if (element) {
+          const top = element.offsetTop;
+          if (scrollPosition >= top) {
+            setActiveSection(id);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [pathname]);
+
+  // Handle mobile menu body scroll lock & escape key
   useEffect(() => {
     if (!open) return;
 
@@ -61,6 +107,32 @@ export function Navbar() {
     };
   }, [open]);
 
+  // Smooth scroll handler for single-page navigation
+  function handleNavClick(
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) {
+    if (pathname === "/" && href.startsWith("/#")) {
+      e.preventDefault();
+      const id = href.replace("/#", "");
+      const target = document.getElementById(id);
+
+      if (id === "hero") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.history.replaceState(null, "", "/");
+        setActiveSection("hero");
+      } else if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+        window.history.replaceState(null, "", `#${id}`);
+        setActiveSection(id);
+      }
+
+      setOpenPath(null);
+    } else {
+      setOpenPath(null);
+    }
+  }
+
   const solid = scrolled || open;
 
   return (
@@ -78,32 +150,42 @@ export function Navbar() {
           scrolled ? "h-16" : "h-16 lg:h-[4.5rem]"
         )}
       >
-        <Logo />
+        <Logo
+          onClick={(e) => {
+            if (pathname === "/") {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+              window.history.replaceState(null, "", "/");
+              setActiveSection("hero");
+              setOpenPath(null);
+            }
+          }}
+        />
 
+        {/* Desktop Navigation Links */}
         <nav aria-label="Primary" className="hidden lg:block">
-          <ul className="flex items-center gap-0.5">
+          <ul className="flex items-center gap-1">
             {mainNav.map((item) => {
-              const active = isActive(pathname, item.href);
+              const targetId = item.href.replace("/#", "");
+              const isSectionActive =
+                pathname === "/"
+                  ? activeSection === targetId
+                  : pathname === item.href;
+
               return (
-                <li key={item.href}>
+                <li key={item.label}>
                   <Link
                     href={item.href}
-                    aria-current={active ? "page" : undefined}
+                    onClick={(e) => handleNavClick(e, item.href)}
+                    aria-current={isSectionActive ? "page" : undefined}
                     className={cn(
-                      "relative inline-flex h-9 items-center rounded-sm px-3.5 text-sm transition-colors duration-200",
-                      active
-                        ? "font-medium text-primary"
-                        : "font-normal text-muted hover:text-primary"
+                      "relative inline-flex h-9 items-center rounded-lg px-3 text-sm transition-all duration-200 cursor-pointer",
+                      isSectionActive
+                        ? "font-semibold text-accent-text bg-accent-soft"
+                        : "font-medium text-muted hover:text-foreground hover:bg-surface"
                     )}
                   >
                     {item.label}
-                    {active ? (
-                      /* Teal underline for the active page */
-                      <span
-                        aria-hidden="true"
-                        className="absolute inset-x-3.5 -bottom-px h-[2px] bg-accent"
-                      />
-                    ) : null}
                   </Link>
                 </li>
               );
@@ -112,9 +194,9 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          <ThemeToggle />
           <ButtonLink
             href={primaryCta.href}
+            onClick={(e) => handleNavClick(e, primaryCta.href)}
             size="sm"
             className="max-lg:hidden"
           >
@@ -138,6 +220,7 @@ export function Navbar() {
         </div>
       </Container>
 
+      {/* Mobile Drawer Navigation */}
       <AnimatePresence>
         {open ? (
           <m.div
@@ -152,19 +235,25 @@ export function Navbar() {
               <nav aria-label="Mobile">
                 <ul className="space-y-1">
                   {mainNav.map((item) => {
-                    const active = isActive(pathname, item.href);
+                    const targetId = item.href.replace("/#", "");
+                    const isSectionActive =
+                      pathname === "/"
+                        ? activeSection === targetId
+                        : pathname === item.href;
+
                     return (
-                      <li key={item.href}>
+                      <li key={item.label}>
                         <Link
                           href={item.href}
-                          aria-current={active ? "page" : undefined}
+                          onClick={(e) => handleNavClick(e, item.href)}
+                          aria-current={isSectionActive ? "page" : undefined}
                           className={cn(
-                            "flex min-h-12 items-center justify-between border-b border-border py-3 text-lg font-medium tracking-tight",
-                            active ? "text-primary" : "text-foreground"
+                            "flex min-h-12 items-center justify-between border-b border-border py-3 text-lg font-medium tracking-tight cursor-pointer",
+                            isSectionActive ? "text-accent-text font-bold" : "text-foreground"
                           )}
                         >
                           {item.label}
-                          {active ? (
+                          {isSectionActive ? (
                             <span
                               aria-hidden="true"
                               className="h-2 w-2 rounded-full bg-accent"
@@ -180,15 +269,12 @@ export function Navbar() {
               <div className="mt-8 flex flex-col gap-4">
                 <ButtonLink
                   href={primaryCta.href}
+                  onClick={(e) => handleNavClick(e, primaryCta.href)}
                   size="lg"
                   className="w-full justify-center"
                 >
                   {primaryCta.label}
                 </ButtonLink>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted">Theme</span>
-                  <ThemeToggle size="lg" />
-                </div>
               </div>
             </Container>
           </m.div>

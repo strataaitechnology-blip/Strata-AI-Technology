@@ -1,23 +1,24 @@
 import type { NavItem } from "@/types";
 
 export const mainNav: NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Solutions", href: "/solutions" },
-  { label: "Projects", href: "/projects" },
-  { label: "Team", href: "/team" },
-  { label: "Contact", href: "/contact" },
+  { label: "Home", href: "/#hero" },
+  { label: "About Us", href: "/#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Solutions", href: "/#solutions" },
+  { label: "Portfolio", href: "/#portfolio" },
+  { label: "Team", href: "/#team" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Contact Us", href: "/#contact" },
 ];
 
-export const primaryCta: NavItem = { label: "Get Started", href: "/contact" };
+export const primaryCta: NavItem = { label: "Start Your Project", href: "/#contact" };
 
 export const footerServiceLinks: NavItem[] = [
-  { label: "Software Development", href: "/services#software-development" },
-  { label: "Web Development", href: "/services#web-development" },
-  { label: "Mobile App Development", href: "/services#mobile-app-development" },
-  { label: "Agentic AI", href: "/services#agentic-ai" },
-  { label: "AI-Based Systems", href: "/services#ai-based-systems" },
+  { label: "App Development", href: "/#services" },
+  { label: "Web Development", href: "/#services" },
+  { label: "AI Solutions", href: "/#services" },
+  { label: "Business Automation", href: "/#services" },
+  { label: "Custom Software", href: "/#services" },
 ];
 
 export const legalNav: NavItem[] = [

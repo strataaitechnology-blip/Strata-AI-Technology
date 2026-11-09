@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/animations/reveal";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -7,19 +8,27 @@ import { FaqAccordion } from "@/components/sections/faq-accordion";
 
 export function FaqSection({ showContactLink = true }: { showContactLink?: boolean }) {
   return (
-    <Section id="faq" labelledBy="faq-heading">
-      <Container className="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.4fr)] lg:gap-20">
-        <Reveal className="lg:sticky lg:top-28 lg:self-start">
+    <Section id="faq" labelledBy="faq-heading" className="relative overflow-hidden">
+      <Container className="relative z-10 grid gap-12 lg:grid-cols-[1fr_1.35fr] lg:gap-16">
+        <Reveal className="lg:sticky lg:top-28 lg:self-start lg:pr-8">
           <SectionHeader
             id="faq-heading"
-            eyebrow="FAQ"
-            title="Frequently Asked Questions."
-            description="Straight answers about how we work. Can't find yours? Just ask."
+            eyebrow="Common Questions"
+            title={
+              <span>
+                Frequently Asked{" "}
+                <span className="highlight-accent text-primary">Questions</span>
+              </span>
+            }
+            description="Straightforward answers about our services, project timelines, and how we help your business succeed."
           />
           {showContactLink ? (
-            <ButtonLink href="/contact" variant="secondary" className="mt-8">
-              Ask a Question
-            </ButtonLink>
+            <div className="mt-8">
+              <ButtonLink href="/#contact" variant="secondary" className="gap-2">
+                <span>Have a Question? Contact Our Team</span>
+                <ArrowRight className="h-4 w-4" />
+              </ButtonLink>
+            </div>
           ) : null}
         </Reveal>
         <Reveal delay={0.08}>

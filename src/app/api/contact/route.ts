@@ -58,8 +58,8 @@ export async function POST(request: Request) {
       ok: true,
       delivered: result.delivered,
       message: result.delivered
-        ? "Thank you. We have received your inquiry and will be in touch soon."
-        : "Development mode: your inquiry was logged on the server, but no email was sent.",
+        ? "Thank you! We have received your message and will get back to you within 24 hours."
+        : "Development mode: your message was logged on the server, but no email was sent.",
     },
     200
   );

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, m } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { testimonials } from "@/data/testimonials";
 import { cn } from "@/lib/utils";
@@ -15,17 +15,15 @@ export function TestimonialsCarousel() {
   const go = (next: number) => setIndex((next + total) % total);
 
   return (
-    /* Teal left-border accent on the pull-quote block */
-    <div className="relative border-l-2 border-accent pl-8 sm:pl-12">
-      {/* Opening quote mark in teal */}
-      <p
-        aria-hidden="true"
-        className="mb-6 font-display text-5xl font-semibold leading-none text-accent/40 select-none"
-      >
-        &ldquo;
-      </p>
+    <div className="relative rounded-3xl border border-border bg-card p-8 shadow-panel sm:p-12">
+      {/* Star rating icons */}
+      <div className="flex items-center gap-1 text-amber-500 mb-6">
+        {[...Array(5)].map((_, i) => (
+          <Star key={i} className="h-4 w-4 fill-amber-500 text-amber-500" />
+        ))}
+      </div>
 
-      <div aria-live="polite" className="relative min-h-[14rem]">
+      <div aria-live="polite" className="relative min-h-[7.5rem]">
         <AnimatePresence mode="wait" initial={false}>
           <m.figure
             key={current.id}
@@ -36,35 +34,18 @@ export function TestimonialsCarousel() {
           >
             {current.isPlaceholder ? (
               <Badge tone="warning" interactive={false} className="mb-4">
-                Placeholder testimonial
+                Client Review Preview
               </Badge>
             ) : null}
-            <blockquote className="max-w-3xl font-display text-xl font-medium leading-snug tracking-tight text-primary sm:text-2xl">
-              {current.quote}
+            <blockquote className="max-w-2xl font-display text-lg font-medium leading-relaxed tracking-tight text-primary sm:text-xl">
+              &ldquo;{current.quote}&rdquo;
             </blockquote>
-            <figcaption className="mt-8 flex items-center gap-4">
-              {/* Navy initial avatar */}
-              <span
-                aria-hidden="true"
-                className="flex h-10 w-10 shrink-0 items-center justify-center bg-primary text-sm font-semibold text-primary-foreground"
-              >
-                {current.author.charAt(0)}
-              </span>
-              <span>
-                <span className="block text-sm font-medium text-primary">
-                  {current.author}
-                </span>
-                <span className="block text-xs text-muted">
-                  {current.role}, {current.company}
-                </span>
-              </span>
-            </figcaption>
           </m.figure>
         </AnimatePresence>
       </div>
 
-      <div className="mt-10 flex items-center gap-4">
-        {/* Teal active indicator, grey for inactive */}
+      <div className="mt-8 flex items-center justify-between border-t border-border/80 pt-6">
+        {/* Step indicator pills */}
         <div
           className="flex items-center gap-2"
           role="group"
@@ -77,37 +58,37 @@ export function TestimonialsCarousel() {
               aria-label={`Show testimonial ${i + 1} of ${total}`}
               aria-current={i === index ? "true" : undefined}
               onClick={() => setIndex(i)}
-              className="flex h-5 items-center justify-center px-0.5 cursor-pointer"
+              className="flex h-6 items-center justify-center px-1 cursor-pointer"
             >
               <span
                 className={cn(
-                  "block h-px transition-all duration-300",
+                  "block h-1.5 rounded-full transition-all duration-300",
                   i === index
                     ? "w-8 bg-accent"
-                    : "w-4 bg-border-strong hover:bg-accent-text"
+                    : "w-3 bg-border-strong hover:bg-accent-text"
                 )}
               />
             </button>
           ))}
         </div>
 
-        {/* Navigation arrows — navy hover */}
-        <div className="flex items-center gap-1">
+        {/* Carousel buttons */}
+        <div className="flex items-center gap-2">
           <button
             type="button"
             aria-label="Previous testimonial"
             onClick={() => go(index - 1)}
-            className="flex h-9 w-9 items-center justify-center border border-border-strong text-foreground transition-colors hover:border-primary hover:text-primary"
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-surface text-muted transition-colors hover:border-accent hover:text-accent cursor-pointer"
           >
-            <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+            <ChevronLeft className="h-4.5 w-4.5" />
           </button>
           <button
             type="button"
             aria-label="Next testimonial"
             onClick={() => go(index + 1)}
-            className="flex h-9 w-9 items-center justify-center border border-border-strong text-foreground transition-colors hover:border-primary hover:text-primary"
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-surface text-muted transition-colors hover:border-accent hover:text-accent cursor-pointer"
           >
-            <ChevronRight className="h-4 w-4" aria-hidden="true" />
+            <ChevronRight className="h-4.5 w-4.5" />
           </button>
         </div>
       </div>

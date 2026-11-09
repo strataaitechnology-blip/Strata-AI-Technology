@@ -7,7 +7,6 @@ import {
   Globe,
   Network,
   PenTool,
-  Smartphone,
   GitBranch,
   Wrench,
   Zap,
@@ -15,150 +14,126 @@ import {
 import type { FlowStep, Service } from "@/types";
 
 /**
- * STRATA services. Titles and summaries are the approved copy;
- * `capabilities` describe the kind of work involved (no client claims).
+ * STRATA services explained in simple, benefit-driven language for business owners.
  */
 export const services: Service[] = [
-  {
-    id: "software-development",
-    title: "Software Development",
-    summary:
-      "Custom software engineered to solve complex business challenges and scale with your needs.",
-    icon: Braces,
-    visual: "software",
-    capabilities: [
-      "Custom business applications",
-      "API design and system integration",
-      "Legacy system modernization",
-      "Maintenance and long-term support",
-    ],
-  },
   {
     id: "web-development",
     title: "Web & App Development",
     summary:
-      "We develop modern, scalable, and user-friendly web and mobile applications using cutting-edge technologies to deliver seamless digital experiences.",
+      "We build fast, professional websites and mobile apps that make it easy for customers to find you, explore your services, and place orders.",
     icon: Globe,
     visual: "web",
     capabilities: [
-      "React.js — interactive and responsive web interfaces",
-      "Flutter — cross-platform mobile apps for Android & iOS",
-      "Node.js & Express.js — scalable backend systems and APIs",
-      "MongoDB — flexible and efficient database solutions",
-      "API Development & Integration",
-      "Firebase — real-time databases, auth, and cloud services",
-      "Socket.IO — real-time communication and live tracking",
+      "Custom business websites that look great on phones, tablets, and computers",
+      "Mobile apps for iPhone and Android designed for simple, everyday use",
+      "Online stores and booking systems that make buying quick and easy",
+      "Customer portals where clients can log in, view details, and track orders",
+      "Fast page loading speeds so visitors never leave out of frustration",
+      "Secure hosting and ongoing maintenance so your site stays online 24/7",
     ],
     tools: [
-      { name: "React.js", description: "Build interactive and responsive web interfaces." },
-      { name: "Flutter", description: "Develop cross-platform mobile applications for Android and iOS." },
-      { name: "Node.js & Express.js", description: "Build scalable backend systems and robust APIs." },
-      { name: "MongoDB", description: "Design flexible and efficient database solutions." },
-      { name: "API Development & Integration", description: "Connect applications with external services and systems." },
-      { name: "Firebase", description: "Implement real-time databases, authentication, notifications, and cloud services." },
-      { name: "Socket.IO", description: "Enables real-time communication for ride updates, driver offers, and live location tracking." },
+      { name: "Modern Websites", description: "Clear, responsive layouts that work smoothly on every smartphone and laptop." },
+      { name: "Mobile Apps (iOS & Android)", description: "Convenient apps that help customers interact with your services anywhere." },
+      { name: "Online Payments & Orders", description: "Accept bookings, payments, and client inquiries directly through your site." },
+      { name: "Fast & Secure Systems", description: "Built with industry-proven tools to keep your data safe and pages loading fast." },
     ],
   },
   {
-    id: "mobile-app-development",
-    title: "Mobile App Development",
+    id: "software-development",
+    title: "Custom Business Software",
     summary:
-      "Intuitive, reliable mobile applications designed for seamless experiences across platforms.",
-    icon: Smartphone,
-    visual: "mobile",
+      "We build software shaped around how your business actually works, replacing disorganized spreadsheets with one simple, reliable system.",
+    icon: Braces,
+    visual: "software",
     capabilities: [
-      "Cross-platform apps for iOS and Android",
-      "Offline-ready and real-time features",
-      "Backend and API connectivity",
-      "Store release and update support",
+      "Internal tools built specifically around your team's daily processes",
+      "Order, inventory, and client tracking in one easy-to-use dashboard",
+      "Team access controls so managers and staff see the right information",
+      "Connecting your separate apps so data stays up to date everywhere",
+      "Long-term support and updates as your business grows",
     ],
-  },
-  {
-    id: "ui-ux-design",
-    title: "UI/UX Design",
-    summary:
-      "User-centered interfaces that make complex technology simple, intuitive, and engaging.",
-    icon: PenTool,
-    visual: "design",
-    capabilities: [
-      "User research and journey mapping",
-      "Wireframes and interactive prototypes",
-      "Design systems and component libraries",
-      "Usability testing and iteration",
+    tools: [
+      { name: "Order & Inventory Tracking", description: "Keep accurate track of products, stock levels, and customer requests." },
+      { name: "Staff & Role Management", description: "Easily manage team permissions, task assignments, and daily activity." },
+      { name: "Automated Reports", description: "See daily sales, performance numbers, and important business metrics at a glance." },
+      { name: "Connected Tools", description: "Link your existing software so you never have to re-enter the same data twice." },
     ],
   },
   {
     id: "agentic-ai",
-    title: "Agentic AI & Automation",
+    title: "Business Automation",
     summary:
-      "We develop intelligent AI agents and automated workflows that streamline business operations, reduce manual effort, and improve productivity through smart decision-making and seamless system integration.",
+      "We help businesses save time by connecting everyday software tools and eliminating repetitive manual paperwork and data entry.",
     icon: Bot,
     visual: "agentic",
     featured: true,
     capabilities: [
-      "n8n Automation — connecting applications, APIs, and AI models",
-      "LangGraph — stateful AI agents and multi-agent workflows",
-      "LangChain — AI apps with tools, databases, and knowledge sources",
-      "OpenAI SDK — intelligent assistants and AI-powered applications",
-      "Google ADK — orchestrate agents for complex multi-step tasks",
-      "Custom AI Automation — end-to-end systems tailored to business needs",
+      "Connecting your email, spreadsheets, and customer tools so work flows automatically",
+      "Automatic confirmation emails, invoices, and client follow-ups",
+      "Extracting details from incoming documents and forms without manual typing",
+      "Fewer human mistakes and forgotten tasks in your daily operations",
+      "Saving your staff hours every week so they can focus on high-priority work",
     ],
     tools: [
-      { name: "n8n Automation", description: "Design automated workflows connecting applications, APIs, and AI models." },
-      { name: "LangGraph", description: "Build stateful AI agents and structured multi-agent workflows." },
-      { name: "LangChain", description: "Develop AI applications integrated with tools, databases, and knowledge sources." },
-      { name: "OpenAI SDK", description: "Build intelligent assistants and AI-powered applications using OpenAI models." },
-      { name: "Google ADK", description: "Develop and orchestrate AI agents for complex, multi-step tasks." },
-      { name: "Custom AI Automation", description: "Create end-to-end automation systems tailored to business needs." },
+      { name: "Workflow Connections", description: "Connect tools like Gmail, Excel, WhatsApp, and CRMs to share updates automatically." },
+      { name: "Automated Follow-ups", description: "Send timely reminders, receipts, and order updates without extra effort." },
+      { name: "Document Organization", description: "Read and organize incoming invoices, orders, and inquiries automatically." },
+      { name: "Team Approval Gates", description: "Require a single click from your team before any important action is finalized." },
     ],
   },
   {
     id: "ai-based-systems",
-    title: "AI-Based Systems",
+    title: "AI Solutions & Smart Tools",
     summary:
-      "We develop intelligent AI solutions that combine advanced algorithms, data-driven insights, and research-based innovation to solve complex problems and improve business efficiency.",
+      "We create smart tools that reduce repetitive work, answer customer inquiries around the clock, and help your team make faster, better decisions.",
     icon: Cpu,
     visual: "ai-systems",
     capabilities: [
-      "AI Model Development — custom models for business and research",
-      "Model Tuning — optimized accuracy, efficiency, and performance",
-      "Computer Vision — image processing, object detection, visual recognition",
-      "Research-Based Projects — innovative ideas into practical AI solutions",
-      "Natural Language Processing (NLP) — text analysis and language understanding",
-      "Transformers — language processing, content generation, contextual understanding",
-      "Data Analytics — extract insights for informed decision-making",
-      "Machine Learning — predictive models from data patterns",
-      "Deep Learning — neural networks for complex analysis and prediction",
+      "24/7 AI assistants that answer common customer questions accurately",
+      "Smart document search that lets your staff find business answers in seconds",
+      "Quick summaries of long emails, customer notes, and business reports",
+      "Helpful sales and customer trend insights to guide your business growth",
+      "Total human control: you always review and approve what matters",
     ],
     tools: [
-      { name: "AI Model Development", description: "Build custom AI models tailored to specific business and research needs." },
-      { name: "Model Tuning", description: "Optimize AI models for improved accuracy, efficiency, and performance." },
-      { name: "Computer Vision", description: "Develop intelligent systems for image processing, object detection, and visual recognition." },
-      { name: "Research-Based Projects", description: "Transform innovative research ideas into practical AI solutions." },
-      { name: "Natural Language Processing (NLP)", description: "Build systems for text analysis, language understanding, and intelligent communication." },
-      { name: "Transformers", description: "Develop transformer-based solutions for language processing, content generation, and contextual understanding." },
-      { name: "Data Analytics", description: "Extract meaningful insights from data to support informed decision-making." },
-      { name: "Machine Learning", description: "Create predictive models that learn from data and identify valuable patterns." },
-      { name: "Deep Learning", description: "Build neural network solutions for complex data analysis, recognition, and prediction tasks." },
+      { name: "Customer Assistants", description: "Provide fast, helpful replies to website visitors at any time of day or night." },
+      { name: "Document Search", description: "Find policies, manuals, customer histories, and past records instantly." },
+      { name: "Smart Summaries", description: "Turn long emails and notes into clear, actionable bullet points." },
+      { name: "Trend Insights", description: "Spot customer habits and busy periods to help you plan ahead with confidence." },
+    ],
+  },
+  {
+    id: "ui-ux-design",
+    title: "UI/UX & Product Design",
+    summary:
+      "We design clean, intuitive screens that make it easy and enjoyable for customers to navigate, understand, and use your digital products.",
+    icon: PenTool,
+    visual: "design",
+    capabilities: [
+      "Clear layouts that customers can understand immediately without instructions",
+      "Interactive previews so you can see and test the design before building",
+      "Professional branding, colors, and typography that build customer trust",
+      "Accessible design tested so all customers can use your website or app easily",
     ],
   },
 ];
 
-/** Conceptual flow shown for Agentic AI: AI Agent → Tools → Data → Actions → Results */
+/** Conceptual flow shown for Business Automation: Request → Gathers Info → Prepares Action → Your Approval → Done */
 export const agenticFlow: FlowStep[] = [
-  { label: "AI Agent", description: "Reasons about a goal and plans the steps to reach it.", icon: Bot },
-  { label: "Tools", description: "Uses the APIs and software your business already runs on.", icon: Wrench },
-  { label: "Data", description: "Reads the context it needs from your systems and documents.", icon: Database },
-  { label: "Actions", description: "Takes steps, with approvals wherever people should decide.", icon: Zap },
-  { label: "Results", description: "Delivers outcomes that are checked, logged and traceable.", icon: CircleCheck },
+  { label: "Request Received", description: "A customer reaches out or a new order arrives.", icon: Bot },
+  { label: "Gathers Info", description: "The system finds the needed details automatically.", icon: Wrench },
+  { label: "Prepares Action", description: "A draft reply or record update is created.", icon: Database },
+  { label: "Your Approval", description: "Your team approves with one click before sending.", icon: Zap },
+  { label: "Task Done", description: "The action is completed, verified, and logged.", icon: CircleCheck },
 ];
 
-/** Conceptual flow shown for AI-Based Systems: Data → Intelligence → Decision → Action */
+/** Conceptual flow shown for AI Solutions: Your Data → Smart Analysis → Clear Guidance → Work Finished */
 export const aiSystemFlow: FlowStep[] = [
-  { label: "Data", description: "Information collected, cleaned and prepared.", icon: Database },
-  { label: "Intelligence", description: "Models that find patterns and generate insight.", icon: Network },
-  { label: "Decision", description: "Predictions and recommendations people can trust.", icon: GitBranch },
-  { label: "Action", description: "Outcomes automated, or handed to the right person.", icon: Zap },
+  { label: "Your Data", description: "Information from your documents, orders, or inquiries.", icon: Database },
+  { label: "Smart Analysis", description: "The tool spots key details and patterns quickly.", icon: Network },
+  { label: "Clear Guidance", description: "Provides simple, helpful advice your team can trust.", icon: GitBranch },
+  { label: "Work Finished", description: "Tasks get done faster with less manual effort.", icon: Zap },
 ];
 
 export function getServiceById(id: string): Service | undefined {

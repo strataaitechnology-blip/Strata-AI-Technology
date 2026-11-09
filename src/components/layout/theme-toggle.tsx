@@ -2,15 +2,14 @@
 
 import { useRef, useSyncExternalStore } from "react";
 import type { KeyboardEvent } from "react";
-import { Monitor, Moon, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { m } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const options = [
-  { value: "light", label: "Light theme", icon: Sun },
-  { value: "system", label: "System theme", icon: Monitor },
-  { value: "dark", label: "Dark theme", icon: Moon },
+  { value: "light", label: "Light mode", icon: Sun },
+  { value: "dark", label: "Dark mode", icon: Moon },
 ] as const;
 
 const subscribeNoop = () => () => {};
@@ -21,21 +20,20 @@ interface ThemeToggleProps {
 }
 
 /**
- * Three-way theme control (Light / System / Dark) built as an accessible radio
- * group. The selected state is only rendered after mount, because the stored
- * preference is unknown on the server.
+ * Clean two-way theme control (Light / Dark) with smooth spring transitions.
  */
 export function ThemeToggle({ size = "md", className }: ThemeToggleProps) {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const mounted = useSyncExternalStore(subscribeNoop, () => true, () => false);
   const groupRef = useRef<HTMLDivElement>(null);
+
+  const currentTheme = mounted ? (theme === "system" ? resolvedTheme : theme) : "light";
 
   function choose(value: string) {
     const root = document.documentElement;
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      // Enables a one-off smooth cross-fade of colors (see globals.css).
       root.classList.add("theme-transition");
-      window.setTimeout(() => root.classList.remove("theme-transition"), 400);
+      window.setTimeout(() => root.classList.remove("theme-transition"), 350);
     }
     setTheme(value);
   }
@@ -59,10 +57,13 @@ export function ThemeToggle({ size = "md", className }: ThemeToggleProps) {
       ref={groupRef}
       role="radiogroup"
       aria-label="Color theme"
-      className={cn("inline-flex items-center rounded-full border border-border-strong bg-background/70 p-0.5", className)}
+      className={cn(
+        "inline-flex items-center rounded-full border border-border bg-surface/80 p-0.5 shadow-xs backdrop-blur-sm",
+        className
+      )}
     >
       {options.map(({ value, label, icon: Icon }, index) => {
-        const checked = mounted && theme === value;
+        const checked = currentTheme === value;
         return (
           <m.button
             key={value}
@@ -74,18 +75,22 @@ export function ThemeToggle({ size = "md", className }: ThemeToggleProps) {
             tabIndex={!mounted || checked ? 0 : -1}
             onClick={() => choose(value)}
             onKeyDown={(event) => onKeyDown(event, index)}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.92 }}
             transition={{ type: "spring", stiffness: 500, damping: 25 }}
             className={cn(
-              "relative flex items-center justify-center rounded-full transition-colors duration-200 cursor-pointer select-none",
-              size === "lg" ? "h-10 w-10" : "h-8 w-8",
+              "relative flex items-center justify-center rounded-full transition-all duration-200 cursor-pointer select-none",
+              size === "lg" ? "h-9 w-9" : "h-7.5 w-7.5",
               checked
-                ? "bg-accent text-accent-foreground shadow-sm"
-                : "text-muted hover:bg-surface-strong hover:text-foreground"
+                ? "bg-accent text-white shadow-sm ring-1 ring-accent/30"
+                : "text-muted hover:text-primary hover:bg-surface-strong/60"
             )}
           >
-            <Icon className={size === "lg" ? "h-[1.1rem] w-[1.1rem]" : "h-4 w-4"} strokeWidth={1.9} aria-hidden="true" />
+            <Icon
+              className={size === "lg" ? "h-4.5 w-4.5" : "h-3.5 w-3.5"}
+              strokeWidth={2}
+              aria-hidden="true"
+            />
           </m.button>
         );
       })}

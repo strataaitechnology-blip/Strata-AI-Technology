@@ -26,9 +26,9 @@ export function Badge({
   return (
     <span
       className={cn(
-        "inline-flex shrink-0 items-center px-2.5 py-0.5 text-xs font-medium leading-none",
+        "inline-flex shrink-0 items-center rounded-md px-2.5 py-1 text-[0.7rem] font-semibold tracking-wide uppercase leading-none",
         toneClasses[tone],
-        interactive && "transition-colors",
+        interactive && "transition-colors hover:border-accent hover:text-accent-text",
         className
       )}
     >

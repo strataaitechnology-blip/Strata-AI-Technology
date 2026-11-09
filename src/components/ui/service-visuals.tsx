@@ -31,30 +31,28 @@ function SoftwareVisual() {
         <span className={dot} />
         <span className={dot} />
         <span className={dot} />
-        <span className="ml-2 font-mono text-[10px] text-subtle">orders.ts</span>
+        <span className="ml-2 font-mono text-[10px] text-subtle">order-workflow</span>
       </div>
       <pre className="overflow-hidden p-3 font-mono text-[10.5px] leading-[1.75] text-muted sm:text-[11px]">
         <code>
+          <span className="block text-accent-text">{`// 1. Receive and verify customer order`}</span>
           <span className="block">
-            <span className="text-accent-text">export async function</span> createOrder(input) {"{"}
+            <span className="text-accent-text">const</span> order = <span className="text-accent-text">await</span> processOrder(customerCart);
           </span>
-          <span className="block pl-4">
-            <span className="text-accent-text">const</span> order = <span className="text-accent-text">await</span> db.orders.create(input);
+          <span className="block text-accent-text pt-1">{`// 2. Update inventory & send instant receipt`}</span>
+          <span className="block">
+            <span className="text-accent-text">await</span> sendConfirmation(order.id);
           </span>
-          <span className="block pl-4">
-            <span className="text-accent-text">await</span> events.publish(&quot;order.created&quot;, order);
+          <span className="block pt-1">
+            <span className="text-accent-text">return</span> orderStatus.confirmed;
           </span>
-          <span className="block pl-4">
-            <span className="text-accent-text">return</span> order;
-          </span>
-          <span className="block">{"}"}</span>
         </code>
       </pre>
       <div className="flex items-center justify-between border-t border-border px-3 py-1.5 text-[10px] text-subtle">
         <span className="flex items-center gap-1.5 text-success">
           <Check className="h-3 w-3" strokeWidth={2.5} /> All checks passed
         </span>
-        <span>TypeScript</span>
+        <span>Order Verified &amp; Synced</span>
       </div>
     </div>
   );

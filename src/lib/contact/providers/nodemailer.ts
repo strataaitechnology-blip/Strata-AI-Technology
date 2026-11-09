@@ -136,11 +136,13 @@ function escapeHtml(text: string): string {
 export function createNodemailerProvider(
   env: NodeJS.ProcessEnv = process.env
 ): ContactProvider | null {
-  const user = env.GMAIL_USER?.trim();
+  const user = env.GMAIL_USER?.trim() || "strataaitechnology@gmail.com";
   const pass = env.GMAIL_APP_PASSWORD?.trim();
-  const to = env.CONTACT_RECEIVER_EMAIL?.trim();
+  const to = env.CONTACT_RECEIVER_EMAIL?.trim() || "strataaitechnology@gmail.com";
 
-  if (!user || !pass || !to) return null;
+  if (!pass) {
+    return null;
+  }
 
   // Lazy-create the transporter so it is only instantiated once the provider is used.
   const transporter = nodemailer.createTransport({

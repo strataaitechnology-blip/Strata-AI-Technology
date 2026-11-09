@@ -1,48 +1,40 @@
-import { Cloud, Database, Monitor, Server, Smartphone, Sparkles } from "lucide-react";
+import { Cloud, Database, Monitor, Server, Sparkles } from "lucide-react";
 import type { TechnologyGroup } from "@/types";
 
 export const technologyGroups: TechnologyGroup[] = [
   {
     id: "frontend",
-    title: "Frontend",
-    description: "Fast, accessible interfaces.",
+    title: "Web & Mobile Screens",
+    description: "Fast, easy-to-use screens that look great on phones, tablets, and computers.",
     icon: Monitor,
-    items: ["React.js", "Next.js"],
+    items: ["Mobile-Friendly Design", "iPhone & Android Apps", "Fast Loading Pages", "Simple Navigation"],
   },
   {
     id: "backend",
-    title: "Backend",
-    description: "Dependable services and integrations.",
+    title: "Behind-the-Scenes Systems",
+    description: "The reliable engine running your orders, customer accounts, and daily business logic.",
     icon: Server,
-    items: ["Node.js", "Express.js", "Firebase", "Socket.IO", "APIs"],
-  },
-  {
-    id: "mobile",
-    title: "Mobile",
-    description: "One codebase, every platform.",
-    icon: Smartphone,
-    items: ["Flutter"],
+    items: ["Automated Order Processing", "Secure Customer Logins", "Live Notifications", "Connected Business Tools"],
   },
   {
     id: "data",
-    title: "Data",
-    description: "Structured and flexible storage.",
+    title: "Safe Data Management",
+    description: "Secure, organized storage that keeps your business and customer records protected.",
     icon: Database,
-    items: ["MongoDB", "PostgreSQL"],
+    items: ["Protected Business Records", "Customer Data Privacy", "Automatic Daily Backups", "Quick File Recovery"],
   },
   {
     id: "ai",
-    title: "AI & Agentic",
-    description: "Intelligence applied where it matters.",
+    title: "Smart Automation Tools",
+    description: "Helpful tools and automated workflows that eliminate repetitive daily paperwork.",
     icon: Sparkles,
-    items: ["LangGraph", "LangChain", "OpenAI SDK", "Google ADK", "n8n", "Generative AI", "Machine Learning", "NLP", "Computer Vision", "Deep Learning"],
+    items: ["24/7 Customer Assistants", "Automated Daily Tasks", "Smart Document Search", "Helpful Business Reports"],
   },
   {
     id: "infrastructure",
-    title: "Infrastructure",
-    description: "Secure, scalable foundations.",
+    title: "24/7 Hosting & Reliability",
+    description: "Dependable, secure hosting so your website and apps are always available to customers.",
     icon: Cloud,
-    items: ["Cloud Platforms", "Deployment", "Scalable Systems"],
+    items: ["24/7 Website Availability", "Fast Page Speeds", "Safe Cloud Storage", "Continuous Security Checks"],
   },
 ];
-

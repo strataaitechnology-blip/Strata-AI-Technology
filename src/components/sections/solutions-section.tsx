@@ -6,17 +6,22 @@ import { SolutionsExplorer } from "@/components/sections/solutions-explorer";
 
 export function SolutionsSection() {
   return (
-    <Section id="solutions" tone="muted" labelledBy="solutions-heading">
-      <Container>
+    <Section id="solutions" tone="muted" labelledBy="solutions-heading" className="relative overflow-hidden">
+      <Container className="relative z-10">
         <Reveal>
           <SectionHeader
             id="solutions-heading"
-            eyebrow="Solutions"
-            title="Technology Built Around Real Business Problems."
-            description="Every solution follows the same path: start with the challenge, shape a strategy, choose the right technology, add intelligence where it helps, and measure the impact."
+            eyebrow="Practical Solutions"
+            title={
+              <span>
+                Technology Built to Solve{" "}
+                <span className="highlight-accent text-primary">Real Business Problems</span>.
+              </span>
+            }
+            description="Explore how we solve everyday business challenges — from automating manual tasks and building custom software to delivering secure websites that help your company thrive."
           />
         </Reveal>
-        <div className="mt-14">
+        <div className="mt-12 sm:mt-16">
           <SolutionsExplorer />
         </div>
       </Container>

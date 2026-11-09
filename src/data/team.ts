@@ -1,31 +1,43 @@
 import type { TeamMember } from "@/types";
 
 /**
- * PLACEHOLDER TEAM
- * ------------------------------------------------------------------
- * No real people are described here. To add a real team member, set
- * `name`, `bio`, optionally `photo` / `linkedin`, and change
- * `isPlaceholder` to false. The UI adapts automatically.
- *
- * Example:
- * {
- *   id: "cto",
- *   role: "CTO",
- *   name: "Full Name",
- *   bio: "One or two sentences.",
- *   photo: { src: "/images/team/full-name.jpg", alt: "Full Name", width: 800, height: 1000 },
- *   linkedin: "https://www.linkedin.com/in/...",
- *   isPlaceholder: false,
- * }
+ * STRATA Team Members
+ * Set `name`, `bio`, `role`, and optionally `photo` / `linkedin` for each member.
  */
 export const team: TeamMember[] = [
-  { id: "founder-ceo", role: "Founder / CEO", isPlaceholder: true },
-  { id: "cto", role: "CTO", isPlaceholder: true },
-  { id: "software-engineer", role: "Software Engineer", isPlaceholder: true },
-  { id: "ai-engineer", role: "AI Engineer", isPlaceholder: true },
-  { id: "ui-ux-designer", role: "UI/UX Designer", isPlaceholder: true },
+  {
+    id: "founder-ceo",
+    role: "Founder & CEO",
+    name: "Executive Leadership",
+    bio: "Working closely with business owners to understand their daily challenges and deliver practical technology solutions.",
+    isPlaceholder: true,
+  },
+  {
+    id: "cto",
+    role: "Chief Technology Officer",
+    name: "Technical Leadership",
+    bio: "Overseeing technical quality, data security, and ensuring all client projects run reliably.",
+    isPlaceholder: true,
+  },
+  {
+    id: "software-engineer",
+    role: "Senior Full-Stack Engineer",
+    name: "Software Engineering",
+    bio: "Building fast, dependable websites, mobile applications, and internal business tools.",
+    isPlaceholder: true,
+  },
+  {
+    id: "ai-engineer",
+    role: "AI & Automation Specialist",
+    name: "AI Solutions Team",
+    bio: "Creating smart assistants and automated workflows that eliminate repetitive daily paperwork.",
+    isPlaceholder: true,
+  },
+  {
+    id: "ui-ux-designer",
+    role: "Lead UI/UX Designer",
+    name: "Design Team",
+    bio: "Designing clean, easy-to-use screens that make websites and apps simple and enjoyable to use.",
+    isPlaceholder: true,
+  },
 ];
-
-export const TEAM_PLACEHOLDER_NAME = "Name to be announced";
-export const TEAM_PLACEHOLDER_BIO =
-  "A short biography will appear here once this profile is filled in.";

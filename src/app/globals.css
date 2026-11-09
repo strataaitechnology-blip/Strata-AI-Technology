@@ -3,146 +3,150 @@
 /* Class-based dark mode, driven by next-themes (attribute="class"). */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Universal crisp blue selection across all themes and elements */
+::selection,
+*::selection {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+}
+
 /* ────────────────────────────────────────────────────────────
-   DESIGN TOKENS — Deep Navy + Teal
-   Brand:   Deep Navy #142D4E  ·  Teal #2BAE9A
-   Light:   White/F5F7FA backgrounds, slate body text, navy headings
-   Dark:    Navy-900 backgrounds, steel-blue surfaces, off-white text
-   Force-dark (footer): Deepest navy #0A1929
+   DESIGN TOKENS — Enterprise Corporate Navy + Precision Tech Blue
+   Brand:   Deep Executive Navy #0A192F  ·  Precision Tech Blue #1D4ED8 / #2563EB
+   Light:   Pure White / Crisp Slate-50 surfaces, Slate-900 headings, Slate-600 body
+   Dark:    Midnight Obsidian Navy #060B14, steel-navy surfaces, crisp cool text
+   Force-dark: Deepest Obsidian Navy #050912
    ──────────────────────────────────────────────────────────── */
 :root {
   color-scheme: light;
 
   /* ── Backgrounds ─────────────────────────────────────────── */
   --background: #ffffff;
-  --surface: #f5f7fa;
-  --surface-strong: #e8edf5;
+  --surface: #f8fafc;          /* Slate-50 */
+  --surface-strong: #f1f5f9;   /* Slate-100 */
   --card: #ffffff;
 
   /* ── Typography ──────────────────────────────────────────── */
-  --foreground: #1e293b;       /* Slate-800: readable, not harsh black */
-  --muted: #64748b;            /* Slate-500: secondary text */
-  --subtle: #94a3b8;           /* Slate-400: placeholders, hints */
+  --foreground: #0f172a;       /* Slate-900: sharp, authoritative */
+  --muted: #475569;            /* Slate-600: clean, readable body */
+  --subtle: #94a3b8;           /* Slate-400 */
 
   /* ── Borders ─────────────────────────────────────────────── */
   --border: #e2e8f0;           /* Slate-200 */
   --border-strong: #cbd5e1;    /* Slate-300 */
 
-  /* ── Brand: Primary (Deep Navy) ──────────────────────────── */
-  --primary: #142d4e;
-  --primary-hover: #1a3a65;
+  /* ── Brand: Primary (Executive Navy) ─────────────────────── */
+  --primary: #0a192f;
+  --primary-hover: #112240;
   --primary-foreground: #ffffff;
 
-  /* ── Brand: Accent (Teal) ────────────────────────────────── */
-  --accent: #2bae9a;
-  --accent-hover: #239e8b;
+  /* ── Brand: Accent (Precision Tech Blue) ─────────────────── */
+  --accent: #2563eb;           /* Royal tech blue */
+  --accent-hover: #1d4ed8;
   --accent-foreground: #ffffff;
-  /* Darker teal for text on white — passes WCAG AA at 4.6:1 */
-  --accent-text: #176b5e;
-  --accent-soft: #e9f4f1;      /* Subtle teal tint for backgrounds */
+  --accent-text: #1d4ed8;
+  --accent-soft: #eff6ff;      /* Subtle blue tint */
+  --accent-tint: rgba(37, 99, 235, 0.08);
 
   /* ── Semantic states ─────────────────────────────────────── */
-  --success: #166534;
+  --success: #15803d;
   --danger: #b91c1c;
   --warning: #b45309;
 
-  /* ── Effects ─────────────────────────────────────────────── */
-  --glow: rgb(43 174 154 / 0.1);
-  --grid-line: rgb(20 45 78 / 0.055);
-  --header-bg: rgb(255 255 255 / 0.92);
+  /* ── Effects & Telemetry ─────────────────────────────────── */
+  --glow: rgb(37 99 235 / 0.12);
+  --grid-line: rgb(15 23 42 / 0.045);
+  --header-bg: rgb(255 255 255 / 0.9);
   --panel-shadow:
-    0 1px 3px rgb(20 45 78 / 0.06),
-    0 16px 40px -16px rgb(20 45 78 / 0.1);
+    0 1px 3px rgb(15 23 42 / 0.04),
+    0 20px 40px -15px rgb(15 23 42 / 0.07);
 
-  /* ── Hero "strata" illustration ──────────────────────────── */
-  --layer-top: #deeaf8;
-  --layer-side-l: #b8d0ed;
-  --layer-side-r: #9bbde3;
-  --layer-stroke: rgb(43 174 154 / 0.4);
-  --layer-stroke-strong: rgb(43 174 154 / 0.7);
-  --layer-tile: #ffffff;
+  /* ── Interactive Console Tokens ──────────────────────────── */
+  --console-bg: #091322;
+  --console-border: #14243b;
+  --console-surface: #0e1c31;
 }
 
 .dark {
   color-scheme: dark;
 
   /* ── Backgrounds ─────────────────────────────────────────── */
-  --background: #0d1e32;       /* Deep navy base */
-  --surface: #142d4e;          /* Primary navy as surface */
-  --surface-strong: #1a3a5c;   /* Slightly lighter navy */
-  --card: #112540;             /* Card panel */
+  --background: #060b14;       /* Deep obsidian navy */
+  --surface: #0a1220;          /* Dark navy surface */
+  --surface-strong: #0f1c30;   /* Slightly lighter navy */
+  --card: #091322;             /* Card panel */
 
   /* ── Typography ──────────────────────────────────────────── */
-  --foreground: #e8f0f8;       /* Cool off-white */
+  --foreground: #f8fafc;       /* Slate-50 */
   --muted: #94a3b8;            /* Slate-400 */
   --subtle: #64748b;           /* Slate-500 */
 
   /* ── Borders ─────────────────────────────────────────────── */
-  --border: #1e3a56;           /* Subtle navy border */
-  --border-strong: #2a4f72;    /* Stronger navy border */
+  --border: #16243a;
+  --border-strong: #1e3352;
 
-  /* ── Brand: Primary (Deep Navy → Teal in dark) ───────────── */
-  --primary: #2bae9a;          /* In dark mode, primary CTA = teal (more visible) */
-  --primary-hover: #33c4af;
-  --primary-foreground: #0d1e32;
+  /* ── Brand: Primary ──────────────────────────────────────── */
+  --primary: #3b82f6;          /* Vibrant blue in dark mode */
+  --primary-hover: #60a5fa;
+  --primary-foreground: #060b14;
 
-  /* ── Brand: Accent (Teal) ────────────────────────────────── */
-  --accent: #2bae9a;
-  --accent-hover: #33c4af;
-  --accent-foreground: #0d1e32;
-  /* Teal on dark navy: passes AA at 5.8:1 */
-  --accent-text: #4ecab8;
-  --accent-soft: rgb(43 174 154 / 0.12);
+  /* ── Brand: Accent (Tech Blue) ───────────────────────────── */
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --accent-foreground: #ffffff;
+  --accent-text: #60a5fa;
+  --accent-soft: rgb(59 130 246 / 0.14);
+  --accent-tint: rgba(59, 130, 246, 0.12);
 
   /* ── Semantic states ─────────────────────────────────────── */
-  --success: #4ade80;
-  --danger: #f87171;
-  --warning: #fbbf24;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --warning: #f59e0b;
 
-  /* ── Effects ─────────────────────────────────────────────── */
-  --glow: rgb(43 174 154 / 0.15);
-  --grid-line: rgb(232 240 248 / 0.04);
-  --header-bg: rgb(13 30 50 / 0.88);
+  /* ── Effects & Telemetry ─────────────────────────────────── */
+  --glow: rgb(59 130 246 / 0.18);
+  --grid-line: rgb(248 250 252 / 0.035);
+  --header-bg: rgb(6 11 20 / 0.9);
   --panel-shadow:
     inset 0 1px 0 rgb(255 255 255 / 0.05),
-    0 24px 56px -24px rgb(0 0 0 / 0.5);
+    0 24px 60px -20px rgb(0 0 0 / 0.7);
 
-  /* ── Hero illustration ───────────────────────────────────── */
-  --layer-top: #1a3a5c;
-  --layer-side-l: #142d4e;
-  --layer-side-r: #0f2238;
-  --layer-stroke: rgb(43 174 154 / 0.4);
-  --layer-stroke-strong: rgb(78 202 184 / 0.65);
-  --layer-tile: #1e3a5c;
+  /* ── Interactive Console Tokens ──────────────────────────── */
+  --console-bg: #060b14;
+  --console-border: #16243a;
+  --console-surface: #0a1220;
 }
 
-/* ── Always-dark band — footer only ─────────────────────────── */
+/* ── Always-dark section band (Services & Strategic Pillars) ── */
 .force-dark {
   color-scheme: dark;
 
-  --background: #0a1929;       /* Deepest navy */
-  --surface: #0d1e32;
-  --surface-strong: #142d4e;
-  --card: #0d1e32;
+  --background: #050912;       /* Deepest obsidian navy */
+  --surface: #08101e;
+  --surface-strong: #0d1a30;
+  --card: #08101e;
 
-  --foreground: #e8f0f8;
+  --foreground: #f8fafc;
   --muted: #94a3b8;
   --subtle: #64748b;
 
-  --border: #162840;
-  --border-strong: #1e3a56;
+  --border: #132238;
+  --border-strong: #1c3150;
 
-  --primary: #2bae9a;
-  --primary-hover: #33c4af;
-  --primary-foreground: #0a1929;
+  --primary: #3b82f6;
+  --primary-hover: #60a5fa;
+  --primary-foreground: #050912;
 
-  --accent: #2bae9a;
-  --accent-text: #4ecab8;
-  --accent-soft: rgb(43 174 154 / 0.1);
+  --accent: #2563eb;
+  --accent-hover: #3b82f6;
+  --accent-foreground: #ffffff;
+  --accent-text: #60a5fa;
+  --accent-soft: rgb(37 99 235 / 0.15);
+  --accent-tint: rgba(37, 99, 235, 0.12);
 
-  --glow: rgb(43 174 154 / 0.12);
-  --grid-line: rgb(232 240 248 / 0.03);
-  --panel-shadow: 0 24px 60px -24px rgb(0 0 0 / 0.6);
+  --glow: rgb(37 99 235 / 0.18);
+  --grid-line: rgb(248 250 252 / 0.035);
+  --panel-shadow: 0 24px 60px -24px rgb(0 0 0 / 0.7);
 
   background-color: var(--background);
   color: var(--foreground);
@@ -156,7 +160,7 @@
     var(--font-heading), var(--font-body), ui-sans-serif, system-ui,
     sans-serif;
 
-  /* ── Expose all tokens as Tailwind color utilities ─────────── */
+  /* ── Expose all tokens as Tailwind utilities ─────────────── */
   --color-background: var(--background);
   --color-surface: var(--surface);
   --color-surface-strong: var(--surface-strong);
@@ -185,7 +189,7 @@
 }
 
 /* ────────────────────────────────────────────────────────────
-   BASE
+   BASE STYLES
    ──────────────────────────────────────────────────────────── */
 @layer base {
   *,
@@ -204,7 +208,7 @@
     background-color: var(--background);
     color: var(--foreground);
     font-family: var(--font-sans);
-    line-height: 1.65;
+    line-height: 1.68;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -216,9 +220,8 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.022em;
+    letter-spacing: -0.028em;
     text-wrap: balance;
-    /* Headings use the Deep Navy primary color */
     color: var(--primary);
   }
 
@@ -227,13 +230,14 @@
   }
 
   ::selection {
-    background-color: color-mix(in oklab, var(--accent) 25%, transparent);
+    background-color: #2563eb;
+    color: #ffffff;
   }
 
   :focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 3px;
-    border-radius: 3px;
+    border-radius: 4px;
   }
 
   button {
@@ -242,167 +246,77 @@
 }
 
 /* ────────────────────────────────────────────────────────────
-   UTILITIES / COMPONENT CLASSES
+   ARCHITECTURAL & ENGINEERING UTILITIES
    ──────────────────────────────────────────────────────────── */
 
-/* Subtle dot grid — only hero & 404 */
-.bg-dot-grid {
-  background-image: radial-gradient(var(--grid-line) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-/* Legacy grid — kept for backward compat */
-.bg-grid {
+/* Technical background grid with precision crosshairs */
+.technical-grid {
   background-image:
     linear-gradient(var(--grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: 56px 56px;
-  -webkit-mask-image: radial-gradient(
-    ellipse 75% 65% at 50% 35%,
-    #000 25%,
-    transparent 78%
-  );
-  mask-image: radial-gradient(
-    ellipse 75% 65% at 50% 35%,
-    #000 25%,
-    transparent 78%
-  );
+  background-size: 48px 48px;
 }
 
-/* Applied to <html> for ~350ms while the theme changes. */
-.theme-transition,
-.theme-transition *,
-.theme-transition *::before,
-.theme-transition *::after {
-  transition:
-    background-color 0.35s ease,
-    color 0.35s ease,
-    border-color 0.35s ease,
-    fill 0.35s ease,
-    stroke 0.35s ease,
-    box-shadow 0.35s ease !important;
+/* Micro dot matrix for subtle engineering texture */
+.technical-dots {
+  background-image: radial-gradient(var(--grid-line) 1.25px, transparent 1.25px);
+  background-size: 24px 24px;
 }
 
-/* ── Hero "strata" illustration ─────────────────────────── */
-/* These classes use the layer-* and accent tokens so they
-   automatically adapt to light / dark — do not hardcode colors. */
-.hv-top {
-  fill: var(--layer-top);
-  stroke: var(--layer-stroke);
-  stroke-width: 1.25;
-  stroke-linejoin: round;
+/* Refined typography highlight for key phrases */
+.highlight-accent {
+  position: relative;
+  display: inline-block;
+  padding-left: 0.05em;
+  padding-right: 0.25em;
 }
-.hv-side-l {
-  fill: var(--layer-side-l);
-  stroke: var(--layer-stroke);
-  stroke-width: 1;
-  stroke-linejoin: round;
+.highlight-accent::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0.1em;
+  width: 100%;
+  height: 0.28em;
+  background-color: var(--accent-soft);
+  border-bottom: 2px solid var(--accent);
+  z-index: -1;
+  border-radius: 2px;
+  opacity: 0.95;
 }
-.hv-side-r {
-  fill: var(--layer-side-r);
-  stroke: var(--layer-stroke);
-  stroke-width: 1;
-  stroke-linejoin: round;
-}
-.hv-grid {
-  stroke: var(--layer-stroke);
-  stroke-width: 0.75;
-  opacity: 0.5;
-  fill: none;
-}
-.hv-tile {
-  fill: var(--layer-tile);
-  stroke: var(--layer-stroke-strong);
-  stroke-width: 1;
-  stroke-linejoin: round;
-}
-.hv-tile-accent {
-  fill: var(--accent);
-  stroke: var(--accent-text);
-  stroke-width: 1;
-  stroke-linejoin: round;
-  opacity: 0.92;
-}
-.hv-link {
-  stroke: var(--accent-text);
-  stroke-width: 1.4;
-  fill: none;
-  opacity: 0.75;
-}
-.hv-node {
-  fill: var(--accent);
-  stroke: var(--background);
-  stroke-width: 2;
-}
-.hv-ring {
-  fill: none;
-  stroke: var(--layer-stroke-strong);
-  stroke-width: 1;
-}
-.hv-flow {
-  stroke: var(--accent-text);
-  stroke-width: 1.5;
-  stroke-dasharray: 3 8;
-  stroke-linecap: round;
-  fill: none;
-  animation: hv-flow 2.2s linear infinite;
-}
-.hv-packet {
-  fill: var(--accent);
-  filter: drop-shadow(0 0 4px var(--accent));
-  animation: hv-travel 4.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-  animation-delay: var(--d, 0s);
-}
-.hv-pulse {
-  fill: var(--accent);
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: hv-pulse 3.2s ease-out infinite;
-  animation-delay: var(--d, 0s);
-}
-.hv-float {
-  animation: hv-float 6s ease-in-out infinite;
+.dark .highlight-accent::after,
+.force-dark .highlight-accent::after {
+  background-color: rgb(37 99 235 / 0.25);
+  border-bottom: 2px solid var(--accent);
 }
 
-.hv-layer-0 { animation: hv-plate-0 5.5s ease-in-out infinite; }
-.hv-layer-1 { animation: hv-plate-1 5.8s ease-in-out infinite 0.4s; }
-.hv-layer-2 { animation: hv-plate-2 6.2s ease-in-out infinite 0.8s; }
-.hv-layer-3 { animation: hv-plate-3 6.6s ease-in-out infinite 1.2s; }
-
-@keyframes hv-float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50%       { transform: translateY(-16px) rotate(0.5deg); }
+/* Enterprise hardware card styling */
+.enterprise-card {
+  position: relative;
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  background-color: var(--card);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
-@keyframes hv-plate-0 {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-12px); }
+.enterprise-card:hover {
+  border-color: color-mix(in oklab, var(--accent) 45%, var(--border));
+  box-shadow: 0 16px 36px -12px rgb(15 23 42 / 0.08);
 }
-@keyframes hv-plate-1 {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-8px); }
-}
-@keyframes hv-plate-2 {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-5px); }
-}
-@keyframes hv-plate-3 {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-3px); }
-}
-@keyframes hv-flow {
-  to { stroke-dashoffset: -22; }
-}
-@keyframes hv-travel {
-  0%          { transform: translateY(0); opacity: 0; }
-  8%, 92%     { opacity: 1; }
-  100%        { transform: translateY(var(--travel, 396px)); opacity: 0; }
-}
-@keyframes hv-pulse {
-  0%          { opacity: 0.45; transform: scale(1); }
-  70%, 100%   { opacity: 0; transform: scale(3); }
+.dark .enterprise-card:hover,
+.force-dark .enterprise-card:hover {
+  box-shadow: 0 20px 48px -16px rgb(0 0 0 / 0.6);
 }
 
-/* ── Flow diagrams (Agentic AI → Tools → Data …) ─────────── */
+/* Status beacon pulse */
+@keyframes beacon-pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(0.95); opacity: 0; }
+}
+.beacon-ping {
+  animation: beacon-pulse 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Flow line animations for Agentic AI pipeline */
 .flow-line {
   position: relative;
   background-color: var(--border-strong);
@@ -433,7 +347,6 @@
   12%, 88%    { opacity: 1; }
   100%        { top: calc(100% - 6px); opacity: 0; }
 }
-/* Large flow diagrams: vertical on mobile */
 @media (max-width: 47.99rem) {
   .flow-stack .flow-line {
     width: 1px;
@@ -448,7 +361,19 @@
   }
 }
 
-/* ── Reduced motion ──────────────────────────────────────── */
+/* ── Smooth Theme Transitions ────────────────────────────── */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease !important;
+}
+
+/* ── Reduced Motion Accessibility ────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, ::before, ::after {
@@ -456,9 +381,10 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .hv-packet,
-  .hv-pulse,
+  .beacon-ping,
   .flow-line::after {
     display: none;
   }
 }
+
+

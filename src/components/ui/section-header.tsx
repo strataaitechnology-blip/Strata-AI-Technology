@@ -7,7 +7,7 @@ interface SectionHeaderProps {
   eyebrow?: string;
   /** Legacy prop alias — maps to eyebrow. */
   badge?: string;
-  title: string;
+  title: ReactNode;
   description?: string;
   as?: "h1" | "h2";
   align?: "left" | "center";

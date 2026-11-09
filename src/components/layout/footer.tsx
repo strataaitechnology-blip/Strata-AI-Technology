@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { Logo } from "@/components/ui/logo";
@@ -17,7 +19,7 @@ const socialIcons = {
 function SocialItem({ link }: { link: SocialLink }) {
   const Icon = socialIcons[link.id];
   const box =
-    "flex h-9 w-9 items-center justify-center border transition-colors";
+    "flex h-9 w-9 items-center justify-center rounded-xl border transition-all duration-200";
 
   if (link.href) {
     return (
@@ -53,6 +55,30 @@ function FooterColumn({
   title: string;
   links: { label: string; href: string }[];
 }) {
+  function handleLinkClick(
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) {
+    if (
+      typeof window !== "undefined" &&
+      window.location.pathname === "/" &&
+      href.startsWith("/#")
+    ) {
+      e.preventDefault();
+      const id = href.replace("/#", "");
+      if (id === "hero") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.history.replaceState(null, "", "/");
+      } else {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+          window.history.replaceState(null, "", `#${id}`);
+        }
+      }
+    }
+  }
+
   return (
     <nav aria-label={title}>
       <h2 className="text-xs font-semibold tracking-[0.12em] uppercase text-foreground">
@@ -60,10 +86,11 @@ function FooterColumn({
       </h2>
       <ul className="mt-5 space-y-3">
         {links.map((link) => (
-          <li key={link.href}>
+          <li key={`${title}-${link.label}-${link.href}`}>
             <Link
               href={link.href}
-              className="text-sm text-muted transition-colors hover:text-accent"
+              onClick={(e) => handleLinkClick(e, link.href)}
+              className="text-sm text-muted transition-colors hover:text-accent cursor-pointer"
             >
               {link.label}
             </Link>
@@ -124,7 +151,7 @@ export function Footer() {
             <span className="text-accent" aria-label="love">
               ♥
             </span>{" "}
-            for modern businesses.
+            for growing businesses.
           </p>
         </div>
       </Container>

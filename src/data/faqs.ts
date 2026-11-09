@@ -3,50 +3,50 @@ import type { Faq } from "@/types";
 export const faqs: Faq[] = [
   {
     id: "services",
-    question: "What services does STRATA Technologies provide?",
+    question: "What can STRATA Technologies build for my business?",
     answer:
-      "We provide software development, web development, mobile app development, UI/UX design, Agentic AI, AI-based systems, cloud and infrastructure, digital transformation, and quality assurance and testing. You can engage us for a single service or for a complete product from idea to launch.",
+      "We create professional websites, mobile apps, custom business software, and automated tools that handle routine daily tasks. You can hire us for a single project (like a new website or mobile app) or to design and build a complete system from scratch.",
   },
   {
     id: "industries",
-    question: "What industries do you work with?",
+    question: "What types of businesses do you work with?",
     answer:
-      "We begin every project by learning your domain, users and constraints, so the same engineering approach can be applied across sectors. If you are unsure whether your industry is a fit, tell us about it and we will give you an honest answer.",
+      "We work with businesses of all sizes — from local shops, trade companies, and professional services to growing startups. We take time to understand your daily operations and build tools that fit your specific workflow.",
   },
   {
     id: "custom-software",
-    question: "Do you build custom software?",
+    question: "What is custom business software, and why do I need it?",
     answer:
-      "Yes. Custom software is a core part of what we do — from internal tools and business platforms to customer-facing products, designed around your processes rather than forcing you to adapt to a generic tool.",
+      "Custom software is built specifically for how your business works, rather than forcing you to adapt to a generic monthly subscription. It replaces disorganized spreadsheets with one simple dashboard where your orders, customer details, and inventory are kept in one safe place.",
   },
   {
     id: "web-mobile",
-    question: "Do you develop mobile and web applications?",
+    question: "Do your mobile apps work on both iPhone and Android?",
     answer:
-      "Yes. We build web applications and websites with modern frameworks such as React and Next.js, and cross-platform mobile apps with Flutter that run on both iOS and Android.",
+      "Yes. We create mobile applications that run smoothly on both Apple iPhones and Android phones, so all your customers can easily access your services without having to build two separate apps.",
   },
   {
     id: "agentic-ai",
-    question: "What is Agentic AI?",
+    question: "What is business automation, and how does it save me time?",
     answer:
-      "Agentic AI describes AI systems that do more than answer questions. An agent can reason about a goal, use tools, read data, take actions and report results. For example, an agent might read incoming requests, check records in your systems, prepare a response and ask a person to approve it before anything is sent.",
+      "Business automation connects your daily tools (like email, spreadsheets, and messaging) so routine work happens automatically. For example, when a new customer inquiry or order arrives, the system can automatically log it, update your records, and send a confirmation — saving your staff hours of manual typing every week.",
   },
   {
     id: "ai-integration",
-    question: "Can AI be integrated into an existing business system?",
+    question: "Can you connect new tools to the software we already use?",
     answer:
-      "In most cases, yes. We connect AI capabilities to existing software through APIs and integrations, so you can add intelligence to the systems your team already uses. We review your current setup first to confirm what is practical and where AI adds real value.",
+      "Yes, in most cases we can connect new features, forms, or automation to the software you already use every day. We review your current setup first and recommend the simplest, most practical solution.",
   },
   {
     id: "start",
-    question: "How can I start a project with STRATA Technologies?",
+    question: "How do we get started on a project?",
     answer:
-      "Send us an inquiry through the contact form and tell us what you are building or solving. We will get back to you to discuss goals, scope and the sensible next steps.",
+      "Simply send us a message through our contact form. Tell us a little about your business and what you want to achieve. We will reply within 24 hours to discuss your goals and answer any questions.",
   },
   {
     id: "timeline",
-    question: "How long does a typical project take?",
+    question: "How long does it take to complete a project?",
     answer:
-      "It depends on scope and complexity. A focused prototype can take a matter of weeks, while a larger platform takes longer. After the discovery phase we share a plan with milestones so you know what to expect and when.",
+      "It depends on the size of the project. A straightforward website or workflow automation can take just a few weeks, while a larger custom software system takes longer. Before we begin, we provide a clear project schedule with agreed milestones so you always know what to expect.",
   },
 ];

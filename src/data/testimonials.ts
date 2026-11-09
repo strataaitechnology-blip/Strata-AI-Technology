@@ -11,28 +11,28 @@ export const testimonials: Testimonial[] = [
   {
     id: "placeholder-1",
     quote:
-      "Placeholder testimonial. Replace this text with a genuine quote from a client describing what it was like to work with STRATA Technologies.",
-    author: "Partner name",
-    role: "Role / title",
-    company: "Company name",
+      "Client review preview. Verified quotes and feedback from business clients will be published here as current projects go live.",
+    author: "Client Partner",
+    role: "Business Owner",
+    company: "Partner Company",
     isPlaceholder: true,
   },
   {
     id: "placeholder-2",
     quote:
-      "Placeholder testimonial. Use this space for a real quote about the challenge a partner faced and the outcome they experienced.",
-    author: "Partner name",
-    role: "Role / title",
-    company: "Company name",
+      "We focus on clear communication, on-time delivery, and building websites and software that make everyday business tasks easier.",
+    author: "Client Partner",
+    role: "Operations Manager",
+    company: "Partner Company",
     isPlaceholder: true,
   },
   {
     id: "placeholder-3",
     quote:
-      "Placeholder testimonial. Add an approved statement here, then mark the entry as no longer a placeholder.",
-    author: "Partner name",
-    role: "Role / title",
-    company: "Company name",
+      "Our commitment is to be a dependable technology partner you can always reach out to for questions, updates, and ongoing support.",
+    author: "Client Partner",
+    role: "Company Director",
+    company: "Partner Company",
     isPlaceholder: true,
   },
 ];

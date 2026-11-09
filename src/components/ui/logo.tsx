@@ -30,12 +30,31 @@ interface LogoProps {
   className?: string;
   /** Hide the "Technologies" part of the wordmark on the smallest screens. */
   compact?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
-export function Logo({ className, compact = true }: LogoProps) {
+export function Logo({ className, compact = true, onClick }: LogoProps) {
+  function handleClick(e: React.MouseEvent<HTMLAnchorElement>) {
+    if (onClick) {
+      onClick(e);
+      return;
+    }
+    if (typeof window !== "undefined" && window.location.pathname === "/") {
+      e.preventDefault();
+      const hero = document.getElementById("hero");
+      if (hero) {
+        hero.scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      window.history.pushState(null, "", "/");
+    }
+  }
+
   return (
     <Link
       href="/"
+      onClick={handleClick}
       aria-label="STRATA Technologies — home"
       className={cn("group inline-flex items-center gap-2.5 rounded-md", className)}
     >

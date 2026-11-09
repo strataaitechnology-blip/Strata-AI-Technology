@@ -1,95 +1,60 @@
-import Image from "next/image";
-import { UserRound } from "lucide-react";
+import { User } from "lucide-react";
 import { Reveal } from "@/components/animations/reveal";
-import { Badge } from "@/components/ui/badge";
 import { Container } from "@/components/ui/container";
-import { LinkedinIcon } from "@/components/ui/social-icons";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
-import { TEAM_PLACEHOLDER_BIO, TEAM_PLACEHOLDER_NAME, team } from "@/data/team";
-import type { TeamMember } from "@/types";
-
-function Portrait({ member }: { member: TeamMember }) {
-  return (
-    <div className="relative aspect-[4/5] border border-border bg-surface overflow-hidden">
-      {member.photo ? (
-        <Image
-          src={member.photo.src}
-          alt={member.photo.alt}
-          width={member.photo.width}
-          height={member.photo.height}
-          sizes="(min-width: 1024px) 220px, (min-width: 768px) 30vw, 45vw"
-          className="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
-        />
-      ) : (
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 flex items-center justify-center bg-accent-soft"
-        >
-          <UserRound
-            className="h-[30%] w-[30%] text-accent-text"
-            strokeWidth={1.2}
-          />
-        </div>
-      )}
-      {member.isPlaceholder ? (
-        <div className="absolute left-3 top-3 z-10">
-          <Badge tone="warning">Placeholder</Badge>
-        </div>
-      ) : null}
-    </div>
-  );
-}
+import { team } from "@/data/team";
 
 export function TeamSection() {
-  const hasPlaceholders = team.some((member) => member.isPlaceholder);
-
   return (
-    <Section id="team" labelledBy="team-heading">
-      <Container>
+    <Section id="team" labelledBy="team-heading" tone="muted" className="relative overflow-hidden">
+      <Container className="relative z-10">
         <Reveal>
           <SectionHeader
             id="team-heading"
-            eyebrow="The Team"
-            title="People Who Build The Future."
-            description={
-              hasPlaceholders
-                ? "Team profiles are placeholders for now. Names, photos and biographies will appear here once they are added."
-                : "The engineers, designers and leaders behind STRATA Technologies."
+            eyebrow="Our Team"
+            title={
+              <span>
+                The People Behind{" "}
+                <span className="highlight-accent text-primary">STRATA</span>
+              </span>
             }
+            description="Meet the experienced engineers, designers, and problem solvers committed to building dependable digital tools for your business."
           />
         </Reveal>
 
-        <ul className="mt-14 grid grid-cols-2 gap-x-5 gap-y-10 md:grid-cols-3 lg:grid-cols-5">
+        <ul className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {team.map((member, index) => (
             <li key={member.id}>
-              <Reveal delay={(index % 5) * 0.05}>
-                <Portrait member={member} />
-                {/* Teal role label */}
-                <p className="mt-4 text-[0.7rem] font-semibold tracking-[0.12em] uppercase text-accent-text">
-                  {member.role}
-                </p>
-                <h3
-                  className={`mt-1 text-[0.95rem] font-semibold ${
-                    member.name ? "text-primary" : "text-muted"
-                  }`}
-                >
-                  {member.name ?? TEAM_PLACEHOLDER_NAME}
-                </h3>
-                <p className="mt-1.5 text-xs leading-relaxed text-muted">
-                  {member.bio ?? TEAM_PLACEHOLDER_BIO}
-                </p>
-                {member.linkedin ? (
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${member.name ?? member.role} on LinkedIn (opens in a new tab)`}
-                    className="mt-3 inline-flex h-8 w-8 items-center justify-center border border-border-strong text-muted transition-colors hover:border-accent hover:text-accent"
-                  >
-                    <LinkedinIcon className="h-3.5 w-3.5" />
-                  </a>
-                ) : null}
+              <Reveal delay={(index % 3) * 0.08}>
+                <div className="group relative flex h-full flex-col justify-between rounded-2xl border border-border bg-card p-7 shadow-xs transition-all duration-300 hover:border-accent/40 hover:shadow-panel hover:-translate-y-1">
+                  <div>
+                    {/* Member Avatar / Initial Icon */}
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-accent-soft text-accent ring-4 ring-accent/10 transition-colors group-hover:bg-accent group-hover:text-white">
+                        <User className="h-7 w-7" strokeWidth={1.8} />
+                      </div>
+                      <div className="min-w-0">
+                        <h3 className="truncate text-lg font-bold text-primary">
+                          {member.name}
+                        </h3>
+                        <span className="inline-block rounded-md bg-accent-soft px-2.5 py-0.5 text-xs font-semibold text-accent-text">
+                          {member.role}
+                        </span>
+                      </div>
+                    </div>
+
+                    <p className="mt-5 text-sm leading-relaxed text-muted">
+                      {member.bio}
+                    </p>
+                  </div>
+
+                  <div className="mt-6 border-t border-border/80 pt-4">
+                    <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-muted">
+                      STRATA Core Team
+                    </span>
+                  </div>
+                </div>
               </Reveal>
             </li>
           ))}
@@ -98,3 +63,4 @@ export function TeamSection() {
     </Section>
   );
 }
+

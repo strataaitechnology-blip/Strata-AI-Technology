@@ -6,14 +6,19 @@ import { ProcessTimeline } from "@/components/sections/process-timeline";
 
 export function ProcessSection() {
   return (
-    <Section id="process" tone="muted" labelledBy="process-heading">
-      <Container>
+    <Section id="process" tone="muted" labelledBy="process-heading" className="relative overflow-hidden">
+      <Container className="relative z-10">
         <Reveal>
           <SectionHeader
             id="process-heading"
-            eyebrow="Our Process"
-            title="From Idea to Intelligent Product."
-            description="A clear path from the first conversation to a solution running in production."
+            eyebrow="How We Work"
+            title={
+              <span>
+                From Initial Idea to{" "}
+                <span className="highlight-accent text-primary">Successful Launch</span>.
+              </span>
+            }
+            description="A clear, straightforward 6-step process designed to deliver dependable software on time, within budget, and with zero surprises."
           />
         </Reveal>
         <div className="mt-14 lg:mt-16">
